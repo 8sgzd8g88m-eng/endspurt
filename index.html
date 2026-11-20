@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Endspurt</title>
+<meta name="theme-color" content="#0c0e13">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Endspurt">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0e13;--card:rgba(255,255,255,.045);--card2:rgba(255,255,255,.075);--line:rgba(255,255,255,.08);--text:#f4f1ea;--muted:#a4a8b4;--acc:#f5b75c;--acc2:#86d0ac;--warn:#ef8f7f;--r:22px;--serif:"Fraunces",Georgia,serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:var(--bg)}
+body{margin:0;min-height:100vh;color:var(--text);font:16px/1.5 "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;
+  background:radial-gradient(120% 55% at 15% -10%,rgba(245,183,92,.16) 0%,rgba(12,14,19,0) 60%),radial-gradient(90% 50% at 110% 105%,rgba(80,130,190,.16) 0%,rgba(12,14,19,0) 60%),var(--bg);background-attachment:fixed}
+main{max-width:560px;margin:0 auto;padding:max(76px,calc(env(safe-area-inset-top) + 28px)) 18px 130px}
+h1{font-family:var(--serif);font-weight:600;font-size:36px;line-height:1.1;margin:0 0 6px;letter-spacing:-.02em}
+h2{font-size:14px;font-weight:600;color:var(--muted);margin:0 0 12px}
+.sub{color:var(--muted);font-size:15px;margin:0 0 22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;margin:0 0 14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 12px 30px rgba(0,0,0,.22)}
+.hero{background:linear-gradient(150deg,rgba(245,183,92,.22),rgba(236,147,74,.06) 55%,rgba(255,255,255,.03));border-color:rgba(245,183,92,.28);padding:22px 22px 20px}
+.count{display:flex;gap:12px;align-items:flex-end}
+.count .big{font-family:var(--serif);font-size:92px;font-weight:600;line-height:.85;font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#ffdca4,#ee9a4c);-webkit-background-clip:text;background-clip:text;color:transparent}
+.count .lbl{color:var(--text);font-size:20px;font-family:var(--serif);padding-bottom:4px}
+.count .hm{margin-left:auto;text-align:right;font-variant-numeric:tabular-nums;color:var(--muted);font-size:13px;line-height:1.4;padding-bottom:4px}
+.why{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.4;margin:0 0 4px;white-space:pre-wrap}
+.msg{font-size:16px;margin:0;line-height:1.55}
+textarea,input[type=text],input[type=datetime-local],input[type=date],input[type=number]{width:100%;background:rgba(0,0,0,.25);color:var(--text);border:1px solid var(--line);border-radius:14px;padding:13px 14px;font:inherit;font-size:16px;resize:vertical}
+input[type=datetime-local],input[type=date]{-webkit-appearance:none;appearance:none;display:block;min-width:0;max-width:100%;min-height:50px;text-align:left;color-scheme:dark}
+input::-webkit-date-and-time-value{text-align:left}
+textarea::placeholder,input::placeholder{color:#6f7480}
+textarea:focus,input:focus{outline:2px solid rgba(245,183,92,.6);outline-offset:-1px}
+button{font:inherit;font-weight:500;color:inherit;background:var(--card2);border:1px solid transparent;border-radius:14px;padding:12px 14px;cursor:pointer;transition:transform .1s,background .2s}
+button:active{transform:scale(.97)}
+.btn-main{width:100%;background:linear-gradient(135deg,#ffc873,#ec934a);color:#2a1606;border:0;font-weight:700;font-size:18px;padding:17px;border-radius:18px;box-shadow:0 10px 26px rgba(236,147,74,.32)}
+.btn-sos{width:100%;margin-top:10px;background:rgba(239,143,127,.08);border:1px solid rgba(239,143,127,.35);color:var(--warn);font-weight:600;padding:15px;border-radius:18px}
+.btn-ghost{background:transparent}
+.link{background:none;border:0;padding:4px 0;color:var(--muted);text-decoration:underline;text-underline-offset:3px;font-size:14px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row>button{flex:1}
+.seg{background:rgba(0,0,0,.25);border-radius:16px;padding:4px;gap:4px;flex-wrap:nowrap}
+.seg button{background:transparent;padding:10px 6px;border-radius:12px;color:var(--muted)}
+.seg button.on{background:linear-gradient(135deg,#ffc873,#ec934a);color:#2a1606;font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:rgba(0,0,0,.2);border-radius:16px;padding:12px 6px;text-align:center}
+.stat b{display:block;font-family:var(--serif);font-weight:600;font-size:28px;line-height:1.2;font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--muted)}
+.bar{height:12px;background:rgba(0,0,0,.3);border-radius:99px;overflow:hidden;margin:4px 0 8px}
+.bar>i{display:block;height:100%;min-width:12px;background:linear-gradient(90deg,var(--acc2),var(--acc));border-radius:99px;transition:width .4s}
+.topic{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.topic .nm{flex:1;min-width:0;word-wrap:break-word}
+.topic.s2 .nm{color:var(--muted);text-decoration:line-through}
+.st{width:30px;height:30px;flex:none;border-radius:50%;padding:0;border:2px solid #5d6270;background:transparent;font-size:0}
+.st.s1{border-color:var(--acc);background:linear-gradient(90deg,var(--acc) 50%,transparent 50%)}
+.st.s2{border-color:var(--acc2);background:var(--acc2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230c0e13' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/16px no-repeat}
+.chip{padding:5px 11px;font-size:12px;font-weight:600;border-radius:99px;color:var(--muted);background:rgba(0,0,0,.25)}
+.del{padding:4px 6px;background:none;border:0;color:#6f7480;font-size:20px;line-height:1}
+.dayh{display:flex;justify-content:space-between;align-items:center;margin:6px 0 4px}
+.dayh b{font-size:15px;font-weight:600}
+.dayh span{font-size:12px;color:var(--muted)}
+.tag{font-size:11px;padding:3px 9px;border-radius:99px;background:var(--acc);color:#2a1606;font-weight:700;margin-left:8px;vertical-align:2px}
+.tag.w{background:var(--warn)}
+.hint{font-size:13px;color:var(--muted);margin:10px 0 0;line-height:1.5}
+.ringwrap{position:relative;width:260px;height:260px;margin:4px auto 18px}
+.ring{display:block;width:100%;height:100%}
+.tdisp{position:absolute;left:0;right:0;top:50%;transform:translateY(-62%);text-align:center;font-family:var(--serif);font-size:62px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.tsub{position:absolute;left:0;right:0;top:50%;transform:translateY(95%);text-align:center;color:var(--muted);font-size:14px}
+.tiles{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin:2px 0 16px}
+.tiles i{aspect-ratio:1;border-radius:10px;background:rgba(0,0,0,.25);border:1px solid var(--line)}
+.tiles i.on{background:linear-gradient(135deg,#a3e0c1,#5fb68d);border-color:transparent}
+.tiles i.now{border:2px solid var(--acc);box-shadow:0 0 14px rgba(245,183,92,.35)}
+.exam{display:flex;gap:10px;align-items:center;margin:8px 0}
+.exam input[type=checkbox]{width:24px;height:24px;accent-color:var(--acc2);flex:none}
+.exam input[type=text]{padding:10px 12px}
+.win{padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.win:first-of-type{border-top:0}
+.win small{color:var(--muted);display:block;font-size:12px}
+nav{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));display:flex;justify-content:center;pointer-events:none;z-index:5}
+nav div{pointer-events:auto;display:flex;gap:4px;max-width:520px;width:100%;background:rgba(22,24,31,.8);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:26px;padding:6px;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+nav button{flex:1;background:none;border:0;color:var(--muted);font-size:11px;font-weight:600;padding:8px 2px 7px;border-radius:20px;display:flex;flex-direction:column;align-items:center;gap:3px}
+nav button svg{width:22px;height:22px}
+nav button.on{color:var(--acc);background:rgba(245,183,92,.12)}
+.modal{position:fixed;inset:0;background:rgba(5,6,9,.7);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:none;align-items:flex-end;justify-content:center;z-index:10;padding:12px}
+.modal.open{display:flex}
+.sheet{background:#1a1c24;border:1px solid var(--line);border-radius:28px;padding:24px 20px 20px;max-width:560px;width:100%;margin-bottom:env(safe-area-inset-bottom);box-shadow:0 -10px 40px rgba(0,0,0,.4)}
+.sheet h3{margin:0 0 10px;font-family:var(--serif);font-weight:600;font-size:26px;line-height:1.2}
+.sheet p{margin:0 0 16px}
+.night{background:linear-gradient(150deg,rgba(110,120,230,.2),rgba(255,255,255,.03));border-color:rgba(130,140,240,.3)}
+.toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);background:var(--acc2);color:#0b1a13;padding:11px 18px;border-radius:99px;font-weight:600;font-size:14px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:20;white-space:nowrap}
+.toast.show{opacity:1}
+
+.chips{display:flex;gap:8px;overflow-x:auto;margin:-6px -18px 18px;padding:2px 18px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:none;border-radius:99px;padding:9px 15px;font-size:14px;white-space:nowrap}
+.chips button.on{background:linear-gradient(135deg,#ffc873,#ec934a);color:#2a1606;font-weight:700}
+.goalline{margin-top:18px;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:10px}
+.field{margin:0 0 12px}.field label{display:block;font-size:13px;color:var(--muted);margin:0 0 6px}
+.grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:10px}
+.exrow{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.exrow:first-child{border-top:0}
+.exrow .info{flex:1;min-width:0;cursor:pointer}
+.exrow .info b{display:block;font-weight:600}
+.exrow .info span{font-size:13px;color:var(--muted)}
+.exrow.done .info b{color:var(--muted);text-decoration:line-through}
+.exrow .go{color:var(--muted);font-size:20px}
+.from{font-size:11px;color:var(--muted);display:block}
+.ask{background:linear-gradient(150deg,rgba(134,208,172,.18),rgba(255,255,255,.03));border-color:rgba(134,208,172,.35)}
+.danger{color:var(--warn)}
+</style>
+</head>
+<body>
+<main id="view"></main>
+
+<nav><div>
+  <button data-tab="heute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg>Heute</button>
+  <button data-tab="timer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>Sprint</button>
+  <button data-tab="plan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M7 13h4M7 17h7"/></svg>Plan</button>
+  <button data-tab="ziel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V4M4 4h12l-2 4 2 4H4"/></svg>Ziel</button>
+</div></nav>
+
+<div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+const KEY='endspurt_v2',OLD='endspurt_v1';let memStore={};
+function rawGet(k){try{return localStorage.getItem(k)}catch(e){return memStore[k]||null}}
+function save(){const s=JSON.stringify(S);try{localStorage.setItem(KEY,s)}catch(e){memStore[KEY]=s}}
+function defaults(){const ex=[{id:1,name:'Öffentliches Recht',ects:16,date:'2026-11-27T09:00',start:'',done:false,topics:[]}];
+  for(let i=2;i<=8;i++)ex.push({id:i,name:'Prüfung '+i,ects:0,date:'',start:'',done:false,topics:[]});
+  return {v:2,goalDate:'2027-10-01',why:'',exams:ex,activeId:1,sessions:[],wins:[],energy:null,lastBackup:null,timer:{dur:25,endAt:null,left:null,isBreak:false},nextId:1000}}
+function migrate(o){const s=defaults();s.why=o.why||'';s.wins=o.wins||[];
+  s.sessions=(o.sessions||[]).map(x=>Object.assign({examId:1},x));
+  (o.exams||[]).forEach((e,i)=>{if(s.exams[i]){s.exams[i].done=!!e.done;if(i>0)s.exams[i].name=e.name||s.exams[i].name}});
+  if(o.examDate)s.exams[0].date=o.examDate;s.exams[0].topics=o.topics||[];s.nextId=Math.max(1000,(o.nextId||1)+1000);return s}
+function normalize(o){const d=defaults();const s=Object.assign(d,o);s.timer=Object.assign(defaults().timer,o.timer||{});
+  s.exams=(s.exams||[]).map(e=>Object.assign({ects:0,date:'',start:'',done:false,topics:[]},e));if(!s.exams.length)s.exams=defaults().exams;return s}
+function boot(){try{const n=rawGet(KEY);if(n)return normalize(JSON.parse(n));const o=rawGet(OLD);if(o)return migrate(JSON.parse(o))}catch(e){}return defaults()}
+let S=boot();save();
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+
+let tab=(location.hash||'').slice(1);if(!['heute','timer','plan','ziel'].includes(tab))tab='heute';
+let editWhy=!S.why,arm=null;
+
+const pad=n=>String(n).padStart(2,'0');
+const dkey=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const today=()=>dkey(new Date());
+const parseKey=k=>{const p=k.split('-').map(Number);return new Date(p[0],p[1]-1,p[2])};
+const WD=['So','Mo','Di','Mi','Do','Fr','Sa'];
+const fmtDay=k=>{const d=parseKey(k);return WD[d.getDay()]+' '+pad(d.getDate())+'.'+pad(d.getMonth()+1)+'.'};
+const fmtLong=k=>{const d=parseKey(k);return pad(d.getDate())+'.'+pad(d.getMonth()+1)+'.'+d.getFullYear()};
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+function exDate(e){const m=/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/.exec(e&&e.date||'');return m?new Date(+m[1],m[2]-1,+m[3],+m[4],+m[5]):null}
+function fmtEx(e){const d=exDate(e);return d?WD[d.getDay()]+' '+fmtLong(dkey(d))+', '+pad(d.getHours())+':'+pad(d.getMinutes()):'kein Termin'}
+const active=()=>S.exams.find(e=>e.id===S.activeId)||S.exams.find(e=>!e.done)||S.exams[0];
+function openSorted(){return S.exams.filter(e=>!e.done).sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999'))}
+function findTopic(id){for(const e of S.exams){const t=e.topics.find(t=>t.id===id);if(t)return [e,t]}return [null,null]}
+function goalD(){const p=(S.goalDate||'2027-10-01').split('-').map(Number);return new Date(p[0],p[1]-1,p[2])}
+
+function planDays(e){const ex=exDate(e);if(!ex)return[];let sk=today();if(e.start&&e.start>sk)sk=e.start;const exK=dkey(ex);const out=[];const d=parseKey(sk);let g=0;while(dkey(d)<exK&&g<800){out.push(dkey(d));d.setDate(d.getDate()+1);g++}return out}
+function learnDays(e){const p=planDays(e);return p.length>=2?p.slice(0,-1):p}
+function reviewDay(e){const p=planDays(e);return p.length>=2?p[p.length-1]:null}
+function distribute(e){const days=learnDays(e);const open=e.topics.filter(t=>t.status===0);
+  if(!days.length){open.forEach(t=>t.day=null);save();return}
+  const W=open.reduce((a,t)=>a+t.size,0);const per=W/days.length;let acc=0;
+  open.forEach(t=>{const i=Math.min(days.length-1,Math.floor((acc+t.size/2)/per));t.day=days[i];acc+=t.size});save()}
+function progress(e){const W=e.topics.reduce((a,t)=>a+t.size,0);if(!W)return 0;
+  return Math.round(e.topics.reduce((a,t)=>a+t.size*(t.status===2?1:t.status===1?0.6:0),0)/W*100)}
+function todayMin(){return S.sessions.filter(s=>s.date===today()).reduce((a,s)=>a+s.min,0)}
+function todayCount(){return S.sessions.filter(s=>s.date===today()).length}
+function streak(){const set=new Set(S.sessions.map(s=>s.date));const d=new Date();let n=0;if(!set.has(dkey(d)))d.setDate(d.getDate()-1);while(set.has(dkey(d))){n++;d.setDate(d.getDate()-1)}return n}
+
+const MSGS=[
+ 'Du musst heute nicht motiviert sein. Du musst nur anfangen. Die Motivation kommt meistens erst nach den ersten zehn Minuten.',
+ 'Das Gefühl, noch gar nicht angefangen zu haben, täuscht. Du baust auf Jahren an Studium auf, nicht auf null.',
+ 'Nicht perfekt lernen. Prüfungsrelevant lernen. Lieber alles einmal solide als die Hälfte perfekt.',
+ 'Jede Prüfung ist nur eine von acht. Heute zählt nur der nächste Sprint.',
+ 'Müdigkeit nach so vielen Semestern ist normal. Sie sagt nichts darüber aus, ob du das kannst.',
+ 'Du hast schon Prüfungen geschafft, die sich vorher genauso angefühlt haben.',
+ 'Aktiv schlägt passiv: ein Fall gelöst bringt mehr als drei Seiten markiert.',
+ 'Du liebst, was du tust. Die Erschöpfung ist gerade nur lauter als die Freude. Das geht vorbei.',
+ 'Ein schlechter Lerntag ist kein verlorener Tag, solange du einen Sprint machst.',
+ 'Stell dir den Tag vor, an dem die letzte Prüfung abgehakt ist. Jeder Sprint bringt ihn näher.',
+ 'Konstanz schlägt Intensität. Lieber jeden Tag zwei Stunden als einmal zwölf.',
+ 'Pausen sind kein Verrat am Lernen. Sie sind Teil davon.'
+];
+const RESCUE=[
+ 'Leg das Handy außer Reichweite und öffne nur das Skript. Mehr nicht.',
+ 'Lies genau eine Seite. Danach darfst du aufhören, wenn du willst.',
+ 'Schreib aus dem Kopf fünf Begriffe zum heutigen Thema auf. Egal wie unvollständig.',
+ 'Erklär einem imaginären Mandanten in zwei Minuten, worum es beim heutigen Thema geht.',
+ 'Nimm einen alten Prüfungsfall und lies nur den Sachverhalt. Nur lesen.',
+ 'Formuliere drei Fragen, die dir der Prüfer zu diesem Thema stellen könnte.',
+ 'Mach eine Gliederung des Themas auf einem Blatt. Nur Überschriften.',
+ 'Schlag eine Norm nach, die du heute brauchst, und lies sie zweimal langsam.',
+ 'Stell den Timer auf fünf Minuten. Wenn er läutet, darfst du ohne schlechtes Gewissen aufhören.',
+ 'Steh auf, trink ein Glas Wasser, setz dich wieder hin und starte fünf Minuten.',
+ 'Wechsle den Ort: anderer Tisch, Bibliothek, Café. Dann fünf Minuten.',
+ 'Lern laut. Sprich den Stoff, als würdest du gerade geprüft.',
+ 'Nimm das Thema, auf das du heute am meisten Lust hast, nicht das schwierigste.',
+ 'Wiederhole das Thema von gestern fünf Minuten lang aus dem Kopf.'
+];
+const DONE=['Sprint geschafft. Genau so geht das.','Erledigt. Ein Baustein mehr.','Stark. Das war echte Arbeit.','Geschafft. Du bist weiter als vorhin.','Sauber. Kurz durchatmen, dann weiter.'];
+const ENERGY={1:{l:'Leer',d:10,t:'Heute reicht das Minimum: drei kurze Sprints à 10 Minuten. Fang mit dem leichtesten Thema an.'},
+ 2:{l:'Okay',d:25,t:'Normales Programm: Sprints à 25 Minuten, nach vier Sprints eine längere Pause.'},
+ 3:{l:'Gut',d:45,t:'Nutz den Tag: 45-Minuten-Sprints, das schwierigste Thema zuerst.'}};
+function dayIdx(){const d=new Date();return Math.floor((d-new Date(d.getFullYear(),0,0))/864e5)}
+
+function goalLine(){const left=S.exams.filter(e=>!e.done).length;const days=Math.max(0,Math.ceil((goalD()-parseKey(today()))/864e5));
+  return '<div class="goalline"><span>Abschluss '+fmtLong(dkey(goalD()))+': noch '+days+' Tage</span><span>'+(S.exams.length-left)+' von '+S.exams.length+' geschafft</span></div>'}
+function heroHTML(){const e=active();const d=exDate(e);let o='';
+  if(!d)o='<h2 style="margin:0 0 6px">'+esc(e.name)+'</h2><p class="msg">Noch kein Prüfungstermin. Trag ihn im Plan ein, dann startet der Countdown.</p>';
+  else{const ms=d-Date.now();
+    if(ms<=0)o='<div class="count"><div class="big">0</div><div class="lbl">'+esc(e.name)+'</div></div>';
+    else{const dd=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5),m=Math.floor(ms%36e5/6e4);
+      o='<div class="count"><div class="big">'+dd+'</div><div class="lbl">'+(dd===1?'Tag':'Tage')+'</div><div class="hm">+ '+h+' h '+pad(m)+' min<br>bis '+esc(e.name)+'</div></div>'}}
+  return o+goalLine()}
+
+function topicRow(t,from){const sz=['','S','M','L'][t.size];
+  return '<div class="topic s'+t.status+'"><button class="st s'+t.status+'" data-act="cyc" data-id="'+t.id+'" aria-label="Status">.</button><div class="nm">'+(from?'<span class="from">'+esc(from)+'</span>':'')+esc(t.name)+'</div><button class="chip" data-act="size" data-id="'+t.id+'">'+sz+'</button><button class="del" data-act="del" data-id="'+t.id+'" aria-label="Löschen">×</button></div>'}
+function statsHTML(){return '<div class="card"><div class="stats"><div class="stat"><b>'+todayMin()+'</b><span>Minuten heute</span></div><div class="stat"><b>'+todayCount()+'</b><span>Sprints heute</span></div><div class="stat"><b>'+streak()+'</b><span>Tage in Folge</span></div></div></div>'}
+
+function vHeute(){const tk=today();const h=new Date().getHours();const A=active();
+  const en=S.energy&&S.energy.date===tk?S.energy.level:0;
+  let o='<h1>Endspurt</h1><p class="sub">'+fmtDay(tk)+' · '+esc(A.name)+'</p>';
+  if(h>=23||h<5)o+='<div class="card night"><h2>Es ist spät</h2><p class="msg">Schlaf festigt, was du heute gelernt hast. Ab ins Bett, morgen geht es weiter.</p></div>';
+  S.exams.filter(e=>!e.done&&exDate(e)&&exDate(e)<new Date()).forEach(e=>{
+    o+='<div class="card ask"><h2>'+esc(e.name)+'</h2><p class="msg" style="margin-bottom:12px">Die Prüfung ist vorbei. Wie ist es gelaufen?</p><div class="row"><button class="btn-main" style="font-size:16px;padding:13px" data-act="pass" data-e="'+e.id+'">Bestanden</button><button data-act="retry" data-e="'+e.id+'">Neuer Termin</button></div></div>'});
+  o+='<div class="card hero" id="cd">'+heroHTML()+'</div>';
+  o+='<div class="card"><h2>Mein Warum</h2>';
+  if(editWhy)o+='<textarea id="whyIn" rows="3" placeholder="Warum machst du das? Was liebst du an Jus? Wer willst du nach der letzten Prüfung sein?">'+esc(S.why)+'</textarea><div class="row" style="margin-top:8px"><button data-act="saveWhy">Speichern</button></div>';
+  else o+='<p class="why">'+esc(S.why)+'</p><button class="link" data-act="editWhy">bearbeiten</button>';
+  o+='</div><div class="card"><h2>Gedanke für heute</h2><p class="msg">'+MSGS[dayIdx()%MSGS.length]+'</p></div>';
+  o+='<div class="card"><h2>Wie viel Energie hast du?</h2><div class="row seg">'+[1,2,3].map(l=>'<button data-act="energy" data-l="'+l+'" class="'+(en===l?'on':'')+'">'+ENERGY[l].l+'</button>').join('')+'</div>'+(en?'<p class="hint" style="color:var(--text)">'+ENERGY[en].t+'</p>':'')+'</div>';
+  const open=S.exams.filter(e=>!e.done);const multi=open.filter(e=>e.topics.length).length>1;
+  const overdue=[],todays=[];open.forEach(e=>e.topics.forEach(t=>{if(t.status===0&&t.day&&t.day<tk)overdue.push([e,t]);else if(t.day===tk)todays.push([e,t])}));
+  const rv=open.filter(e=>reviewDay(e)===tk);
+  o+='<div class="card"><h2>Heute dran</h2>';
+  if(!open.some(e=>e.topics.length))o+='<p class="msg">Noch keine Themen eingetragen.</p><div class="row" style="margin-top:10px"><button data-tab="plan">Lernplan anlegen</button></div>';
+  else{
+    if(overdue.length)o+='<div class="dayh"><b>Nachholen<span class="tag w">'+overdue.length+'</span></b><button class="link" data-act="redistAll">neu verteilen</button></div>'+overdue.map(x=>topicRow(x[1],multi?x[0].name:'')).join('');
+    rv.forEach(e=>{o+='<p class="msg" style="margin:8px 0">Wiederholungstag für '+esc(e.name)+': alles einmal aus dem Kopf durchgehen, einen Probefall unter Zeitdruck lösen, früh schlafen.</p>'});
+    if(todays.length){if(overdue.length)o+='<div class="dayh" style="margin-top:12px"><b>Heute</b></div>';o+=todays.map(x=>topicRow(x[1],multi?x[0].name:'')).join('')}
+    else if(!overdue.length&&!rv.length)o+='<p class="msg">Für heute nichts offen. Wiederhole etwas oder gönn dir Pause.</p>';
+  }
+  o+='</div>'+statsHTML()+'<button class="btn-main" data-act="go">Sprint starten</button><button class="btn-sos" data-act="sos">Ich hab keine Lust</button>';
+  return o}
+
+const R=110,C=2*Math.PI*R;
+function fmtT(ms){const s=Math.ceil(ms/1000);return pad(Math.floor(s/60))+':'+pad(s%60)}
+function tLeft(){const t=S.timer;if(t.endAt)return Math.max(0,t.endAt-Date.now());if(t.left!=null)return t.left;return (t.isBreak?5:t.dur)*60000}
+function vTimer(){const t=S.timer;const run=!!t.endAt;const paused=!run&&t.left!=null;
+  let o='<h1>'+(t.isBreak?'Pause':'Fokus-Sprint')+'</h1><p class="sub">'+(t.isBreak?'Weg vom Schreibtisch. Kein Handy-Scrollen.':esc(active().name)+' · Handy umdrehen, eine Sache, bis der Timer läutet.')+'</p>';
+  o+='<div class="card"><div class="ringwrap"><svg class="ring" viewBox="0 0 250 250"><circle cx="125" cy="125" r="'+R+'" fill="none" stroke="rgba(0,0,0,.3)" stroke-width="12"/><circle id="arc" cx="125" cy="125" r="'+R+'" fill="none" stroke="'+(t.isBreak?'var(--acc2)':'var(--acc)')+'" stroke-width="12" stroke-linecap="round" stroke-dasharray="'+C+'" stroke-dashoffset="0" transform="rotate(-90 125 125)"/></svg><div class="tdisp" id="td">'+fmtT(tLeft())+'</div><div class="tsub">'+(run?'läuft':paused?'pausiert':'bereit')+'</div></div>';
+  if(!run&&!paused&&!t.isBreak)o+='<div class="row seg" style="margin-bottom:12px">'+[5,10,25,45].map(m=>'<button data-act="dur" data-m="'+m+'" class="'+(t.dur===m?'on':'')+'">'+m+' min</button>').join('')+'</div>';
+  o+='<div class="row">'+(run?'<button data-act="pause">Pause</button>':'<button class="btn-main" style="font-size:16px;padding:13px" data-act="start">'+(paused?'Weiter':'Start')+'</button>')+((run||paused)?'<button class="btn-ghost" data-act="reset">Abbrechen</button>':'')+'</div></div>';
+  o+='<div class="card"><h2>So lernst du in einem Sprint</h2><p class="msg">Vorher ein konkretes Ziel festlegen, zum Beispiel „Kapitel gliedern“ oder „einen Fall lösen“. Währenddessen nichts nachschauen, was nicht dazugehört. Danach kurz notieren, was du geschafft hast. Das landet in deiner Erfolgsliste.</p></div>';
+  return o+statsHTML()}
+function updTimer(){const td=document.getElementById('td');if(!td)return;const ms=tLeft();td.textContent=fmtT(ms);
+  const tot=(S.timer.isBreak?5:S.timer.dur)*60000;const a=document.getElementById('arc');if(a)a.setAttribute('stroke-dashoffset',String(C*(1-ms/tot)))}
+
+function vPlan(){const e=active(),tk=today();const days=learnDays(e),rv=reviewDay(e),p=progress(e);
+  let o='<h1>Lernplan</h1><p class="sub">'+esc(e.name)+(e.done?' · bestanden':'')+'</p>';
+  o+='<div class="chips">'+S.exams.filter(x=>!x.done||x.id===e.id).sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999')).map(x=>'<button data-act="setActive" data-e="'+x.id+'" class="'+(x.id===e.id?'on':'')+'">'+esc(x.name)+'</button>').join('')+'</div>';
+  o+='<div class="card"><h2>Prüfung</h2><div class="field"><label>Name</label><input type="text" data-f="name" value="'+esc(e.name)+'"></div>';
+  o+='<div class="field"><label>Termin</label><input type="datetime-local" data-f="date" value="'+esc(e.date)+'"></div>';
+  o+='<div class="grid2"><div class="field"><label>Lernbeginn (optional)</label><input type="date" data-f="start" value="'+esc(e.start)+'"></div><div class="field"><label>ECTS</label><input type="number" inputmode="numeric" min="0" data-f="ects" value="'+(e.ects||'')+'"></div></div>';
+  o+='<div class="row">'+(e.done?'<button data-act="unpass" data-e="'+e.id+'">Doch nicht bestanden</button>':'<button data-act="pass" data-e="'+e.id+'">Als bestanden markieren</button>')+'<button class="btn-ghost danger" data-act="delExam" data-e="'+e.id+'">'+(arm==='ex'+e.id?'Sicher? Nochmal tippen':'Prüfung entfernen')+'</button></div></div>';
+  o+='<div class="card"><h2>Stoff erledigt</h2><div class="bar"><i style="width:'+p+'%"></i></div><div style="display:flex;justify-content:space-between;font-size:14px;color:var(--muted)"><span>'+p+' %</span><span>'+e.topics.filter(t=>t.status===2).length+' von '+e.topics.length+' wiederholt</span></div></div>';
+  o+='<div class="card"><h2>Themen hinzufügen</h2><textarea id="topIn" rows="5" placeholder="Ein Kapitel oder Stoffgebiet pro Zeile, so wie es in deinem Skript oder Prüfungsstoff steht."></textarea><div class="row" style="margin-top:8px"><button data-act="addTop">Hinzufügen und verteilen</button></div><p class="hint">Die App verteilt alles vom Lernbeginn bis zur Prüfung und hält den letzten Tag für Wiederholung frei. Hinkst du hinterher, tippe auf „neu verteilen“: der Plan passt sich an dich an, nicht umgekehrt.</p></div>';
+  if(e.topics.length){
+    o+='<div class="card"><div class="dayh" style="margin-bottom:8px"><b>Tag für Tag</b><button class="link" data-act="redist">offene neu verteilen</button></div>';
+    const overdue=e.topics.filter(t=>t.status===0&&t.day&&t.day<tk);
+    if(overdue.length)o+='<div class="dayh"><b>Nachholen<span class="tag w">'+overdue.length+'</span></b></div>'+overdue.map(t=>topicRow(t)).join('');
+    let shown=0;days.forEach(k=>{const ts=e.topics.filter(t=>t.day===k);if(!ts.length&&k!==tk)return;shown++;
+      o+='<div class="dayh" style="margin-top:14px"><b>'+fmtDay(k)+(k===tk?'<span class="tag">heute</span>':'')+'</b><span>'+ts.length+' '+(ts.length===1?'Thema':'Themen')+'</span></div>'+(ts.length?ts.map(t=>topicRow(t)).join(''):'<p class="hint" style="margin:0">frei</p>')});
+    if(rv)o+='<div class="dayh" style="margin-top:14px"><b>'+fmtDay(rv)+(rv===tk?'<span class="tag">heute</span>':'')+'</b><span>Wiederholung</span></div><p class="hint" style="margin-top:2px">Alles einmal aus dem Kopf, ein Probefall unter Zeitdruck, früh schlafen.</p>';
+    const rest=e.topics.filter(t=>!(t.status===0&&t.day&&t.day<tk)&&!days.includes(t.day));
+    if(rest.length)o+='<div class="dayh" style="margin-top:14px"><b>'+(exDate(e)?'Erledigt':'Ohne Termin')+'</b></div>'+rest.map(t=>topicRow(t)).join('');
+    o+='<p class="hint">Kreis antippen: offen, gelernt, wiederholt. S/M/L antippen: Umfang des Themas.</p></div>';
+  }
+  return o}
+
+function vZiel(){const done=S.exams.filter(e=>e.done);const firstOpen=openSorted()[0];
+  const days=Math.max(0,Math.ceil((goalD()-parseKey(today()))/864e5));
+  const ectsAll=S.exams.reduce((a,e)=>a+(+e.ects||0),0),ectsDone=done.reduce((a,e)=>a+(+e.ects||0),0);
+  const tot=S.sessions.reduce((a,s)=>a+s.min,0);const gk=S.goalDate;
+  let o='<h1>Abschluss</h1><p class="sub">'+(done.length===S.exams.length?'Alle Prüfungen geschafft. Gratuliere, Magister!':'Noch '+(S.exams.length-done.length)+' '+(S.exams.length-done.length===1?'Prüfung':'Prüfungen')+' bis zum Ziel.')+'</p>';
+  o+='<div class="card hero"><div class="count"><div class="big">'+days+'</div><div class="lbl">Tage</div><div class="hm">ca. '+Math.round(days/7)+' Wochen<br>bis '+fmtLong(gk)+'</div></div>';
+  o+='<div class="tiles" style="margin-top:18px;grid-template-columns:repeat('+Math.max(8,S.exams.length)+',1fr)">'+S.exams.slice().sort((a,b)=>(b.done-a.done)||(a.date||'9999').localeCompare(b.date||'9999')).map(e=>'<i class="'+(e.done?'on':'')+(firstOpen&&e.id===firstOpen.id?' now':'')+'"></i>').join('')+'</div>';
+  if(ectsAll)o+='<div class="goalline" style="margin-top:0"><span>'+ectsDone+' von '+ectsAll+' ECTS</span><span>'+done.length+' von '+S.exams.length+' Prüfungen</span></div>';
+  o+='</div>';
+  o+='<div class="card"><h2>Deine Prüfungen</h2>'+S.exams.slice().sort((a,b)=>(a.done-b.done)||(a.date||'9999').localeCompare(b.date||'9999')).map(e=>{const late=exDate(e)&&dkey(exDate(e))>gk&&!e.done;
+    return '<div class="exrow'+(e.done?' done':'')+'"><button class="st'+(e.done?' s2':'')+'" data-act="'+(e.done?'unpass':'pass')+'" data-e="'+e.id+'" aria-label="bestanden">.</button><div class="info" data-act="open" data-e="'+e.id+'"><b>'+esc(e.name)+(e.id===S.activeId&&!e.done?'<span class="tag">aktiv</span>':'')+(late?'<span class="tag w">nach Ziel</span>':'')+'</b><span>'+fmtEx(e)+(e.ects?' · '+e.ects+' ECTS':'')+(e.topics.length?' · '+progress(e)+' % Stoff':'')+'</span></div><span class="go">›</span></div>'}).join('');
+  o+='<div class="row" style="margin-top:12px"><button data-act="addExam">Prüfung hinzufügen</button></div><p class="hint">Antippen öffnet den Lernplan dieser Prüfung. Der Kreis markiert sie als bestanden.</p></div>';
+  o+='<div class="card"><h2>Zieldatum</h2><input type="date" id="goalIn" value="'+esc(gk)+'"></div>';
+  o+='<div class="card"><h2>Bisher investiert</h2><div class="stats"><div class="stat"><b>'+(Math.round(tot/6)/10).toLocaleString('de-AT')+'</b><span>Stunden Fokus</span></div><div class="stat"><b>'+S.sessions.length+'</b><span>Sprints</span></div><div class="stat"><b>'+streak()+'</b><span>Tage in Folge</span></div></div></div>';
+  o+='<div class="card"><h2>Erfolgsliste</h2>'+(S.wins.length?S.wins.slice().reverse().slice(0,50).map(w=>'<div class="win"><small>'+fmtLong(w.date)+'</small>'+esc(w.text)+'</div>').join(''):'<p class="msg">Nach jedem Sprint kannst du notieren, was du geschafft hast. Das sammelt sich hier, für die Tage, an denen es sich anfühlt, als hättest du nichts gemacht.</p>')+'</div>';
+  o+='<div class="card"><h2>Backup</h2><p class="hint" style="margin:0 0 12px">Deine Daten liegen nur auf diesem Gerät. Sichere sie regelmäßig, am besten nach jeder Prüfung. '+(S.lastBackup?'Letztes Backup: '+fmtLong(S.lastBackup)+'.':'Noch kein Backup gemacht.')+'</p><div class="row"><button data-act="export">Exportieren</button><button data-act="import">Importieren</button></div></div>';
+  o+='<div class="card"><button class="btn-ghost danger" style="width:100%" data-act="reset0">'+(arm==='reset'?'Wirklich alles löschen? Nochmal tippen':'Alles zurücksetzen')+'</button></div>';
+  return o}
+
+function render(){const v=document.getElementById('view');
+  v.innerHTML=tab==='heute'?vHeute():tab==='timer'?vTimer():tab==='plan'?vPlan():vZiel();
+  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===tab));
+  if(tab==='timer')updTimer()}
+function go(t){tab=t;arm=null;try{history.replaceState(null,'','#'+t)}catch(e){}render();window.scrollTo(0,0)}
+
+let actx=null;
+function unlockAudio(){try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==='suspended')actx.resume()}catch(e){}}
+function chime(){try{if(actx)[0,0.18,0.36].forEach((t,i)=>{const o=actx.createOscillator(),g=actx.createGain();o.type='sine';o.frequency.value=[660,880,1320][i];g.gain.setValueAtTime(0.0001,actx.currentTime+t);g.gain.exponentialRampToValueAtTime(0.3,actx.currentTime+t+0.02);g.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+t+0.5);o.connect(g).connect(actx.destination);o.start(actx.currentTime+t);o.stop(actx.currentTime+t+0.55)})}catch(e){}
+  try{navigator.vibrate&&navigator.vibrate([200,100,200])}catch(e){}}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('show'),2200)}
+function openModal(h){document.getElementById('sheet').innerHTML=h;document.getElementById('modal').classList.add('open')}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+
+function startTimer(){unlockAudio();const t=S.timer;t.endAt=Date.now()+tLeft();t.left=null;save()}
+function finish(){const t=S.timer;const wasBreak=t.isBreak;t.endAt=null;t.left=null;t.isBreak=false;
+  if(!wasBreak)S.sessions.push({date:today(),min:t.dur,at:Date.now(),examId:S.activeId});save();chime();
+  if(wasBreak)openModal('<h3>Pause vorbei</h3><p>Zurück an den Schreibtisch. Der nächste Sprint ist bereit.</p><div class="row"><button class="btn-main" data-act="mStart">Nächster Sprint</button></div><div class="row" style="margin-top:8px"><button class="btn-ghost" data-act="close">Später</button></div>');
+  else{const n=todayCount();openModal('<h3>'+rnd(DONE)+'</h3><p>'+n+'. Sprint heute · '+todayMin()+' Minuten Fokus.'+(n%4===0?' Vier Sprints: Zeit für eine längere Pause von 20 bis 30 Minuten.':'')+'</p><input type="text" id="winIn" placeholder="Was hast du geschafft? (optional)"><div class="row" style="margin-top:12px"><button class="btn-main" data-act="mBreak" style="font-size:16px">5 min Pause</button></div><div class="row" style="margin-top:8px"><button data-act="mStart">Gleich weiter</button><button class="btn-ghost" data-act="close">Fertig für jetzt</button></div>')}
+  render()}
+function saveWin(){const i=document.getElementById('winIn');if(i&&i.value.trim()){S.wins.push({date:today(),text:i.value.trim(),examId:S.activeId});save()}}
+function sos(){openModal('<h3>Okay. Nur ein winziger Schritt.</h3><p style="font-size:18px">'+rnd(RESCUE)+'</p><div class="row"><button class="btn-main" data-act="sos5" style="font-size:16px">5 Minuten starten</button></div><div class="row" style="margin-top:8px"><button data-act="sos">Anderer Schritt</button><button class="btn-ghost" data-act="close">Schließen</button></div>')}
+function pass(e){e.done=true;S.wins.push({date:today(),text:e.name+' bestanden!',examId:e.id});const nx=openSorted()[0];if(nx)S.activeId=nx.id;save();
+  const left=S.exams.filter(x=>!x.done).length;
+  openModal('<h3>'+(left?'Bestanden. Gratuliere!':'Das war die letzte. Gratuliere!')+'</h3><p>'+esc(e.name)+' ist abgehakt.'+(left?' Noch '+left+' '+(left===1?'Prüfung':'Prüfungen')+(nx?'. Als Nächstes: '+esc(nx.name)+'.':'.')+' Gönn dir heute etwas, bevor es weitergeht.':' Du hast es geschafft.')+'</p><div class="row"><button class="btn-main" data-act="close">Weiter</button></div>');render()}
+function exportData(){const txt=JSON.stringify(S);S.lastBackup=today();save();
+  openModal('<h3>Backup</h3><p>Kopier den Text und speichere ihn in einer Notiz oder Mail an dich selbst. '+(window.self===window.top?'Oder lade ihn als Datei herunter.':'')+'</p><textarea id="bk" rows="5" readonly>'+esc(txt)+'</textarea><div class="row" style="margin-top:12px"><button class="btn-main" data-act="copy" style="font-size:16px">Kopieren</button></div><div class="row" style="margin-top:8px">'+(window.self===window.top?'<button data-act="dl">Als Datei</button>':'')+'<button class="btn-ghost" data-act="close">Schließen</button></div>')}
+function importData(){openModal('<h3>Backup importieren</h3><p>Wähle eine Backup-Datei oder füge den kopierten Text ein. Die aktuellen Daten werden ersetzt.</p><input type="file" id="bkFile" accept=".json,application/json,text/plain" style="margin-bottom:10px;color:var(--muted)"><textarea id="bkIn" rows="4" placeholder="Backup-Text hier einfügen"></textarea><div class="row" style="margin-top:12px"><button class="btn-main" data-act="doImport" style="font-size:16px">Importieren</button></div><div class="row" style="margin-top:8px"><button class="btn-ghost" data-act="close">Abbrechen</button></div>')}
+
+document.addEventListener('click',ev=>{const el=ev.target.closest('[data-act],[data-tab]');if(!el)return;
+  if(el.dataset.tab&&!el.dataset.act){go(el.dataset.tab);return}
+  const a=el.dataset.act;const [te,tp]=findTopic(+el.dataset.id);const ex=S.exams.find(x=>x.id===+el.dataset.e);
+  if(a!=='delExam'&&a!=='reset0')arm=null;
+  switch(a){
+    case 'cyc':if(tp){tp.status=(tp.status+1)%3;if(tp.status===0&&(!tp.day||tp.day<today()))tp.day=today();save();toast(tp.status===2?'Wiederholt. Sitzt.':tp.status===1?'Gelernt. Später einmal wiederholen.':'Wieder offen.');render()}break;
+    case 'size':if(tp){tp.size=tp.size%3+1;save();render()}break;
+    case 'del':if(te){te.topics=te.topics.filter(t=>t!==tp);save();render()}break;
+    case 'redist':distribute(active());toast('Plan angepasst.');render();break;
+    case 'redistAll':S.exams.filter(e=>!e.done).forEach(distribute);toast('Plan angepasst.');render();break;
+    case 'addTop':{const e=active();const v=(document.getElementById('topIn').value||'').split('\n').map(s=>s.trim()).filter(Boolean);
+      v.forEach(n=>e.topics.push({id:S.nextId++,name:n,size:2,status:0,day:null}));if(v.length){distribute(e);toast(v.length+' Themen verteilt.')}render();break}
+    case 'saveWhy':S.why=(document.getElementById('whyIn').value||'').trim();editWhy=!S.why;save();render();break;
+    case 'editWhy':editWhy=true;render();break;
+    case 'energy':{const l=+el.dataset.l;S.energy={date:today(),level:l};if(!S.timer.endAt&&S.timer.left==null)S.timer.dur=ENERGY[l].d;save();render();break}
+    case 'go':S.timer.isBreak=false;startTimer();go('timer');break;
+    case 'sos':sos();break;
+    case 'sos5':closeModal();S.timer={dur:5,endAt:null,left:null,isBreak:false};startTimer();go('timer');break;
+    case 'dur':S.timer.dur=+el.dataset.m;S.timer.left=null;save();render();break;
+    case 'start':startTimer();render();break;
+    case 'pause':S.timer.left=tLeft();S.timer.endAt=null;save();render();break;
+    case 'reset':S.timer.endAt=null;S.timer.left=null;S.timer.isBreak=false;save();render();break;
+    case 'mBreak':saveWin();closeModal();S.timer.isBreak=true;S.timer.left=null;startTimer();go('timer');break;
+    case 'mStart':saveWin();closeModal();S.timer.isBreak=false;S.timer.left=null;startTimer();go('timer');break;
+    case 'close':saveWin();closeModal();render();break;
+    case 'setActive':S.activeId=+el.dataset.e;save();render();break;
+    case 'open':S.activeId=+el.dataset.e;save();go('plan');break;
+    case 'pass':if(ex)pass(ex);break;
+    case 'unpass':if(ex){ex.done=false;save();render()}break;
+    case 'retry':if(ex){S.activeId=ex.id;ex.date='';save();go('plan');toast('Trag den neuen Termin ein.')}break;
+    case 'addExam':{const id=S.nextId++;S.exams.push({id,name:'Prüfung '+(S.exams.length+1),ects:0,date:'',start:'',done:false,topics:[]});S.activeId=id;save();go('plan');toast('Neue Prüfung angelegt.');break}
+    case 'delExam':if(arm!=='ex'+el.dataset.e){arm='ex'+el.dataset.e;render()}else{S.exams=S.exams.filter(x=>x.id!==+el.dataset.e);if(!S.exams.length)S.exams=defaults().exams;S.activeId=(openSorted()[0]||S.exams[0]).id;arm=null;save();go('ziel')}break;
+    case 'export':exportData();break;
+    case 'import':importData();break;
+    case 'copy':{const t=document.getElementById('bk');const txt=t.value;const ok=()=>toast('Kopiert.');
+      try{navigator.clipboard.writeText(txt).then(ok,()=>{t.select();try{document.execCommand('copy');ok()}catch(e){toast('Bitte manuell kopieren.')}})}catch(e){t.select();try{document.execCommand('copy');ok()}catch(e2){toast('Bitte manuell kopieren.')}}break}
+    case 'dl':{try{const b=new Blob([document.getElementById('bk').value],{type:'application/json'});const u=URL.createObjectURL(b);const l=document.createElement('a');l.href=u;l.download='endspurt-backup-'+today()+'.json';document.body.appendChild(l);l.click();setTimeout(()=>{URL.revokeObjectURL(u);l.remove()},1500)}catch(e){toast('Download nicht möglich. Nutze Kopieren.')}break}
+    case 'doImport':{try{const o=JSON.parse(document.getElementById('bkIn').value);let n;if(o&&o.v===2&&Array.isArray(o.exams))n=normalize(o);else if(o&&('topics' in o||'examDate' in o))n=migrate(o);else throw 0;
+      S=n;editWhy=!S.why;save();closeModal();go('heute');toast('Backup geladen.')}catch(e){toast('Das ist kein gültiges Backup.')}break}
+    case 'reset0':if(arm!=='reset'){arm='reset';render()}else{S=defaults();editWhy=true;arm=null;save();go('heute')}break;
+  }});
+document.addEventListener('change',ev=>{const el=ev.target;
+  if(el.dataset.f){const e=active();const f=el.dataset.f;
+    if(f==='name')e.name=el.value.trim()||e.name;else if(f==='ects')e.ects=Math.max(0,parseInt(el.value,10)||0);else e[f]=el.value||'';
+    if(f==='date'||f==='start')distribute(e);save();render()}
+  if(el.id==='goalIn'&&el.value){S.goalDate=el.value;save();render()}
+  if(el.id==='bkFile'&&el.files&&el.files[0]){const r=new FileReader();r.onload=()=>{document.getElementById('bkIn').value=r.result};r.readAsText(el.files[0])}});
+document.getElementById('modal').addEventListener('click',ev=>{if(ev.target.id==='modal'){saveWin();closeModal();render()}});
+window.addEventListener('hashchange',()=>{const t=location.hash.slice(1);if(['heute','timer','plan','ziel'].includes(t)&&t!==tab){tab=t;render()}});
+
+let lastDay=today();
+setInterval(()=>{if(S.timer.endAt&&tLeft()<=0){finish();return}
+  if(tab==='timer')updTimer();const cd=document.getElementById('cd');if(cd)cd.innerHTML=heroHTML();
+  if(today()!==lastDay){lastDay=today();render()}},500);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){if(S.timer.endAt&&tLeft()<=0)finish();else render()}});
+if(S.timer.endAt&&tLeft()<=0)finish();else render();
+try{if('serviceWorker' in navigator&&location.protocol==='https:'&&!/claude/.test(location.hostname))navigator.serviceWorker.register('sw.js').catch(()=>{})}catch(e){}
+})();
+</script>
+</body>
+</html>
