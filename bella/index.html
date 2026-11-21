@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Endspurt</title>
+<meta name="theme-color" content="#07070c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Endspurt">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07070c;--card:rgba(255,255,255,.04);--card2:rgba(255,255,255,.07);--line:rgba(255,255,255,.08);--text:#f5f5fa;--muted:#9a9cb0;--c1:#46dcff;--c2:#8c5aff;--c3:#ff46aa;--c4:#ffbe46;--acc:#ff46aa;--acc2:#5ef0b0;--warn:#ff6b81;--r:24px;
+  --grad:linear-gradient(90deg,#46dcff,#8c5aff 38%,#ff46aa 72%,#ffbe46);--grad2:linear-gradient(135deg,#8c5aff,#ff46aa)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:var(--bg)}
+body{margin:0;min-height:100vh;color:var(--text);font:16px/1.5 "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-.005em;
+  background:radial-gradient(70% 40% at 0% 0%,rgba(70,220,255,.13),transparent 70%),radial-gradient(60% 40% at 100% 8%,rgba(255,70,170,.13),transparent 70%),radial-gradient(80% 50% at 50% 110%,rgba(140,90,255,.16),transparent 70%),var(--bg);background-attachment:fixed}
+main{max-width:560px;margin:0 auto;padding:max(72px,calc(env(safe-area-inset-top) + 24px)) 18px 130px}
+.brand{font-family:"Archivo Black","Inter",sans-serif;font-size:13px;letter-spacing:.32em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin:0 0 8px;display:inline-block}
+h1{font-weight:800;font-size:32px;line-height:1.1;margin:0 0 6px;letter-spacing:-.03em}
+h2{font-size:12px;font-weight:700;color:var(--muted);margin:0 0 12px;text-transform:uppercase;letter-spacing:.12em}
+.sub{color:var(--muted);font-size:15px;margin:0 0 22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;margin:0 0 14px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.hero{position:relative;background:linear-gradient(160deg,rgba(140,90,255,.16),rgba(255,70,170,.07) 50%,rgba(255,255,255,.02));border:1px solid transparent;
+  background-clip:padding-box;padding:20px}
+.hero::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:var(--grad);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.75;pointer-events:none}
+.herorow{display:flex;align-items:center;gap:16px}
+.pring{flex:none;overflow:visible}
+.glowc{filter:drop-shadow(0 0 6px rgba(255,70,170,.6))}
+.rnum{font:800 40px "Inter",sans-serif;fill:#fff;letter-spacing:-.04em}
+.rlbl{font:700 10px "Inter",sans-serif;fill:var(--muted);letter-spacing:.18em}
+.hinfo{min-width:0;flex:1}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--c1)}
+.hname{font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.15;margin:3px 0 4px}
+.hdate{font-size:13px;color:var(--muted)}
+.hmeta{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.hmeta span{font-size:12px;font-weight:600;padding:4px 10px;border-radius:99px;background:rgba(255,255,255,.07);font-variant-numeric:tabular-nums}
+.goalline{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08)}
+.gl-t{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:8px}
+.gl-t b{color:var(--text);font-weight:700}
+.segs{display:flex;gap:5px}
+.segs i{flex:1;height:8px;border-radius:99px;background:rgba(255,255,255,.08)}
+.segs i.on{background:var(--grad2);box-shadow:0 0 10px rgba(255,70,170,.5)}
+.segs i.now{background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1.5px var(--c4)}
+.why{font-size:20px;font-weight:600;line-height:1.4;margin:0 0 4px;white-space:pre-wrap;letter-spacing:-.01em}
+.msg{font-size:16px;margin:0;line-height:1.55}
+.quote{position:relative;overflow:hidden;padding:22px 22px 20px}
+.qmark{position:absolute;top:-34px;right:8px;font:800 140px/1 Georgia,serif;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.22}
+.qtext{margin:0;padding-right:28px;font-size:19px;font-weight:600;line-height:1.45;letter-spacing:-.01em;position:relative}
+textarea,input[type=text],input[type=datetime-local],input[type=date],input[type=number]{width:100%;background:rgba(0,0,0,.35);color:var(--text);border:1px solid var(--line);border-radius:14px;padding:13px 14px;font:inherit;font-size:16px;resize:vertical}
+input[type=datetime-local],input[type=date]{-webkit-appearance:none;appearance:none;display:block;min-width:0;max-width:100%;min-height:50px;text-align:left;color-scheme:dark}
+input::-webkit-date-and-time-value{text-align:left}
+textarea::placeholder,input::placeholder{color:#62647a}
+textarea:focus,input:focus{outline:2px solid rgba(140,90,255,.7);outline-offset:-1px}
+button{font:inherit;font-weight:600;color:inherit;background:var(--card2);border:1px solid transparent;border-radius:14px;padding:12px 14px;cursor:pointer;transition:transform .1s}
+button:active{transform:scale(.97)}
+.btn-main{width:100%;background:var(--grad2);color:#fff;border:0;font-weight:800;font-size:18px;padding:17px;border-radius:18px;box-shadow:0 10px 30px rgba(255,70,170,.35),inset 0 1px 0 rgba(255,255,255,.25);letter-spacing:-.01em}
+.btn-sos{width:100%;margin-top:10px;background:rgba(255,190,70,.07);border:1px solid rgba(255,190,70,.35);color:var(--c4);font-weight:700;padding:15px;border-radius:18px}
+.btn-ghost{background:transparent}
+.link{background:none;border:0;padding:4px 0;color:var(--muted);text-decoration:underline;text-underline-offset:3px;font-size:14px;font-weight:500}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row>button{flex:1}
+.seg{background:rgba(0,0,0,.35);border-radius:16px;padding:4px;gap:4px;flex-wrap:nowrap}
+.seg button{background:transparent;padding:10px 6px;border-radius:12px;color:var(--muted)}
+.seg button.on{background:var(--grad2);color:#fff;box-shadow:0 4px 14px rgba(255,70,170,.35)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:rgba(0,0,0,.3);border-radius:16px;padding:12px 6px;text-align:center}
+.stat b{display:block;font-weight:800;font-size:28px;line-height:1.2;letter-spacing:-.03em;font-variant-numeric:tabular-nums;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:12px;color:var(--muted)}
+.bar,.minibar{height:10px;background:rgba(0,0,0,.4);border-radius:99px;overflow:hidden;margin:4px 0 8px}
+.minibar{height:5px;margin:8px 0 0}
+.bar>i,.minibar>i{display:block;height:100%;min-width:8px;background:var(--grad);border-radius:99px;transition:width .4s}
+.topic{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.topic .nm{flex:1;min-width:0;word-wrap:break-word}
+.topic.s2 .nm{color:var(--muted);text-decoration:line-through}
+.st{width:30px;height:30px;flex:none;border-radius:50%;padding:0;border:2px solid #4a4c60;background:transparent;font-size:0}
+.st.s1{border-color:var(--c2);background:linear-gradient(90deg,var(--c2) 50%,transparent 50%)}
+.st.s2{border-color:transparent;background:var(--grad2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/16px no-repeat;box-shadow:0 0 12px rgba(255,70,170,.45)}
+.chip{padding:5px 11px;font-size:12px;font-weight:700;border-radius:99px;color:var(--muted);background:rgba(0,0,0,.35)}
+.del{padding:4px 6px;background:none;border:0;color:#5c5e72;font-size:20px;line-height:1}
+.dayh{display:flex;justify-content:space-between;align-items:center;margin:6px 0 4px}
+.dayh b{font-size:15px;font-weight:700}
+.dayh span{font-size:12px;color:var(--muted)}
+.tag{font-size:10px;padding:3px 8px;border-radius:99px;background:var(--grad2);color:#fff;font-weight:800;margin-left:8px;vertical-align:2px;letter-spacing:.04em;text-transform:uppercase}
+.tag.w{background:var(--warn)}
+.hint{font-size:13px;color:var(--muted);margin:10px 0 0;line-height:1.5}
+.ringwrap{position:relative;width:260px;height:260px;margin:4px auto 18px}
+.ring{display:block;width:100%;height:100%;overflow:visible}
+.tdisp{position:absolute;left:0;right:0;top:50%;transform:translateY(-62%);text-align:center;font-size:60px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.04em}
+.tsub{position:absolute;left:0;right:0;top:50%;transform:translateY(95%);text-align:center;color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.tl{position:relative;padding-left:4px}
+.tli{position:relative;display:flex;gap:14px;padding:0 0 18px}
+.tli::before{content:"";position:absolute;left:13px;top:30px;bottom:-2px;width:2px;background:rgba(255,255,255,.08)}
+.tli.done::before{background:var(--grad2)}
+.tli.fin::before{display:none}
+.tli .dot{flex:none;width:28px;height:28px;border-radius:50%;padding:0;border:2px solid #4a4c60;background:var(--bg);position:relative;z-index:1}
+.tli.done .dot{border-color:transparent;background:var(--grad2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/14px no-repeat;box-shadow:0 0 12px rgba(255,70,170,.5)}
+.tli.cur .dot{border-color:var(--c4);box-shadow:0 0 0 4px rgba(255,190,70,.15),0 0 14px rgba(255,190,70,.5)}
+.tli.fin .dot{border:0;background:var(--grad);box-shadow:0 0 16px rgba(140,90,255,.6)}
+.tlc{flex:1;min-width:0;cursor:pointer;padding-top:2px}
+.tlh{display:flex;align-items:baseline;gap:8px;justify-content:space-between}
+.tlh b{font-weight:700;font-size:16px}
+.tli.done .tlh b{color:var(--muted)}
+.ects{font-size:11px;font-weight:700;color:var(--muted);white-space:nowrap;padding:2px 8px;border-radius:99px;background:rgba(255,255,255,.06)}
+.tld{font-size:13px;color:var(--muted);margin-top:2px}
+.tln{font-size:12px;color:#6e7088;margin-top:3px;line-height:1.4}
+.ok{color:var(--acc2);font-weight:600}.bad{color:var(--warn);font-weight:600}
+.win{padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.win:first-of-type{border-top:0}
+.win small{color:var(--muted);display:block;font-size:12px}
+nav{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));display:flex;justify-content:center;pointer-events:none;z-index:5}
+nav div{pointer-events:auto;display:flex;gap:4px;max-width:520px;width:100%;background:rgba(16,16,24,.78);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border:1px solid var(--line);border-radius:26px;padding:6px;box-shadow:0 14px 40px rgba(0,0,0,.6)}
+nav button{flex:1;background:none;border:0;color:var(--muted);font-size:11px;font-weight:700;padding:8px 2px 7px;border-radius:20px;display:flex;flex-direction:column;align-items:center;gap:3px}
+nav button svg{width:22px;height:22px}
+nav button.on{color:#fff;background:linear-gradient(135deg,rgba(140,90,255,.35),rgba(255,70,170,.3));box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.modal{position:fixed;inset:0;background:rgba(3,3,8,.7);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:flex-end;justify-content:center;z-index:10;padding:12px}
+.modal.open{display:flex}
+.sheet{background:#14141f;border:1px solid var(--line);border-radius:28px;padding:24px 20px 20px;max-width:560px;width:100%;margin-bottom:env(safe-area-inset-bottom);box-shadow:0 -10px 50px rgba(140,90,255,.2)}
+.sheet h3{margin:0 0 10px;font-weight:800;font-size:26px;line-height:1.2;letter-spacing:-.02em}
+.sheet p{margin:0 0 16px}
+.night{background:linear-gradient(150deg,rgba(70,220,255,.12),rgba(140,90,255,.1));border-color:rgba(70,220,255,.25)}
+.ask{background:linear-gradient(150deg,rgba(94,240,176,.14),rgba(255,255,255,.02));border-color:rgba(94,240,176,.35)}
+.toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);background:var(--grad2);color:#fff;padding:11px 18px;border-radius:99px;font-weight:700;font-size:14px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:20;white-space:nowrap;box-shadow:0 8px 24px rgba(255,70,170,.4)}
+.toast.show{opacity:1}
+.chips{display:flex;gap:8px;overflow-x:auto;margin:-6px -18px 18px;padding:2px 18px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:none;border-radius:99px;padding:9px 15px;font-size:14px;white-space:nowrap}
+.chips button.on{background:var(--grad2);color:#fff}
+.field{margin:0 0 12px}.field label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin:0 0 6px;letter-spacing:.02em}
+.grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:10px}
+.from{font-size:11px;color:var(--muted);display:block}
+.danger{color:var(--warn)}
+.confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:30}
+
+.calist{max-height:46vh;overflow:auto;margin:0 -4px;padding:0 4px}
+.calrow{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line)}
+.calrow:first-child{border-top:0}
+.calrow input{width:22px;height:22px;flex:none;margin-top:2px;accent-color:#ff46aa}
+.calrow b{display:block;font-size:14px;font-weight:600}
+.calrow small{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+
+.planhead{display:flex;align-items:baseline;gap:10px;margin-bottom:2px}
+.planh{font-size:30px;font-weight:800;letter-spacing:-.03em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.plans{font-size:15px;font-weight:600}
+.konto{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding:12px 14px;border-radius:14px;background:rgba(0,0,0,.3);font-size:14px}
+.konto span{color:var(--muted)}
+.konto.plus b{color:var(--acc2)}.konto.minus b{color:var(--c4)}
+.sublbl{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin:0 0 8px}
+.srow{padding:10px 0;border-top:1px solid var(--line)}
+.srow-t{display:flex;justify-content:space-between;font-size:14px}
+.srow-t span:last-child{color:var(--muted);font-variant-numeric:tabular-nums}
+.lkrow{display:grid;grid-template-columns:78px 1fr auto;gap:10px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.lkrow:first-of-type{border-top:0}
+.lkrow.now{background:linear-gradient(90deg,rgba(140,90,255,.14),transparent);margin:0 -10px;padding:9px 10px;border-radius:12px}
+.lkd{color:var(--muted);font-variant-numeric:tabular-nums}
+.lkf small{display:block;font-size:12px;color:#6e7088}
+.lkh{font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
+.lkh b{color:var(--text)}.lkh b.ok{color:var(--acc2)}
+
+.kdisp{font-size:50px}
+.phbar{display:flex;gap:4px;margin:4px 0 6px}
+.phbar .ph{height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
+.phbar .ph i{display:block;height:100%;width:0;background:var(--grad);border-radius:99px}
+.phbar .ph.done i{width:100%!important}
+.phlbl{display:flex;gap:4px}
+.phlbl div{flex:1;min-width:0;text-align:center;font-size:11px;color:var(--muted);line-height:1.3;overflow:hidden}
+.phlbl b{display:block;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.phlbl .cur{color:var(--text)}
+.gear{position:absolute;top:max(70px,calc(env(safe-area-inset-top) + 22px));right:max(18px,calc(50% - 262px));width:40px;height:40px;padding:9px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--muted);z-index:4}
+.gear svg{width:100%;height:100%}
+main{position:relative}
+.chips.wrap{flex-wrap:wrap;overflow:visible;margin:0;padding:0}
+.selbtn{width:100%;text-align:left;background:rgba(0,0,0,.35);border:1px solid var(--line);min-height:50px}
+details.more{margin:4px 0 0;border-top:1px solid var(--line);padding-top:10px}
+details.more summary{cursor:pointer;color:var(--muted);font-size:14px;font-weight:600;padding:4px 0 10px;list-style:none}
+details.more summary::before{content:"+ "}
+details.more[open] summary::before{content:"− "}
+.erow{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.erow .nm{flex:1;min-width:0;font-size:15px;cursor:pointer}
+.erow.done .nm{color:var(--muted)}
+.boxes{display:flex;gap:3px;flex:none}
+.boxes i{width:6px;height:14px;border-radius:3px;background:rgba(255,255,255,.1)}
+.boxes i.on{background:var(--grad2)}
+.revtop{display:flex;justify-content:space-between;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c1);margin-bottom:12px}
+.revq{font-size:21px;font-weight:700;line-height:1.35;letter-spacing:-.01em;margin-bottom:14px;white-space:pre-wrap}
+.reva{background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:16px;padding:14px;font-size:16px;line-height:1.5;white-space:pre-wrap}
+.errcard{border-color:rgba(255,190,70,.35);background:linear-gradient(150deg,rgba(255,190,70,.1),rgba(255,255,255,.02))}
+.lvlrow{display:flex;gap:14px;align-items:center}
+.lvlbadge{flex:none;width:56px;height:56px;border-radius:18px;background:var(--grad2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:24px;box-shadow:0 6px 20px rgba(255,70,170,.4)}
+.lvlname{font-size:20px;font-weight:800;letter-spacing:-.02em}
+.badges{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.badge{background:rgba(0,0,0,.3);border-radius:16px;padding:12px 6px;text-align:center;opacity:.45;cursor:pointer}
+.badge.on{opacity:1;background:linear-gradient(160deg,rgba(140,90,255,.25),rgba(255,70,170,.15));box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.badge .bic{font-size:22px;line-height:1;margin-bottom:6px}
+.badge.on .bic{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.badge b{display:block;font-size:12px;line-height:1.25}
+.badge small{display:block;font-size:10px;color:var(--muted);margin-top:3px;line-height:1.3}
+.badgebig{font-size:56px;text-align:center;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1;margin-bottom:6px}
+.wkchart{display:flex;gap:8px;align-items:flex-end;height:130px}
+.wkcol{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%}
+.wkbar{position:relative;flex:1;width:100%;background:rgba(255,255,255,.05);border-radius:10px;display:flex;align-items:flex-end;overflow:hidden}
+.wkbar i{display:block;width:100%;background:var(--grad2);border-radius:10px;min-height:0}
+.wksoll{position:absolute;left:0;right:0;height:2px;background:var(--c4);box-shadow:0 0 6px rgba(255,190,70,.7);z-index:1}
+.wkcol small{font-size:11px;color:var(--muted)}
+.wkcol.now small{color:var(--text);font-weight:700}
+.wkbtn{padding:4px 12px;font-size:18px;line-height:1}
+.wkbtn[disabled]{opacity:.3}
+.setsec{padding:0}
+.sechead{width:100%;display:flex;justify-content:space-between;align-items:center;background:none;border:0;padding:18px 20px;font-size:16px;text-align:left}
+.sechead span{color:var(--muted);font-size:22px;font-weight:400}
+.secbody{padding:0 20px 20px}
+.subrow{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:1px solid var(--line);cursor:pointer}
+.subrow span:first-child{flex:1;min-width:0}
+.subrow b{display:block;font-weight:600}
+.subrow small{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+.go{color:var(--muted);font-size:20px}
+.toggle{display:flex;gap:12px;align-items:center;padding:12px 0 0;font-size:15px}
+.toggle input{width:22px;height:22px;accent-color:#ff46aa;flex:none}
+.phrow{display:grid;grid-template-columns:1fr 74px 32px;gap:8px;margin-bottom:8px;align-items:center}
+.phrow input{padding:10px 12px}
+.steps{margin:6px 0 0;padding-left:20px;font-size:14px;line-height:1.55}
+.steps li{margin-bottom:6px}
+code{font-family:ui-monospace,Menlo,monospace;background:rgba(255,255,255,.08);padding:1px 6px;border-radius:6px;font-size:.9em}
+.wdgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.wdgrid label{display:flex;flex-direction:column;align-items:center;gap:4px}
+.wdgrid small{font-size:11px;color:var(--muted)}
+.wdgrid input{padding:10px 2px;text-align:center}
+.muted{color:var(--muted)}
+.planhead[data-act],.msg[data-act],.lkrow{cursor:pointer}
+.grid2>*{min-width:0}
+.sheet{max-height:calc(100vh - 24px - env(safe-area-inset-bottom));overflow-y:auto;-webkit-overflow-scrolling:touch}
+.stat b{font-size:24px}
+.rwrow{display:flex;gap:10px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+.rwrow:first-of-type{border-top:0}
+.rwt{flex:1;min-width:0;cursor:pointer}
+.rwt b{display:block;font-weight:700}
+.rwt small{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+.rwrow.ready .rwt b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rwbtn{flex:none;background:var(--grad2);color:#fff;padding:9px 12px;font-size:13px;font-weight:700}
+.minibar.warm i{background:linear-gradient(90deg,#ffbe46,#ff6b81)}
+.volrow{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:12px;color:var(--muted)}
+.volrow input{flex:1;accent-color:#ff46aa}
+.distbtn{display:block;margin:0 auto 14px;background:rgba(255,190,70,.1);border:1px solid rgba(255,190,70,.35);color:var(--c4);border-radius:99px;padding:10px 20px;font-weight:700}
+.distbtn b{display:inline-block;min-width:22px;margin-left:6px;padding:1px 7px;border-radius:99px;background:rgba(255,190,70,.25);color:#fff}
+.enchart{display:flex;gap:4px;align-items:flex-end;height:120px}
+.encol{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;height:100%;min-width:0}
+.enbar{flex:1;width:100%;background:rgba(255,255,255,.05);border-radius:6px;display:flex;align-items:flex-end;overflow:hidden}
+.enbar i{display:block;width:100%;background:var(--grad2);border-radius:6px}
+.encol small{font-size:10px;color:var(--muted)}
+.encol.now small{color:var(--text);font-weight:700}
+.endot{display:inline-block;width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.12)}
+.endot.e1{background:#ff6b81}.endot.e2{background:#ffbe46}.endot.e3{background:#5ef0b0}
+.enleg{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px;font-size:11px;color:var(--muted)}
+.enleg span{display:flex;align-items:center;gap:5px}
+.dlrow{display:flex;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line)}
+.dlrow:first-of-type{border-top:0}
+.dlrow .nm{flex:1;min-width:0;cursor:pointer}
+.dlrow .nm b{display:block;font-weight:600}
+.dlrow .nm small{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+.dlrow.soon .nm small{color:var(--c4);font-weight:600}
+.dlrow.late .nm small{color:var(--warn);font-weight:600}
+.dlrow.done .nm b{color:var(--muted);text-decoration:line-through}
+.dlcard{border-color:rgba(255,107,129,.35);background:linear-gradient(150deg,rgba(255,107,129,.1),rgba(255,255,255,.02))}
+.pday{border:1px solid rgba(70,220,255,.35);background:linear-gradient(160deg,rgba(70,220,255,.14),rgba(140,90,255,.08) 60%,rgba(255,255,255,.02))}
+.pdcount{font-size:44px;font-weight:800;letter-spacing:-.03em;margin:10px 0 0;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
+.pdrow{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.pdrow:first-of-type{margin-top:10px}
+.pdrow span{color:var(--muted)}
+.pdrow b{text-align:right;font-weight:600}
+.chk{display:flex;align-items:center;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:15px;cursor:pointer}
+.chk input{width:22px;height:22px;accent-color:#5ef0b0;flex:none}
+.chk span{flex:1}
+.chk.done span{color:var(--muted);text-decoration:line-through}
+.breath{position:relative;height:230px;display:flex;align-items:center;justify-content:center;margin:6px 0}
+.bcirc{width:110px;height:110px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.35),transparent 60%),var(--grad2);box-shadow:0 0 40px rgba(255,70,170,.45);transform:scale(.8);transition:transform 4s ease-in-out}
+.bcirc.in{transform:scale(1.8);transition:transform 4s ease-in-out}
+.bcirc.out{transform:scale(.8);transition:transform 6s ease-in-out}
+.blbl{position:absolute;font-size:18px;font-weight:800;letter-spacing:.04em;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.duel{display:flex;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line);cursor:pointer}
+.duel:first-of-type{border-top:0}
+.duel.me{cursor:default}
+.duel .dpos{flex:none;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;background:rgba(255,255,255,.08);font-size:14px}
+.duel:first-of-type .dpos{background:var(--grad2)}
+.duel.me b{color:#fff}
+.duel small.hint{display:block;margin-top:4px;font-size:11px}
+input[type=time]{width:100%;background:rgba(0,0,0,.35);color:var(--text);border:1px solid var(--line);border-radius:14px;padding:13px 14px;font:inherit;font-size:16px;-webkit-appearance:none;appearance:none;min-height:50px;color-scheme:dark;min-width:0}
+
+.srow-t .tag{color:#fff;vertical-align:1px}
+.today{padding-bottom:16px}
+.enrow{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.enrow>span{font-size:13px;font-weight:600;color:var(--muted)}
+.seg.mini{display:flex;background:rgba(0,0,0,.35);border-radius:12px;padding:3px;gap:3px}
+.seg.mini button{padding:7px 12px;font-size:13px;border-radius:9px;background:transparent;color:var(--muted)}
+.seg.mini button.on{background:var(--grad2);color:#fff}
+.btn-soft{background:rgba(255,255,255,.06);font-size:14px;padding:11px 10px}
+.btn-soft.warm{color:var(--c4)}
+.morebtn{display:block;width:100%;text-align:left;background:none;border:0;padding:10px 0 0;color:var(--muted);font-size:14px;font-weight:600;position:relative}
+.antrieb{margin-top:10px;padding-top:12px;border-top:1px solid var(--line)}
+.whysmall{margin:8px 0 0;font-size:14px;color:var(--muted);font-style:italic;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.slim{width:100%;display:flex;align-items:center;gap:12px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px 14px;margin:0 0 14px}
+.slimt{flex:1;min-width:0}
+.slimt b{display:block;font-size:15px}
+.slimt small{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+.lvlmini{flex:none;width:38px;height:38px;border-radius:12px;background:var(--grad2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:#fff}
+.lvlmini.warm{background:linear-gradient(135deg,#ffbe46,#ff6b81)}
+.errslim{border-color:rgba(255,190,70,.35);background:linear-gradient(150deg,rgba(255,190,70,.1),rgba(255,255,255,.02))}
+details.tip{padding:0}
+details.tip summary{list-style:none;cursor:pointer;padding:16px 20px;font-weight:600;font-size:15px;color:var(--muted)}
+details.tip summary::before{content:"+ "}
+details.tip[open] summary::before{content:"− "}
+details.tip p{padding:0 20px 18px}
+.exsum .hdate{margin-top:2px}
+#coach{position:fixed;inset:0;z-index:28;background:rgba(3,3,8,.55);display:flex;align-items:flex-start;justify-content:center;padding:max(110px,calc(env(safe-area-inset-top) + 90px)) 16px 0}
+.coachcard{max-width:520px;width:100%;background:#16162a;border:1px solid rgba(140,90,255,.45);border-radius:24px;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 30px rgba(140,90,255,.25)}
+.coachcard.low{margin-top:80px}
+.coachcard h3{margin:6px 0 8px;font-size:24px;font-weight:800;letter-spacing:-.02em}
+.coachcard p{margin:0 0 14px;line-height:1.5}
+.dots{display:flex;gap:6px;margin-bottom:14px}
+.dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}
+.dots i.on{background:var(--grad2);width:20px;border-radius:99px}
+body.touring nav{z-index:29}
+body.touring .gear.tourhi{z-index:29;position:fixed}
+.tourhi{animation:pulse 1.4s ease-in-out infinite;box-shadow:0 0 0 2px #ff46aa,0 0 18px rgba(255,70,170,.7)!important;color:#fff!important}
+@keyframes pulse{50%{box-shadow:0 0 0 5px rgba(255,70,170,.35),0 0 26px rgba(255,70,170,.8)}}
+
+.welcome{border:1px solid rgba(255,70,170,.45);background:linear-gradient(160deg,rgba(255,70,170,.18),rgba(140,90,255,.1) 60%,rgba(255,255,255,.02))}
+.wtext{margin:8px 0 0;font-size:19px;font-weight:600;line-height:1.45;white-space:pre-wrap}
+
+.qtext[data-act]{cursor:pointer}
+.qhint{font-size:11px;color:#62647a;margin-top:6px;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<main id="view"></main>
+
+<nav><div>
+  <button data-tab="heute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg>Heute</button>
+  <button data-tab="timer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>Sprint</button>
+  <button data-tab="plan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M7 13h4M7 17h7"/></svg>Plan</button>
+  <button data-tab="ziel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V4M4 4h12l-2 4 2 4H4"/></svg>Ziel</button>
+</div></nav>
+
+<div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>window.ENDSPURT_PRESET={"key": "endspurt_bella", "from": "Lukas", "name": "Bella", "degree": "Magistra", "welcome": "Servus Bella Bellinski! 👋\n\nAb heute hast du deinen eigenen Endspurt-Coach. Streng, aber fair, und mit genau einem Ziel:\n\nDu wirst nicht ohne Mag. Titel heiraten. 💍🎓\n\nIch glaub an dich, Premium Chaya. Und jetzt: ein Sprint. Danach gibt's einen Snackigen Snack Snack.\n\nLukas", "pause": "Pause! Zeit für einen Snackigen Snack Snack. Aber kein Handy-Scrollen, Premium Chaya.", "msgs": ["Du wirst nicht ohne Mag. Titel heiraten. Das ist kein Spruch, das ist ein Plan. 💍🎓", "Mag. Bella Bellinski. Klingt verdammt gut, oder?", "Premium Chaya lernt nicht einfach. Premium Chaya dominiert den Stoff.", "Erst der Sprint, dann der Snackige Snack Snack. So lautet das Gesetz.", "Irgendwann fragt dich jemand auf deiner Hochzeit: „Und was machst du so?“ Du: „Mag. Bella Bellinski, danke der Nachfrage.“", "Ein Ring am Finger, ein Titel vor dem Namen. Eins davon hast du schon. 💍", "Kein Snackiger Snack Snack ohne vorherigen Sprint. Ausnahmen nur bei akuter Snack-Not.", "Bella Bellinski gibt nicht auf. Bella Bellinski macht Pause und dann weiter.", "Premium Chaya. Premium Leistung. Premium Abschluss.", "Der Brautstrauß fliegt erst, wenn die letzte Prüfung abgehakt ist.", "Fun Fact: Prüfungen haben Angst vor Bella Bellinski.", "Ein Snackiger Snack Snack ist kein Essen. Er ist eine Belohnung. Verdien ihn dir.", "Du bist nicht müde. Du bist im Energiesparmodus für den Endspurt.", "Ja-Wort und Mag. Titel: zwei Unterschriften, die dein Leben verändern. Bei einer hilft dir diese App.", "Premium Chaya hat heute schon gelernt? Nein? Dann jetzt. Premium wartet nicht.", "Irgendwann steht auf einer Einladung: Mag. Bella Bellinski. Arbeiten wir dran.", "Heute eine Seite mehr, morgen ein Titel mehr.", "Die Hochzeitsplanung ist kompliziert. Ein Sprint ist es nicht. Fang einfach an.", "Lukas sagt: Ich hab an dich geglaubt, bevor du diese App überhaupt geöffnet hast.", "Snackiger Snack Snack in der einen Hand, Skript in der anderen. Multitasking auf Premium-Niveau."], "done": ["Sprint geschafft, Bella Bellinski! 🎉", "Premium Chaya hat geliefert.", "Wieder ein Stück näher am Mag. vor deinem Namen.", "Stark! Snackiger Snack Snack verdient.", "Erledigt. Der Titel kommt Sprint für Sprint.", "Bellinski-Power! Weiter so."], "sos": ["Hol dir einen Snackigen Snack Snack, setz dich hin und mach nur 5 Minuten. Deal?", "Premium-Chaya-Modus aktivieren: eine einzige Seite lesen. Mehr verlangt heute niemand.", "Denk an die Hochzeit: Du wirst nicht ohne Mag. Titel heiraten. Also: 5 Minuten, los."]};</script>
+<script>
+(function(){
+const VERSION='3.4';
+const PRESET=(typeof window!=='undefined'&&window.ENDSPURT_PRESET)||{};
+const KEY=PRESET.key||'endspurt_v2',OLD=PRESET.key?'__none__':'endspurt_v1';let memStore={};
+function rawGet(k){try{return localStorage.getItem(k)}catch(e){return memStore[k]||null}}
+function save(){const s=JSON.stringify(S);try{localStorage.setItem(KEY,s)}catch(e){memStore[KEY]=s}}
+
+const DEF_CFG={sprints:[10,25,45],sprint:25,brk:5,klDur:240,klDurs:[240,120,90],
+  phases:[['Sachverhalt lesen','Lesen',2],['Gliederung','Gliederung',4],['Ausformulieren','Schreiben',15],['Kontrolle','Kontrolle',3]],
+  stdMsgs:true,night:true,warnDays:7,sound:'off',vol:0.5,soundKl:false,
+  checklist:['Lichtbildausweis','Studierendenausweis','Stifte und Ersatzstift','Erlaubte Hilfsmittel und Gesetzestexte','Uhr ohne Smartfunktion','Wasser und Snack']};
+function defaults(){return {v:3,seed:5,onboarded:false,tourDone:false,
+  profile:{name:'',study:'',degree:'Abschluss'},goalDate:'',why:'',ifthen:'',
+  exams:[],subjects:[{id:'X',n:'Sonstiges',s:'Sonstiges',t:0}],plan:{},msgs:(PRESET.msgs||[]).slice(),
+  welcome:PRESET.welcome?{from:PRESET.from||'',text:PRESET.welcome,seen:false}:null,
+  activeId:null,sessions:[],wins:[],errors:[],badges:{},energy:null,lastBackup:null,
+  subj:null,subjDate:null,tmode:'sprint',sims:0,
+  timer:{dur:25,endAt:null,left:null,isBreak:false},kl:{dur:240,endAt:null,left:null,ph:0},
+  rewards:[],energyLog:{},deadlines:[],duel:{friends:[]},
+  cfg:JSON.parse(JSON.stringify(DEF_CFG)),nextId:1000}}
+
+/* Daten aus älteren Versionen übernehmen */
+const OLD_SUBJ={'Ö':['Öffentliches Recht','ÖffR',16],'B':['BWL','BWL',10],'E':['Europarecht','EuR',70],'F':['Finanzrecht','FinR',62],'W':['VWL','VWL',12],'V':['Völkerrecht','VR',44],'S':['Strafverfahrensrecht','StPO',164],'U':['Unternehmensrecht','UR',89],'D':['Diplomarbeit','DA',178],'A':['Abschluss und Antrag','Abschluss',20],'P':['Planung','Planung',2]};
+function migrate1(o){const s=defaults();s.why=o.why||'';s.wins=o.wins||[];s.sessions=(o.sessions||[]).map(x=>Object.assign({examId:1},x));
+  if(o.examDate||o.topics){s.exams.push({id:1,name:'Prüfung 1',date:o.examDate||'',topics:o.topics||[]})}
+  s.nextId=Math.max(1000,(o.nextId||1)+1000);return s}
+function normalize(o){const d=defaults();const s=Object.assign(d,o);
+  s.cfg=Object.assign(JSON.parse(JSON.stringify(DEF_CFG)),o.cfg||{});
+  s.profile=Object.assign({name:'',study:'',degree:'Abschluss'},o.profile||{});
+  s.timer=Object.assign({dur:s.cfg.sprint,endAt:null,left:null,isBreak:false,dist:0},o.timer||{});
+  s.kl=Object.assign({dur:s.cfg.klDur,endAt:null,left:null,ph:0,dist:0},o.kl||{});
+  ['sessions','wins','errors','msgs','exams','rewards','deadlines'].forEach(k=>{if(!Array.isArray(s[k]))s[k]=[]});
+  if(!s.energyLog||typeof s.energyLog!=='object')s.energyLog={};s.duel=Object.assign({friends:[]},o.duel||{});if(!Array.isArray(s.duel.friends))s.duel.friends=[];
+  if(!Array.isArray(s.cfg.checklist))s.cfg.checklist=DEF_CFG.checklist.slice();
+  if(!s.plan||typeof s.plan!=='object'||Array.isArray(s.plan))s.plan={};
+  if(!Array.isArray(s.subjects)||!s.subjects.length)s.subjects=[{id:'X',n:'Sonstiges',s:'Sonstiges',t:0}];
+  if(!s.subjects.find(x=>x.id==='X'))s.subjects.push({id:'X',n:'Sonstiges',s:'Sonstiges',t:0});
+  s.badges=s.badges||{};
+  s.exams=s.exams.map(e=>Object.assign({subj:null,ects:0,date:'',start:'',note:'',alias:[],done:false,grade:null,attempt:1,fb:{date:'',text:''},hist:[],topics:[],place:'',leave:'',check:null},e));
+  /* Version 2 -> 3 */
+  if((o.seed||0)<5){
+    if(o.name&&!s.profile.name)s.profile.name=o.name;
+    const used=new Set();s.exams.forEach(e=>{if(e.subj)used.add(e.subj)});s.sessions.forEach(x=>{if(x.subj)used.add(x.subj)});
+    used.forEach(c=>{if(OLD_SUBJ[c]&&!s.subjects.find(x=>x.id===c))s.subjects.unshift({id:c,n:OLD_SUBJ[c][0],s:OLD_SUBJ[c][1],t:OLD_SUBJ[c][2]})});
+    s.exams.forEach(e=>{if(!e.subj)e.subj=ensureSubjFor(s,e)});
+    s.sessions.forEach(x=>{if(!x.subj){const e=s.exams.find(e=>e.id===x.examId);x.subj=(e&&e.subj)||'X'}});
+    if(s.exams.length||s.sessions.length)s.onboarded=true;
+    if(!s.goalDate&&s.exams.length)s.goalDate=o.goalDate||'';
+    s.seed=5}
+  if(PRESET.welcome&&(!s.welcome||s.welcome.text!==PRESET.welcome))s.welcome={from:PRESET.from||'',text:PRESET.welcome,seen:false};
+  (PRESET.msgs||[]).forEach(m=>{if(m&&!s.msgs.includes(m))s.msgs.push(m)});
+  s.v=3;return s}
+function ensureSubjFor(s,e){const ex=s.subjects.find(x=>x.n.toLowerCase()===e.name.toLowerCase());if(ex)return ex.id;
+  const id='s'+(s.nextId++);s.subjects.splice(Math.max(0,s.subjects.length-1),0,{id,n:e.name,s:shortName(e.name),t:0});return id}
+function shortName(n){n=(n||'').trim();if(n.length<=9)return n;const w=n.split(/\s+/);if(w.length>1)return w.map(x=>x[0]).join('').toUpperCase().slice(0,5);return n.slice(0,7)+'.'}
+function boot(){try{const n=rawGet(KEY);if(n)return normalize(JSON.parse(n));const o=rawGet(OLD);if(o)return normalize(migrate1(JSON.parse(o)))}catch(e){}return defaults()}
+let S=boot();save();
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+
+/* Hilfsfunktionen */
+const pad=n=>String(n).padStart(2,'0');
+const dkey=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const today=()=>dkey(new Date());
+const parseKey=k=>{const p=k.split('-').map(Number);return new Date(p[0],p[1]-1,p[2])};
+const addDays=(k,n)=>{const d=parseKey(k);d.setDate(d.getDate()+n);return dkey(d)};
+const daysBetween=(a,b)=>Math.round((parseKey(b)-parseKey(a))/864e5);
+const WD=['So','Mo','Di','Mi','Do','Fr','Sa'];
+const fmtDay=k=>{const d=parseKey(k);return WD[d.getDay()]+' '+pad(d.getDate())+'.'+pad(d.getMonth()+1)+'.'};
+const fmtLong=k=>{if(!k)return '';const d=parseKey(k);return pad(d.getDate())+'.'+pad(d.getMonth()+1)+'.'+d.getFullYear()};
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const num=n=>String(n).replace('.',',');
+const pnum=v=>parseFloat(String(v==null?'':v).replace(',','.'));
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+const fmtH=m=>{m=Math.round(m);if(Math.abs(m)<60)return m+' min';const h=Math.round(m/6)/10;return String(h).replace('.',',')+' Std.'};
+function exDate(e){const m=/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/.exec(e&&e.date||'');return m?new Date(+m[1],m[2]-1,+m[3],+m[4],+m[5]):null}
+function fmtEx(e){const d=exDate(e);return d?WD[d.getDay()]+' '+fmtLong(dkey(d))+', '+pad(d.getHours())+':'+pad(d.getMinutes()):'kein Termin'}
+function goalD(){return S.goalDate?parseKey(S.goalDate):null}
+function dayIdx(){const d=new Date();return Math.floor((d-new Date(d.getFullYear(),0,0))/864e5)}
+
+/* Prüfungen */
+const active=()=>S.exams.find(e=>e.id===S.activeId)||openSorted()[0]||S.exams[0]||null;
+function nextExam(){const now=new Date();const up=openSorted().filter(e=>exDate(e)&&exDate(e)>new Date(now-6*36e5));const a=active();if(a&&!a.done&&exDate(a)&&exDate(a)>new Date(now-6*36e5))return a;return up[0]||a}
+function openSorted(){return S.exams.filter(e=>!e.done).sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999'))}
+function findTopic(id){for(const e of S.exams){const t=e.topics.find(t=>t.id===id);if(t)return [e,t]}return [null,null]}
+function newExam(name,date){const e={id:S.nextId++,name:name||'Neue Prüfung',subj:null,ects:0,date:date||'',start:'',note:'',alias:[],done:false,grade:null,attempt:1,fb:{date:'',text:''},hist:[],topics:[]};
+  e.subj=ensureSubjFor(S,e);S.exams.push(e);if(!S.activeId)S.activeId=e.id;return e}
+
+/* Fächer */
+const subj=id=>S.subjects.find(x=>x.id===id)||S.subjects.find(x=>x.id==='X');
+const subjShort=id=>subj(id).s;
+function subjOf(x){if(x.subj&&S.subjects.find(s=>s.id===x.subj))return x.subj;const e=S.exams.find(e=>e.id===x.examId);return (e&&e.subj)||'X'}
+function planSumFor(id){let a=0;Object.values(S.plan).forEach(p=>{if(p.s&&p.s.length&&p.s.includes(id))a+=p.h/p.s.length});return a}
+function subjTarget(x){return (x.t||planSumFor(x.id))*60}
+
+/* Lernkalender */
+function planOf(k){return S.plan[k]||null}
+function sollDay(k){const p=planOf(k);return p?(+p.h||0)*60:0}
+function sollBefore(k){let a=0;Object.keys(S.plan).forEach(d=>{if(d<k)a+=(+S.plan[d].h||0)});return a*60}
+function hasPlan(){return Object.keys(S.plan).length>0}
+function planFirst(){const k=Object.keys(S.plan).sort();return k[0]||null}
+function istMin(f){return S.sessions.filter(f).reduce((a,x)=>a+x.min,0)}
+function konto(){const f=planFirst();if(!f)return 0;return istMin(x=>x.date<today()&&x.date>=f)-sollBefore(today())}
+function kontoTxt(k){return Math.abs(k)<5?'genau im Plan':k>0?'+ '+fmtH(k)+' voraus':fmtH(-k)+' hinter Plan'}
+function subjNames(arr){return (arr||[]).map(subjShort).join(' · ')}
+function defSubj(){const p=planOf(today());if(p&&p.s&&p.s.length)return p.s[0];const a=active();return (a&&a.subj)||'X'}
+function curSubj(){return S.subj&&S.subjDate===today()&&S.subjects.find(x=>x.id===S.subj)?S.subj:defSubj()}
+function subjChoices(){const p=planOf(today());const l=[];((p&&p.s)||[]).forEach(c=>{if(!l.includes(c))l.push(c)});
+  openSorted().forEach(e=>{if(e.subj&&!l.includes(e.subj))l.push(e.subj)});S.subjects.forEach(x=>{if(!l.includes(x.id))l.push(x.id)});return l}
+
+/* Themenplan je Prüfung */
+function planDays(e){const ex=exDate(e);if(!ex)return[];let sk=today();if(e.start&&e.start>sk)sk=e.start;const exK=dkey(ex);const out=[];let k=sk,g=0;while(k<exK&&g<800){out.push(k);k=addDays(k,1);g++}return out}
+function learnDays(e){const p=planDays(e);return p.length>=2?p.slice(0,-1):p}
+function reviewDay(e){const p=planDays(e);return p.length>=2?p[p.length-1]:null}
+function distribute(e){const days=learnDays(e);const open=e.topics.filter(t=>t.status===0);
+  if(!days.length){open.forEach(t=>t.day=null);save();return}
+  const W=open.reduce((a,t)=>a+t.size,0);const per=W/days.length;let acc=0;
+  open.forEach(t=>{const i=Math.min(days.length-1,Math.floor((acc+t.size/2)/per));t.day=days[i];acc+=t.size});save()}
+function progress(e){if(!e)return 0;const W=e.topics.reduce((a,t)=>a+t.size,0);if(!W)return 0;
+  return Math.round(e.topics.reduce((a,t)=>a+t.size*(t.status===2?1:t.status===1?0.6:0),0)/W*100)}
+
+/* Statistik */
+function todayMin(){return istMin(x=>x.date===today())}
+function todayCount(){return S.sessions.filter(x=>x.date===today()&&!x.manual).length}
+function streak(){const set=new Set(S.sessions.map(x=>x.date));let k=today(),n=0;if(!set.has(k))k=addDays(k,-1);while(set.has(k)){n++;k=addDays(k,-1)}return n}
+function bestStreak(){const ds=[...new Set(S.sessions.map(x=>x.date))].sort();let b=0,c=0,prev=null;ds.forEach(d=>{c=prev&&addDays(prev,1)===d?c+1:1;b=Math.max(b,c);prev=d});return b}
+function weekStart(k){const d=parseKey(k);const wd=(d.getDay()+6)%7;return addDays(k,-wd)}
+function weekStats(start){const days=[];for(let i=0;i<7;i++){const k=addDays(start,i);days.push({k,ist:istMin(x=>x.date===k),soll:sollDay(k)})}
+  const end=addDays(start,7);return {days,ist:days.reduce((a,d)=>a+d.ist,0),soll:days.reduce((a,d)=>a+d.soll,0),
+    sprints:S.sessions.filter(x=>x.date>=start&&x.date<end&&!x.manual).length,sims:S.sessions.filter(x=>x.date>=start&&x.date<end&&x.klausur).length,
+    wins:S.wins.filter(w=>w.date>=start&&w.date<end)}}
+
+/* Noten (österreichische Skala) */
+const GRADES={1:'Sehr gut',2:'Gut',3:'Befriedigend',4:'Genügend',5:'Nicht genügend'};
+function gradeAvg(){const g=S.exams.filter(e=>e.done&&e.grade>=1&&e.grade<=4);if(!g.length)return null;
+  const w=g.reduce((a,e)=>a+(+e.ects||1),0);return g.reduce((a,e)=>a+e.grade*(+e.ects||1),0)/w}
+
+/* Fehlerliste mit zeitversetzter Wiederholung */
+const SRS=[1,2,4,8,16,32];
+function nextExamDateFor(sid){const e=openSorted().find(e=>e.subj===sid&&exDate(e));return e?dkey(exDate(e)):null}
+function errDue(){return S.errors.filter(x=>!x.mastered&&x.due<=today())}
+function errAnswer(x,ok){if(ok){x.box=Math.min(SRS.length,(x.box||0)+1);if(x.box>=SRS.length){x.mastered=true;x.due='9999-12-31'}
+    else{let n=SRS[x.box-1];const ed=nextExamDateFor(x.subj);if(ed){const left=daysBetween(today(),ed)-1;if(left>=1)n=Math.min(n,left)}x.due=addDays(today(),Math.max(1,n))}}
+  else{x.box=0;x.due=today();x.miss=(x.miss||0)+1}x.last=today();save()}
+
+const MSGS=[
+ 'Du musst heute nicht motiviert sein. Du musst nur anfangen. Die Motivation kommt meistens erst nach den ersten zehn Minuten.',
+ 'Das Gefühl, noch gar nicht angefangen zu haben, täuscht. Du baust auf allem auf, was du schon gelernt hast.',
+ 'Nicht perfekt lernen. Prüfungsrelevant lernen. Lieber alles einmal solide als die Hälfte perfekt.',
+ 'Jede Prüfung ist nur ein Teil vom Ganzen. Heute zählt nur der nächste Sprint.',
+ 'Müdigkeit nach vielen Semestern ist normal. Sie sagt nichts darüber aus, ob du das kannst.',
+ 'Du hast schon Prüfungen geschafft, die sich vorher genauso angefühlt haben.',
+ 'Aktiv schlägt passiv: eine Frage aus dem Kopf beantwortet bringt mehr als drei Seiten markiert.',
+ 'Die Erschöpfung ist gerade nur lauter als die Freude am Fach. Das geht vorbei.',
+ 'Ein schlechter Lerntag ist kein verlorener Tag, solange du einen Sprint machst.',
+ 'Stell dir den Tag vor, an dem die letzte Prüfung abgehakt ist. Jeder Sprint bringt ihn näher.',
+ 'Konstanz schlägt Intensität. Lieber jeden Tag zwei Stunden als einmal zwölf.',
+ 'Pausen sind kein Verrat am Lernen. Sie sind Teil davon.',
+ 'Disziplin ist, das zu tun, was du dir vorgenommen hast, auch wenn die Lust schon gegangen ist.',
+ 'Du bist nicht hinten. Du bist genau da, wo der Plan dich heute braucht.',
+ 'Jede Karte, die du heute aus dem Kopf abrufst, sitzt morgen fester.',
+ 'Ein Fehler in der Simulation ist ein Punkt, den du in der echten Prüfung nicht mehr verlierst.',
+ 'Nicht der Tag entscheidet, sondern die nächste Stunde.',
+ 'Fortschritt fühlt sich selten nach Fortschritt an. Schau in deine Erfolgsliste.',
+ 'Du hast dir diesen Plan selbst gebaut. Vertrau ihm.',
+ 'Irgendwann blickst du auf diese Wochen zurück. Mach sie zu Wochen, auf die du stolz bist.'
+];
+function allMsgs(){const own=S.msgs.filter(m=>m&&m.trim());const base=S.cfg.stdMsgs||!own.length?MSGS:[];return own.concat(base)}
+let quoteOff=0;
+function msgOfDay(){const own=S.msgs.filter(m=>m&&m.trim());const base=S.cfg.stdMsgs||!own.length?MSGS:[];const d=dayIdx()+quoteOff;
+  /* eigene Sprüche kommen bevorzugt dran: an zwei von drei Tagen */
+  if(own.length&&(!base.length||d%3!==0))return own[(d-Math.floor(d/3))%own.length];return base[d%base.length]}
+const RESCUE=[
+ 'Leg das Handy außer Reichweite und öffne nur deine Unterlagen. Mehr nicht.',
+ 'Lies genau eine Seite. Danach darfst du aufhören, wenn du willst.',
+ 'Schreib aus dem Kopf fünf Begriffe zum heutigen Thema auf. Egal wie unvollständig.',
+ 'Erklär einem imaginären Freund in zwei Minuten, worum es beim heutigen Thema geht.',
+ 'Nimm eine alte Prüfungsfrage und lies sie nur durch. Nur lesen.',
+ 'Formuliere drei Fragen, die dir die Prüferin zu diesem Thema stellen könnte.',
+ 'Mach eine Gliederung des Themas auf einem Blatt. Nur Überschriften.',
+ 'Schlag einen Begriff nach, den du heute brauchst, und lies die Definition zweimal langsam.',
+ 'Stell den Timer auf fünf Minuten. Wenn er läutet, darfst du ohne schlechtes Gewissen aufhören.',
+ 'Steh auf, trink ein Glas Wasser, setz dich wieder hin und starte fünf Minuten.',
+ 'Wechsle den Ort: anderer Tisch, Bibliothek, Café. Dann fünf Minuten.',
+ 'Lern laut. Sprich den Stoff, als würdest du gerade geprüft.',
+ 'Nimm das Thema, auf das du heute am meisten Lust hast, nicht das schwierigste.',
+ 'Wiederhole das Thema von gestern fünf Minuten lang aus dem Kopf.',
+ 'Arbeite fünf Minuten an deiner Fehlerliste. Kleine Schritte zählen.'
+];
+const DONE0=['Sprint geschafft. Genau so geht das.','Erledigt. Ein Baustein mehr.','Stark. Das war echte Arbeit.','Geschafft. Du bist weiter als vorhin.','Sauber. Kurz durchatmen, dann weiter.'];
+const ENERGY={1:{l:'Leer',d:10,t:'Heute reicht das Minimum: drei kurze Sprints à 10 Minuten. Fang mit dem leichtesten Thema an.'},
+ 2:{l:'Okay',d:25,t:'Normales Programm: Sprints à 25 Minuten, nach vier Sprints eine längere Pause.'},
+ 3:{l:'Gut',d:45,t:'Nutz den Tag: 45-Minuten-Sprints, das schwierigste Thema zuerst.'}};
+
+/* Level nach Fokusstunden */
+const LEVELS=[[0,'Ersti'],[1,'Skriptöffner'],[5,'Karteikartenheld'],[10,'Zusammenfassungsprofi'],[25,'Bibliotheksstammgast'],[50,'Lernmaschine'],[100,'Prüfungsbezwinger'],[175,'Wissensriese'],[250,'Marathonlerner'],[350,'Endspurtler'],[500,'Abschlussreif'],[700,'Legende']];
+function levelInfo(){const h=istMin(()=>true)/60;let i=0;LEVELS.forEach((l,j)=>{if(h>=l[0])i=j});const cur=LEVELS[i],nx=LEVELS[i+1];
+  return {n:i+1,name:cur[1],h,from:cur[0],to:nx?nx[0]:null,pc:nx?Math.min(100,(h-cur[0])/(nx[0]-cur[0])*100):100}}
+
+/* Abzeichen */
+function BADGES(){const h=istMin(()=>true)/60,sp=S.sessions.filter(x=>!x.manual).length,st=bestStreak(),passed=S.exams.filter(e=>e.done).length,mast=S.errors.filter(e=>e.mastered).length;
+  const early=S.sessions.some(x=>x.at&&!x.manual&&new Date(x.at-x.min*60000).getHours()<8),late=S.sessions.some(x=>x.at&&!x.manual&&new Date(x.at).getHours()>=22);
+  const weekGoal=(()=>{const f=planFirst();if(!f)return false;let k=weekStart(f);for(let i=0;i<60&&k<=today();i++){const w=weekStats(k);if(w.soll>0&&w.ist>=w.soll&&addDays(k,6)<today())return true;k=addDays(k,7)}return false})();
+  return [
+  ['h1','Erste Stunde','1 Stunde Fokus',h>=1],['h10','Zweistellig','10 Stunden Fokus',h>=10],['h50','Halbes Hundert','50 Stunden Fokus',h>=50],['h100','Hunderter','100 Stunden Fokus',h>=100],['h250','Ausdauer','250 Stunden Fokus',h>=250],['h500','Fünfhundert','500 Stunden Fokus',h>=500],
+  ['s3','Dranbleiber','3 Tage in Folge',st>=3],['s7','Wochenserie','7 Tage in Folge',st>=7],['s14','Zwei Wochen','14 Tage in Folge',st>=14],['s30','Monatsserie','30 Tage in Folge',st>=30],
+  ['p10','Zehn Sprints','10 Sprints',sp>=10],['p50','Sprinter','50 Sprints',sp>=50],['p100','Hundert Sprints','100 Sprints',sp>=100],
+  ['k1','Generalprobe','1 Klausursimulation',S.sims>=1],['k3','Prüfungsroutine','3 Klausursimulationen',S.sims>=3],['k10','Simulationsprofi','10 Klausursimulationen',S.sims>=10],
+  ['f10','Fehlerjäger','10 Fehler gemeistert',mast>=10],['f50','Lückenlos','50 Fehler gemeistert',mast>=50],
+  ['e1','Erste geschafft','1 Prüfung bestanden',passed>=1],['eh','Halbzeit','Hälfte der Prüfungen',S.exams.length>1&&passed>=Math.ceil(S.exams.length/2)],['ea','Fertig!','Alle Prüfungen bestanden',S.exams.length>0&&passed===S.exams.length],
+  ['wk','Wochenziel','Wochen-Soll erfüllt',weekGoal],['eb','Frühaufsteher','Sprint vor 8 Uhr',early],['no','Nachteule','Sprint nach 22 Uhr',late]]}
+function checkBadges(){checkRewards();const nw=[];BADGES().forEach(b=>{if(b[3]&&!S.badges[b[0]]){S.badges[b[0]]=today();nw.push(b)}});
+  if(nw.length){save();setTimeout(()=>{confetti();queueModal('<div class="badgebig">★</div><h3>'+(nw.length>1?nw.length+' neue Abzeichen!':'Neues Abzeichen!')+'</h3>'+nw.map(b=>'<p><b>'+esc(b[1])+'</b><br><span class="hint">'+esc(b[2])+'</span></p>').join('')+'<div class="row"><button class="btn-main" data-act="close">Weiter</button></div>')},400)}}
+
+const DONE=(PRESET.done&&PRESET.done.length)?PRESET.done.concat(DONE0.slice(0,2)):DONE0;
+if(PRESET.sos&&PRESET.sos.length)RESCUE.unshift(...PRESET.sos);
+
+let tab=(location.hash||'').slice(1);if(!['heute','timer','plan','ziel','setup','pday'].includes(tab))tab='heute';
+let editWhy=!S.why,arm=null,calItems=[],review=null,setupSec=null;
+
+function render(){const v=document.getElementById('view');
+  if(!S.onboarded){v.innerHTML=vOnboard();document.querySelector('nav').style.display='none';return}
+  document.querySelector('nav').style.display='';
+  v.innerHTML=(tab==='heute'?vHeute():tab==='timer'?vTimer():tab==='plan'?vPlan():tab==='setup'?vSetup():tab==='pday'?vPday():vZiel())+'<button class="gear" data-act="gotoSetup" aria-label="Einstellungen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>';
+  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===tab));
+  if(tab==='timer'){updTimer();updKl()}}
+function vPday(){const e=active();if(!e||!exDate(e))return '<h1>Prüfungstag</h1><p class="sub">Für diese Prüfung ist noch kein Termin eingetragen.</p>';return '<h1>Prüfungstag</h1><p class="sub">So sieht „Heute“ am Tag der Prüfung aus.</p>'+examDayHTML(e,true)+'<div class="row"><button data-tab="plan">Zurück zum Plan</button></div>'}
+function go(t){tab=t;arm=null;try{history.replaceState(null,'','#'+t)}catch(e){}render();window.scrollTo(0,0)}
+
+let actx=null;
+function unlockAudio(){try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==='suspended')actx.resume()}catch(e){}}
+function chime(){try{if(actx)[0,0.18,0.36].forEach((t,i)=>{const o=actx.createOscillator(),g=actx.createGain();o.type='sine';o.frequency.value=[660,880,1320][i];g.gain.setValueAtTime(0.0001,actx.currentTime+t);g.gain.exponentialRampToValueAtTime(0.3,actx.currentTime+t+0.02);g.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+t+0.5);o.connect(g).connect(actx.destination);o.start(actx.currentTime+t);o.stop(actx.currentTime+t+0.55)})}catch(e){}
+  try{navigator.vibrate&&navigator.vibrate([200,100,200])}catch(e){}}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('show'),2200)}
+const mq=[];
+function modalOpen(){return document.getElementById('modal').classList.contains('open')}
+function openModal(h){document.getElementById('sheet').innerHTML=h;document.getElementById('modal').classList.add('open')}
+function queueModal(h){if(modalOpen())mq.push(h);else openModal(h)}
+function closeModal(){document.getElementById('modal').classList.remove('open');if(mq.length)setTimeout(()=>openModal(mq.shift()),250)}
+function confetti(){try{const c=document.createElement('canvas');c.className='confetti';document.body.appendChild(c);const W=c.width=innerWidth*2,H=c.height=innerHeight*2;const x=c.getContext('2d');
+  const cols=['#46dcff','#8c5aff','#ff46aa','#ffbe46','#ffffff'];const P=Array.from({length:160},()=>({x:W/2,y:H*.45,vx:(Math.random()-.5)*36,vy:-Math.random()*44-10,r:Math.random()*10+6,c:cols[Math.random()*5|0],a:Math.random()*6,va:(Math.random()-.5)*.4}));
+  let t=0;(function f(){x.clearRect(0,0,W,H);P.forEach(p=>{p.vy+=1.1;p.vx*=.985;p.x+=p.vx;p.y+=p.vy;p.a+=p.va;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;x.fillRect(-p.r/2,-p.r/4,p.r,p.r/2);x.restore()});if(++t<150)requestAnimationFrame(f);else c.remove()})()}catch(e){}}
+
+const R=110,C=2*Math.PI*R;
+const GRAD_DEF='<defs><linearGradient id="ng" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#46dcff"/><stop offset=".4" stop-color="#8c5aff"/><stop offset=".75" stop-color="#ff46aa"/><stop offset="1" stop-color="#ffbe46"/></linearGradient></defs>';
+function ringSVG(p,inner,sz){sz=sz||132;const r=54,c=2*Math.PI*r;return '<svg class="pring" width="'+sz+'" height="'+sz+'" viewBox="0 0 132 132">'+GRAD_DEF+'<circle cx="66" cy="66" r="'+r+'" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="11"/><circle cx="66" cy="66" r="'+r+'" fill="none" stroke="url(#ng)" stroke-width="11" stroke-linecap="round" stroke-dasharray="'+c+'" stroke-dashoffset="'+(c*(1-Math.max(.02,p/100)))+'" transform="rotate(-90 66 66)" class="glowc"/>'+inner+'</svg>'}
+function topicRow(t,from){const sz=['','S','M','L'][t.size];
+  return '<div class="topic s'+t.status+'"><button class="st s'+t.status+'" data-act="cyc" data-id="'+t.id+'" aria-label="Status">.</button><div class="nm" data-act="editTopic" data-id="'+t.id+'">'+(from?'<span class="from">'+esc(from)+'</span>':'')+esc(t.name)+'</div><button class="chip" data-act="size" data-id="'+t.id+'">'+sz+'</button><button class="del" data-act="del" data-id="'+t.id+'" aria-label="Löschen">×</button></div>'}
+function statsHTML(){return '<div class="card"><div class="stats"><div class="stat"><b>'+fmtH(todayMin())+'</b><span>heute</span></div><div class="stat"><b>'+todayCount()+'</b><span>Sprints heute</span></div><div class="stat"><b>'+streak()+'</b><span>Tage in Folge</span></div></div></div>'}
+function subjChips(act,sel,list){return '<div class="chips wrap">'+(list||subjChoices()).map(c=>'<button data-act="'+act+'" data-s="'+esc(c)+'" class="'+((Array.isArray(sel)?sel.includes(c):c===sel)?'on':'')+'">'+esc(subjShort(c))+'</button>').join('')+'</div>'}
+function field(label,inner){return '<div class="field"><label>'+label+'</label>'+inner+'</div>'}
+
+function goalLine(){const n=S.exams.length;if(!n&&!S.goalDate)return '';const left=S.exams.filter(e=>!e.done).length;const g=goalD();
+  const days=g?Math.max(0,daysBetween(today(),S.goalDate)):null;
+  return '<div class="goalline"><div class="gl-t"><span>'+(g?'Abschluss in <b>'+days+'</b> Tagen':'<button class="link" data-act="gotoSetupProfil" style="padding:0">Zieldatum festlegen</button>')+'</span><span><b>'+(n-left)+'</b> / '+n+' Prüfungen</span></div>'+(n?'<div class="segs">'+S.exams.slice().sort((a,b)=>(b.done-a.done)||(a.date||'9999').localeCompare(b.date||'9999')).map(x=>'<i class="'+(x.done?'on':'')+'"></i>').join('')+'</div>':'')+'</div>'}
+function heroHTML(){const e=nextExam();
+  if(!e)return '<div class="eyebrow">Los geht\'s</div><div class="hname">Noch keine Prüfung</div><p class="msg" style="margin-bottom:12px">Leg deine erste Prüfung an, dann startet der Countdown.</p><div class="row"><button data-act="addExam">Prüfung anlegen</button></div>'+goalLine();
+  const d=exDate(e);const p=progress(e);
+  if(!d)return '<div class="eyebrow">Nächste Prüfung</div><div class="hname">'+esc(e.name)+'</div><p class="msg">Noch kein Termin. <button class="link" data-act="open" data-e="'+e.id+'">Termin eintragen</button></p>'+goalLine();
+  const ms=d-Date.now();const dd=Math.max(0,Math.floor(ms/864e5)),h=Math.max(0,Math.floor(ms%864e5/36e5)),m=Math.max(0,Math.floor(ms%36e5/6e4));
+  return '<div class="herorow">'+ringSVG(p,'<text x="66" y="68" text-anchor="middle" class="rnum">'+dd+'</text><text x="66" y="90" text-anchor="middle" class="rlbl">'+(dd===1?'TAG':'TAGE')+'</text>')+
+   '<div class="hinfo"><div class="eyebrow">Nächste Prüfung</div><div class="hname">'+esc(e.name)+'</div><div class="hdate">'+fmtEx(e)+(e.attempt>1?' · '+e.attempt+'. Antritt':'')+'</div><div class="hmeta"><span>'+(ms>0?'+ '+h+' h '+pad(m)+' min':'heute')+'</span><span>'+p+' % Stoff</span></div></div></div>'+goalLine()}
+let antriebOpen=false;
+const HOME_CARDS=[['dl','Fristen-Warnung'],['today','Heute-Karte mit Soll und Start'],['energy','Energie-Check'],['err','Fällige Fehler'],['week','Wochenrückblick am Sonntag und Montag'],['topics','Themen für heute'],['antrieb','Spruch, Warum und Wenn-dann'],['slim','Level und Statistik']];
+function homeOn(k){return !S.cfg.home||S.cfg.home[k]!==false}
+function todayCardHTML(){const tk=today();const p=planOf(tk);const soll=sollDay(tk);const ist=istMin(x=>x.date===tk);const en=S.energy&&S.energy.date===tk?S.energy.level:0;
+  let o='<div class="card today"><div class="dayh"><b>Heute</b>'+(hasPlan()?'<button class="link" data-act="editDay" data-k="'+tk+'">anpassen</button>':'')+'</div>';
+  if(!hasPlan())o+='<p class="msg" style="margin:4px 0 2px">Noch kein Lernkalender. <button class="link" data-act="genPlan" style="padding:0">Jetzt erstellen</button>, dann siehst du hier dein Tagessoll.</p>';
+  else if(p&&soll>0){const pc=Math.min(100,Math.round(ist/soll*100));
+    o+='<div class="planhead" data-act="editDay" data-k="'+tk+'"><span class="planh">'+fmtH(soll)+'</span><span class="plans">'+esc(subjNames(p.s))+'</span></div>'+(p.n?'<p class="hint" style="margin:0 0 6px">'+esc(p.n)+'</p>':'')+
+      '<div class="bar"><i style="width:'+pc+'%"></i></div><div class="gl-t"><span><b>'+fmtH(ist)+'</b> geschafft</span><span>'+(ist>=soll?'<span class="ok">Tagesziel erreicht</span>':'noch '+fmtH(soll-ist))+'</span></div>'}
+  else o+='<p class="msg" style="margin:4px 0" data-act="editDay" data-k="'+tk+'">'+(p&&p.s&&p.s.length?esc(subjNames(p.s))+(p.n?': '+esc(p.n):''):'Laut Plan frei'+(p&&p.n?' ('+esc(p.n)+')':'')+'. Alles, was du machst, ist Bonus.')+'</p>'+(ist?'<div class="gl-t"><span>Heute: <b>'+fmtH(ist)+'</b></span></div>':'');
+  if(homeOn('energy'))o+='<div class="enrow"><span>Energie</span><div class="seg mini">'+[1,2,3].map(l=>'<button data-act="energy" data-l="'+l+'" class="'+(en===l?'on':'')+'">'+ENERGY[l].l+'</button>').join('')+'</div></div>'+(en?'<p class="hint" style="margin:6px 0 0">'+ENERGY[en].t+'</p>':'');
+  o+='<button class="btn-main" data-act="go" style="margin-top:14px">'+(klBusy()?'Zur laufenden Klausur':busy()?'Zum laufenden Sprint':'Sprint starten · '+S.timer.dur+' min')+'</button>';
+  o+='<div class="row" style="margin-top:8px"><button class="btn-soft warm" data-act="sos">Keine Lust?</button><button class="btn-soft" data-act="addTime">+ Zeit nachtragen</button></div>';
+  if(hasPlan()){const k=konto();o+='<div class="konto '+(k>=0?'plus':'minus')+'"><span>Stundenkonto</span><b>'+kontoTxt(k)+'</b></div>'}
+  return o+'</div>'}
+function antriebHTML(){let o='<div class="card quote"><div class="qmark">“</div><p class="qtext" data-act="nextQuote">'+esc(msgOfDay())+'</p><div class="qhint">Tippen für den nächsten</div>';
+  o+='<button class="morebtn" data-act="antrieb">'+(antriebOpen?'− ':'+ ')+(S.why?'Mein Warum und Wenn-dann-Plan':'Mein Warum festlegen')+'</button>';
+  if(antriebOpen){o+='<div class="antrieb"><div class="sublbl">Mein Warum</div>';
+    if(editWhy)o+='<textarea id="whyIn" rows="3" placeholder="Warum machst du das? Was liebst du an deinem Fach? Wer willst du nach der letzten Prüfung sein?">'+esc(S.why)+'</textarea><div class="row" style="margin-top:8px"><button data-act="saveWhy">Speichern</button></div>';
+    else o+='<p class="why">'+esc(S.why)+'</p><button class="link" data-act="editWhy">bearbeiten</button>';
+    o+='<div class="sublbl" style="margin-top:16px">Mein Wenn-dann-Plan</div>'+(S.ifthen&&!S.editIf?'<p class="why" style="font-size:17px">'+esc(S.ifthen)+'</p><button class="link" data-act="editIf">bearbeiten</button>':'<textarea id="ifIn" rows="2" placeholder="Wenn ich mich nach dem Frühstück an den Schreibtisch setze, dann starte ich sofort einen Sprint.">'+esc(S.ifthen)+'</textarea><div class="row" style="margin-top:8px"><button data-act="saveIf">Speichern</button></div><p class="hint">Ein konkreter Wenn-dann-Plan macht es nachweislich wahrscheinlicher, dass du wirklich anfängst.</p>')+'</div>'}
+  else if(S.why)o+='<p class="whysmall">'+esc(S.why)+'</p>';
+  return o+'</div>'}
+function welcomeHTML(){const w=S.welcome;return '<div class="card welcome"><div class="eyebrow">'+(w.from?'Eine Nachricht von '+esc(w.from):'Eine Nachricht für dich')+'</div><p class="wtext">'+esc(w.text)+'</p><div class="row" style="margin-top:12px"><button class="btn-main" data-act="welcomeSeen" style="font-size:16px;padding:13px">Danke!</button></div></div>'}
+function slimHTML(){const L=levelInfo();return '<button class="slim" data-act="gotoErfolge"><span class="lvlmini">'+L.n+'</span><span class="slimt"><b>'+esc(L.name)+'</b><small>'+fmtH(todayMin())+' heute · '+todayCount()+' Sprints · Serie '+streak()+'</small></span><span class="go">›</span></button>'}
+function levelCardHTML(){const L=levelInfo();return '<div class="card lvl"><div class="lvlrow"><div class="lvlbadge">'+L.n+'</div><div style="flex:1;min-width:0"><div class="eyebrow">Level '+L.n+'</div><div class="lvlname">'+esc(L.name)+'</div><div class="minibar" style="margin-top:8px"><i style="width:'+L.pc+'%"></i></div><div class="hint" style="margin-top:6px">'+(L.to!=null?fmtH(L.h*60)+' Fokus · nächstes Level bei '+L.to+' Std.':'Höchstes Level erreicht')+'</div></div></div></div>'}
+function weekMini(){const ws=weekStart(today());const d=new Date();const show=(d.getDay()===0&&d.getHours()>=17)||d.getDay()===1;if(!show)return '';
+  const st=d.getDay()===1?addDays(ws,-7):ws;const w=weekStats(st);
+  return '<div class="card ask"><h2>Dein Wochenrückblick</h2><p class="msg"><b>'+fmtH(w.ist)+'</b> gelernt'+(w.soll?' von '+fmtH(w.soll)+' geplant':'')+', '+w.sprints+' Sprints'+(w.sims?', '+w.sims+' Simulationen':'')+'.</p><div class="row" style="margin-top:10px"><button data-act="gotoWeek">Ganze Woche ansehen</button></div></div>'}
+
+function vHeute(){const tk=today();const h=new Date().getHours();const A=active();
+  const greet=h<5?'Gute Nacht':h<11?'Guten Morgen':h<17?'Hallo':h<22?'Guten Abend':'Gute Nacht';const nm=S.profile.name;
+  let o='<div class="brand">ENDSPURT</div><h1>'+greet+(nm?', '+esc(nm):'')+'</h1><p class="sub">'+fmtDay(tk)+(A?' · Fokus: '+esc(A.name):'')+'</p>';
+  if(S.welcome&&S.welcome.text&&!S.welcome.seen)o+=welcomeHTML();
+  if(S.cfg.night&&h>=1&&h<5)o+='<div class="card night"><h2>Es ist spät</h2><p class="msg">Schlaf festigt, was du heute gelernt hast.</p></div>';
+  S.exams.filter(e=>!e.done&&exDate(e)&&exDate(e)<new Date(Date.now()-4*36e5)&&!e.asked).forEach(e=>{
+    o+='<div class="card ask"><h2>'+esc(e.name)+'</h2><p class="msg" style="margin-bottom:12px">Die Prüfung ist vorbei. Wie ist es gelaufen?</p><div class="row"><button class="btn-main" style="font-size:16px;padding:13px" data-act="pass" data-e="'+e.id+'">Bestanden</button><button data-act="fail" data-e="'+e.id+'">Nicht bestanden</button></div><div class="row" style="margin-top:6px"><button class="btn-ghost" data-act="waitRes" data-e="'+e.id+'">Ergebnis noch offen</button></div></div>'});
+  const xd=examTodayFor(),xe=examTomorrow();if(xd)o+=examDayHTML(xd,false);else if(xe)o+=examEveHTML(xe);
+  if(homeOn('dl'))o+=deadlineWarnHTML();
+  o+='<div class="card hero" id="cd">'+heroHTML()+'</div>';
+  if(homeOn('today'))o+=todayCardHTML();else o+='<button class="btn-main" data-act="go" style="margin-bottom:14px">Sprint starten</button>';
+  const due=errDue().length;if(due&&homeOn('err'))o+='<button class="slim errslim" data-act="review"><span class="lvlmini warm">'+due+'</span><span class="slimt"><b>'+(due===1?'Lücke':'Lücken')+' zur Wiederholung fällig</b><small>Dauert meist nur ein paar Minuten</small></span><span class="go">›</span></button>';
+  if(homeOn('week'))o+=weekMini();
+  if(homeOn('topics')){const open=S.exams.filter(e=>!e.done);const multi=open.filter(e=>e.topics.length).length>1;
+    const overdue=[],todays=[];open.forEach(e=>e.topics.forEach(t=>{if(t.status===0&&t.day&&t.day<tk)overdue.push([e,t]);else if(t.day===tk)todays.push([e,t])}));
+    const rv=open.filter(e=>reviewDay(e)===tk);
+    if(overdue.length||todays.length||rv.length){o+='<div class="card"><h2>Themen für heute</h2>';
+      if(overdue.length)o+='<div class="dayh"><b>Nachholen<span class="tag w">'+overdue.length+'</span></b><button class="link" data-act="redistAll">neu verteilen</button></div>'+overdue.map(x=>topicRow(x[1],multi?x[0].name:'')).join('');
+      rv.forEach(e=>{o+='<p class="msg" style="margin:8px 0">Wiederholungstag für '+esc(e.name)+': alles einmal aus dem Kopf, eine Probeklausur unter Zeitdruck.</p>'});
+      if(todays.length){if(overdue.length)o+='<div class="dayh" style="margin-top:12px"><b>Heute</b></div>';o+=todays.map(x=>topicRow(x[1],multi?x[0].name:'')).join('')}
+      o+='</div>'}}
+  if(homeOn('antrieb'))o+=antriebHTML();
+  if(homeOn('slim'))o+=slimHTML();
+  return o}
+
+function fmtT(ms){const s=Math.ceil(ms/1000);return pad(Math.floor(s/60))+':'+pad(s%60)}
+function fmtHMS(ms){const s=Math.ceil(ms/1000);const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return (h?h+':'+pad(m):m)+':'+pad(x)}
+function tLeft(){const t=S.timer;if(t.endAt)return Math.max(0,t.endAt-Date.now());if(t.left!=null)return t.left;return (t.isBreak?S.cfg.brk:t.dur)*60000}
+function busy(){return !!(S.timer.endAt||S.timer.left!=null)}
+function klBusy(){return !!(S.kl.endAt||S.kl.left!=null)}
+function modeSeg(){return '<div class="row seg" style="margin:-6px 0 18px">'+[['sprint','Sprint'],['klausur','Klausur']].map(m=>'<button data-act="tmode" data-m="'+m[0]+'" class="'+(S.tmode===m[0]?'on':'')+'">'+m[1]+'</button>').join('')+'</div>'}
+function ringBox(id,disp,sub,stroke,cls){return '<div class="ringwrap"><svg class="ring" viewBox="0 0 250 250">'+GRAD_DEF.replace('id="ng"','id="g'+id+'"')+'<circle cx="125" cy="125" r="'+R+'" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="12"/><circle id="'+id+'" cx="125" cy="125" r="'+R+'" fill="none" stroke="'+(stroke||'url(#g'+id+')')+'" class="glowc" stroke-width="12" stroke-linecap="round" stroke-dasharray="'+C+'" stroke-dashoffset="0" transform="rotate(-90 125 125)"/></svg><div class="tdisp '+(cls||'')+'" id="'+id+'d">'+disp+'</div><div class="tsub" id="'+id+'s">'+sub+'</div></div>'}
+function subjPicker(){return '<div class="sublbl">Fach</div><div class="chips" style="margin:0 -20px 14px;padding:2px 20px">'+subjChoices().map(c=>'<button data-act="setSubj" data-s="'+esc(c)+'" class="'+(c===curSubj()?'on':'')+'">'+esc(subjShort(c))+'</button>').join('')+'</div>'}
+
+function vTimer(){if(S.tmode==='klausur')return vKlausur();const t=S.timer;const run=!!t.endAt;const paused=!run&&t.left!=null;
+  let o='<h1>'+(t.isBreak?'Pause':'Fokus-Sprint')+'</h1><p class="sub">'+(t.isBreak?esc(PRESET.pause||'Weg vom Schreibtisch. Kein Handy-Scrollen.'):'Handy umdrehen, eine Sache, bis der Timer läutet.')+'</p>'+(t.isBreak?'':modeSeg());
+  o+='<div class="card">'+ringBox('arc',fmtT(tLeft()),run?'läuft':paused?'pausiert':'bereit',t.isBreak?'#5ef0b0':null);
+  if(!t.isBreak&&(run||paused))o+='<button class="distbtn" data-act="dist">Abgelenkt <b id="distn">'+(t.dist||0)+'</b></button>';
+  if(!t.isBreak)o+=subjPicker();
+  if(!run&&!paused&&!t.isBreak){const ds=S.cfg.sprints.slice();if(!ds.includes(t.dur))ds.push(t.dur);ds.sort((a,b)=>a-b);
+    o+='<div class="row seg" style="margin-bottom:12px">'+ds.map(m=>'<button data-act="dur" data-m="'+m+'" class="'+(t.dur===m?'on':'')+'">'+m+' min</button>').join('')+'<button data-act="durCustom" aria-label="Eigene Dauer">…</button></div>'}
+  o+='<div class="row">'+(run?'<button data-act="pause">Pause</button>':'<button class="btn-main" style="font-size:16px;padding:13px" data-act="start">'+(paused?'Weiter':'Start')+'</button>')+((run||paused)?'<button class="btn-ghost" data-act="reset">'+(t.isBreak?'Pause beenden':'Abbrechen')+'</button>':'')+'</div></div>';
+  o+='<details class="card tip"><summary>So holst du das Meiste aus einem Sprint</summary><p class="msg">Vorher ein konkretes Ziel festlegen, zum Beispiel „Kapitel gliedern“ oder „zehn Fragen aus dem Kopf“. Währenddessen nichts nachschauen, was nicht dazugehört. Danach kurz notieren, was du geschafft hast. Das landet in deiner Erfolgsliste.</p></details>';
+  if(!t.isBreak)o+=soundCardHTML(false);
+  return o+statsHTML()}
+function updTimer(){const td=document.getElementById('arcd');if(!td)return;const ms=tLeft();td.textContent=fmtT(ms);
+  const tot=(S.timer.isBreak?S.cfg.brk:S.timer.dur)*60000;const a=document.getElementById('arc');if(a)a.setAttribute('stroke-dashoffset',String(C*(1-ms/tot)))}
+function startTimer(){unlockAudio();const t=S.timer;if(t.left==null)t.dist=0;t.endAt=Date.now()+tLeft();t.left=null;t.startedAt=t.startedAt||Date.now();save();if(!t.isBreak)soundStart();else soundStop()}
+function finish(){const t=S.timer;const wasBreak=t.isBreak;t.endAt=null;t.left=null;t.isBreak=false;soundStop();
+  if(!wasBreak)S.sessions.push({date:today(),min:t.dur,at:Date.now(),examId:S.activeId,subj:curSubj(),dist:t.dist||0});t.dist=0;t.startedAt=null;save();chime();
+  if(wasBreak)openModal('<h3>Pause vorbei</h3><p>Zurück an den Schreibtisch. Der nächste Sprint ist bereit.</p><div class="row"><button class="btn-main" data-act="mStart">Nächster Sprint</button></div><div class="row" style="margin-top:8px"><button class="btn-ghost" data-act="close">Später</button></div>');
+  else{const n=todayCount();openModal('<h3>'+rnd(DONE)+'</h3><p>'+n+'. Sprint heute · '+fmtH(todayMin())+' Fokus.'+(n%4===0?' Vier Sprints: Zeit für eine längere Pause von 20 bis 30 Minuten.':'')+'</p><input type="text" id="winIn" placeholder="Was hast du geschafft? (optional)"><div class="row" style="margin-top:12px"><button class="btn-main" data-act="mBreak" style="font-size:16px">'+S.cfg.brk+' min Pause</button></div><div class="row" style="margin-top:8px"><button data-act="mStart">Gleich weiter</button><button data-act="errAdd">Lücke notieren</button></div><div class="row" style="margin-top:4px"><button class="btn-ghost" data-act="close">Fertig für jetzt</button></div>')}
+  render();checkBadges()}
+function saveWin(){const i=document.getElementById('winIn');if(i&&i.value.trim()){S.wins.push({date:today(),text:i.value.trim(),examId:S.activeId});i.value='';save()}}
+
+/* Klausurmodus */
+function phases(dur){const P=S.cfg.phases;const tot=P.reduce((a,p)=>a+(+p[2]||0),0)||100;let st=0;
+  return P.map((p,j)=>{const m=j===P.length-1?dur-st:Math.round(dur*(+p[2]||0)/tot);const o={n:p[0],sh:p[1]||p[0],min:m,start:st};st+=m;return o})}
+function klLeft(){const k=S.kl;if(k.endAt)return Math.max(0,k.endAt-Date.now());if(k.left!=null)return k.left;return k.dur*60000}
+function klPhase(){const el=(S.kl.dur*60000-klLeft())/60000;const ps=phases(S.kl.dur);let i=0;ps.forEach((p,j)=>{if(el>=p.start)i=j});return i}
+function vKlausur(){const k=S.kl;const run=!!k.endAt,paused=!run&&k.left!=null;const ps=phases(k.dur);const i=klPhase();
+  let o='<h1>Klausurmodus</h1><p class="sub">Wie in der echten Prüfung: Handy in den Flugmodus, nur erlaubte Hilfsmittel.</p>'+modeSeg();
+  o+='<div class="card">'+ringBox('karc',fmtHMS(klLeft()),run||paused?esc(ps[i].n):'bereit',null,'kdisp');
+  o+='<div class="phbar">'+ps.map((p,j)=>'<div class="ph'+(j<i&&(run||paused)?' done':'')+(j===i&&(run||paused)?' cur':'')+'" style="flex:'+Math.max(1,p.min)+'"><i id="php'+j+'"></i></div>').join('')+'</div>';
+  o+='<div class="phlbl">'+ps.map((p,j)=>'<div class="'+(j===i&&(run||paused)?'cur':'')+'"><b>'+esc(p.sh)+'</b><span>'+p.min+' min</span></div>').join('')+'</div>';
+  if(run||paused)o+='<p class="hint" style="text-align:center;margin:10px 0 14px" id="kpl"></p><button class="distbtn" data-act="kdist">Abgelenkt <b id="kdistn">'+(k.dist||0)+'</b></button>';
+  if(!run&&!paused){const ds=S.cfg.klDurs.slice();if(!ds.includes(k.dur))ds.push(k.dur);ds.sort((a,b)=>b-a);
+    o+='<div class="sublbl" style="margin-top:16px">Dauer</div><div class="row seg" style="margin-bottom:12px">'+ds.map(d=>'<button data-act="kdur" data-m="'+d+'" class="'+(k.dur===d?'on':'')+'">'+(d%60===0?d/60+' Std.':d+' min')+'</button>').join('')+'<button data-act="kdurCustom" aria-label="Eigene Dauer">…</button></div>'+subjPicker()}
+  o+='<div class="row">'+(run?'<button data-act="kpause">Pause</button>':'<button class="btn-main" style="font-size:16px;padding:13px" data-act="kstart">'+(paused?'Weiter':'Klausur starten')+'</button>')+((run||paused)?'<button class="btn-ghost" data-act="kreset">Abbrechen</button>':'')+'</div>';
+  if(!run&&!paused)o+='<p class="hint" style="text-align:center">Phasen und Dauer änderst du in den Einstellungen.</p>';
+  o+='</div>'+soundCardHTML(true)+'<details class="card tip"><summary>So holst du am meisten aus einer Simulation</summary><p class="msg">Schreib die Simulation möglichst zur gleichen Uhrzeit wie die echte Prüfung. Halte dich an die Phasen, auch wenn du noch nicht fertig bist: In der Prüfung zählt, dass du alle Fragen beantwortest. Danach sofort die Lücken in die Fehlerliste, solange du dich erinnerst.</p></details>';
+  o+='<div class="card"><div class="stats"><div class="stat"><b>'+S.sims+'</b><span>Simulationen</span></div><div class="stat"><b>'+fmtH(istMin(x=>x.klausur))+'</b><span>unter Prüfungs­bedingungen</span></div><div class="stat"><b>'+S.errors.length+'</b><span>Lücken notiert</span></div></div></div>';
+  return o}
+function updKl(){const kd=document.getElementById('karcd');if(!kd)return;const ms=klLeft();kd.textContent=fmtHMS(ms);const a=document.getElementById('karc');if(a)a.setAttribute('stroke-dashoffset',String(C*(1-ms/(S.kl.dur*60000))));
+  const ps=phases(S.kl.dur);const el=(S.kl.dur*60000-ms)/60000;ps.forEach((p,j)=>{const b=document.getElementById('php'+j);if(b)b.style.width=Math.max(0,Math.min(100,(el-p.start)/Math.max(1,p.min)*100))+'%'});
+  const i=klPhase();const kpl=document.getElementById('kpl');if(kpl){const end=(ps[i].start+ps[i].min)*60000-(S.kl.dur*60000-ms);kpl.textContent=ps[i].n+' endet in '+fmtHMS(Math.max(0,end))+(ps[i+1]?', dann '+ps[i+1].n:'')}
+  const st=document.getElementById('karcs');if(st&&klBusy())st.textContent=ps[i].n}
+function klFinish(){const k=S.kl;const min=k.dur;k.endAt=null;k.left=null;k.ph=0;soundStop();S.sims++;S.sessions.push({date:today(),min,at:Date.now(),examId:S.activeId,subj:curSubj(),klausur:true,dist:k.dist||0});k.dist=0;S.wins.push({date:today(),text:'Klausursimulation ('+fmtH(min)+') durchgezogen',examId:S.activeId});save();chime();
+  openModal('<h3>Klausur geschafft!</h3><p>'+fmtH(min)+' unter Prüfungsbedingungen. Das ist Simulation Nr. '+S.sims+'. Notier jetzt gleich, wo es gehakt hat, solange es frisch ist.</p><div class="row"><button class="btn-main" data-act="errAdd" style="font-size:16px">Lücken notieren</button></div><div class="row" style="margin-top:8px"><button class="btn-ghost" data-act="close">Später</button></div>');render();checkBadges()}
+
+function vPlan(){const e=active(),tk=today();
+  let o='<h1>Lernplan</h1>';
+  if(!e){o+='<p class="sub">Noch keine Prüfung angelegt.</p><div class="card"><p class="msg">Leg deine erste Prüfung an. Danach kannst du Themen eintragen, die automatisch auf die Tage bis zur Prüfung verteilt werden.</p><div class="row" style="margin-top:12px"><button class="btn-main" data-act="addExam" style="font-size:16px">Prüfung anlegen</button></div></div>'+calListHTML()+errCardHTML(null);return o}
+  const days=learnDays(e),rv=reviewDay(e),p=progress(e);
+  o+='<p class="sub">'+esc(e.name)+(e.done?' · bestanden':'')+'</p>';
+  o+='<div class="chips">'+S.exams.filter(x=>!x.done||x.id===e.id).sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999')).map(x=>'<button data-act="setActive" data-e="'+x.id+'" class="'+(x.id===e.id?'on':'')+'">'+esc(x.name)+'</button>').join('')+'<button data-act="addExam">+ Neu</button></div>';
+  o+=examSumHTML(e);
+  o+='<div class="card"><div class="dayh" style="margin-bottom:6px"><b>Themen</b><button class="link" data-act="topAddOpen">+ hinzufügen</button></div>';
+  if(!e.topics.length)o+='<p class="msg">Trag die Kapitel deiner Unterlagen ein. Die App verteilt sie auf die Tage bis zur Prüfung und hält den letzten Tag für Wiederholung frei.</p><div class="row" style="margin-top:10px"><button data-act="topAddOpen">Themen eintragen</button></div></div>';
+  else{o+='<div class="bar"><i style="width:'+p+'%"></i></div><div class="gl-t"><span>'+p+' % Stoff</span><button class="link" data-act="redist" style="padding:0">offene neu verteilen</button></div>';
+    const overdue=e.topics.filter(t=>t.status===0&&t.day&&t.day<tk);
+    if(overdue.length)o+='<div class="dayh"><b>Nachholen<span class="tag w">'+overdue.length+'</span></b></div>'+overdue.map(t=>topicRow(t)).join('');
+    days.forEach(k=>{const ts=e.topics.filter(t=>t.day===k);if(!ts.length&&k!==tk)return;
+      o+='<div class="dayh" style="margin-top:14px"><b>'+fmtDay(k)+(k===tk?'<span class="tag">heute</span>':'')+'</b><span>'+ts.length+' '+(ts.length===1?'Thema':'Themen')+'</span></div>'+(ts.length?ts.map(t=>topicRow(t)).join(''):'<p class="hint" style="margin:0">frei</p>')});
+    if(rv)o+='<div class="dayh" style="margin-top:14px"><b>'+fmtDay(rv)+(rv===tk?'<span class="tag">heute</span>':'')+'</b><span>Wiederholung</span></div><p class="hint" style="margin-top:2px">Alles einmal aus dem Kopf, eine Probeklausur unter Zeitdruck.</p>';
+    const rest=e.topics.filter(t=>!(t.status===0&&t.day&&t.day<tk)&&!days.includes(t.day));
+    if(rest.length)o+='<div class="dayh" style="margin-top:14px"><b>'+(exDate(e)?'Erledigt':'Ohne Termin')+'</b></div>'+rest.map(t=>topicRow(t)).join('');
+    o+='<p class="hint">Kreis antippen: offen, gelernt, wiederholt. Namen antippen zum Umbenennen. S/M/L: Umfang.</p></div>'}
+  o+=errCardHTML(e.subj)+calListHTML();
+  return o}
+
+let calMore=false,errAll=false;
+function calListHTML(){const tk=today();let o='<div class="card"><div class="dayh" style="margin-bottom:6px"><b>Lernkalender</b><button class="link" data-act="genPlan">bearbeiten</button></div>';
+  if(!hasPlan())return o+'<p class="msg">Noch leer. Mit „bearbeiten“ legst du fest, wann du welches Fach lernst.</p></div>';
+  for(let i=0;i<(calMore?21:7);i++){const k=addDays(tk,i);const p=planOf(k);const soll=sollDay(k);const ist=istMin(x=>x.date===k);
+    o+='<div class="lkrow'+(k===tk?' now':'')+'" data-act="editDay" data-k="'+k+'"><span class="lkd">'+fmtDay(k)+'</span><span class="lkf">'+(p&&p.s&&p.s.length?esc(subjNames(p.s)):'<span class="muted">frei</span>')+(p&&p.n?'<small>'+esc(p.n)+'</small>':'')+'</span><span class="lkh">'+(soll?(k<=tk&&ist?'<b class="'+(ist>=soll?'ok':'')+'">'+fmtH(ist)+'</b> / ':'')+fmtH(soll):'')+'</span></div>'}
+  return o+'<button class="morebtn" data-act="calMore">'+(calMore?'− weniger':'+ nächste 3 Wochen')+'</button><p class="hint">Tag antippen zum Ändern.</p></div>'}
+
+function errCardHTML(sid){const all=S.errors;const due=errDue().length;const list=(sid?all.filter(x=>x.subj===sid):all).slice().reverse();
+  let o='<div class="card"><div class="dayh" style="margin-bottom:6px"><b>Fehlerliste</b><span>'+due+' fällig · '+all.filter(x=>x.mastered).length+' gemeistert</span></div>';
+  if(!all.length)o+='<p class="hint" style="margin-top:0">Lücken aus Simulationen und Sprints. Die App fragt sie dir zeitversetzt wieder ab, bis sie sitzen, und vor der Prüfung kommt alles noch einmal dran.</p>';
+  o+='<div class="row" style="margin-top:10px"><button data-act="errAdd">+ Lücke notieren</button>'+(due?'<button class="btn-main" style="font-size:15px;padding:12px" data-act="review">'+due+' abfragen</button>':'')+'</div>';
+  if(list.length){o+='<div style="margin-top:10px">'+list.slice(0,errAll?40:4).map(x=>'<div class="erow'+(x.mastered?' done':'')+'"><div class="nm" data-act="errEdit" data-id="'+x.id+'"><span class="from">'+esc(subjShort(x.subj))+' · '+(x.mastered?'gemeistert':x.due<=today()?'fällig':'wieder am '+fmtDay(x.due))+'</span>'+esc(x.q)+'</div><span class="boxes">'+SRS.map((_,j)=>'<i class="'+(j<(x.box||0)?'on':'')+'"></i>').join('')+'</span></div>').join('')+'</div>';
+    if(list.length>4)o+='<button class="morebtn" data-act="errAll">'+(errAll?'− weniger':'+ alle '+list.length+' anzeigen')+'</button>'}
+  return o+'</div>'}
+
+function examFormHTML(e){let o='';
+  o+=field('Name','<input type="text" data-f="name" value="'+esc(e.name)+'">')+field('Termin','<input type="datetime-local" data-f="date" value="'+esc(e.date)+'">');
+  o+='<div class="grid2">'+field('Lernbeginn (optional)','<input type="date" data-f="start" value="'+esc(e.start)+'">')+field('ECTS','<input type="number" inputmode="decimal" step="0.5" min="0" data-f="ects" value="'+(e.ects||'')+'">')+'</div>';
+  o+='<div class="grid2">'+field('Antritt','<input type="number" inputmode="numeric" min="1" max="9" data-f="attempt" value="'+(e.attempt||1)+'">')+field('Fach im Stundenkonto','<button class="selbtn" data-act="pickExamSubj">'+esc(subjShort(e.subj))+' ▾</button>')+'</div>';
+  o+=field('Notiz','<input type="text" data-f="note" value="'+esc(e.note)+'" placeholder="z. B. Hörsaal, Prüfer:in, Anmeldefrist">');
+  o+='<details class="more"><summary>Notfallplan, Prüfungstag, Kalender</summary>'+field('Ersatztermin, falls nicht bestanden','<input type="datetime-local" data-f="fbdate" value="'+esc(e.fb.date)+'">')+field('Was sich dann ändert','<textarea data-f="fbtext" rows="3" placeholder="z. B. Anmeldung bis …, welche Stunden verschoben werden">'+esc(e.fb.text)+'</textarea>')+'<div class="sublbl" style="margin-top:6px">Prüfungstag</div><div class="grid2">'+field('Ort','<input type="text" data-f="place" value="'+esc(e.place)+'" placeholder="Hörsaal, Gebäude">')+field('Losgehen um','<input type="time" data-f="leave" value="'+esc(e.leave)+'">')+'</div><div class="row" style="margin-bottom:12px"><button data-act="pdayPrev" data-e="'+e.id+'">Prüfungstag-Ansicht mit Checkliste</button></div>'+field('Stichwörter für den Kalender-Import (mit Komma getrennt)','<input type="text" data-f="alias" value="'+esc((e.alias||[]).join(', '))+'" placeholder="z. B. Verfassungsrecht, VfR">')+'</details>';
+  o+='<div class="row" style="margin-top:14px"><button class="btn-main" data-act="close" style="font-size:16px">Fertig</button></div><div class="row" style="margin-top:6px"><button class="btn-ghost danger" data-act="delExam" data-e="'+e.id+'">Prüfung entfernen</button></div>';
+  return o}
+function examSumHTML(e){const sj=subj(e.subj);
+  let o='<div class="card exsum"><div class="dayh"><b>Prüfung</b><button class="link" data-act="examEdit">bearbeiten</button></div><div class="hname" style="font-size:21px;margin-top:2px">'+esc(e.name)+'</div>';
+  o+='<div class="hdate">'+fmtEx(e)+(e.ects?' · '+num(e.ects)+' ECTS':'')+(e.attempt>1?' · '+e.attempt+'. Antritt':'')+'</div>';
+  const info=[e.place?'Ort: '+e.place:'',e.note||'',e.start?'Lernbeginn '+fmtLong(e.start):''].filter(Boolean);if(info.length)o+='<p class="hint" style="margin-top:6px">'+info.map(esc).join('<br>')+'</p>';
+  if(e.done)o+='<div class="sublbl" style="margin-top:12px">Note</div><div class="chips wrap">'+[1,2,3,4].map(g=>'<button data-act="grade" data-g="'+g+'" data-e="'+e.id+'" class="'+(e.grade===g?'on':'')+'">'+GRADES[g]+'</button>').join('')+'<button data-act="grade" data-g="0" data-e="'+e.id+'" class="'+(!e.grade?'on':'')+'">Mit Erfolg</button></div>';
+  o+='<div class="row" style="margin-top:12px">'+(e.done?'<button data-act="unpass" data-e="'+e.id+'">Doch nicht bestanden</button>':'<button data-act="pass" data-e="'+e.id+'">Bestanden</button><button data-act="fail" data-e="'+e.id+'">Nicht bestanden</button>')+'</div>';
+  if(!e.done&&exDate(e))o+='<div class="row" style="margin-top:6px"><button class="btn-soft" data-act="pdayPrev" data-e="'+e.id+'">Prüfungstag und Checkliste</button></div>';
+  if(e.hist&&e.hist.length)o+='<p class="hint">Verlauf: '+e.hist.map(h=>esc(h)).join(' · ')+'</p>';
+  return o+'</div>'}
+
+let weekOff=0,zielTab='weg';
+function weekCardHTML(){const st=addDays(weekStart(today()),weekOff*7);const w=weekStats(st);const prev=weekStats(addDays(st,-7));
+  const mx=Math.max(60,...w.days.map(d=>Math.max(d.ist,d.soll)));const best=w.days.reduce((a,d)=>d.ist>a.ist?d:a,w.days[0]);
+  let o='<div class="card" id="week"><div class="dayh" style="margin-bottom:10px"><button class="wkbtn" data-act="wk" data-d="-1">‹</button><b>Woche '+fmtDay(st)+' bis '+fmtDay(addDays(st,6))+'</b><button class="wkbtn" data-act="wk" data-d="1" '+(weekOff>=0?'disabled':'')+'>›</button></div>';
+  o+='<div class="wkchart">'+w.days.map(d=>{const h=Math.round(d.ist/mx*100),s=Math.round(d.soll/mx*100);return '<div class="wkcol'+(d.k===today()?' now':'')+'"><div class="wkbar">'+(d.soll?'<span class="wksoll" style="bottom:'+s+'%"></span>':'')+'<i style="height:'+h+'%"></i></div><small>'+WD[parseKey(d.k).getDay()]+'</small></div>'}).join('')+'</div>';
+  o+='<div class="stats" style="margin-top:12px"><div class="stat"><b>'+fmtH(w.ist)+'</b><span>gelernt'+(w.soll?' von '+fmtH(w.soll):'')+'</span></div><div class="stat"><b>'+w.sprints+'</b><span>Sprints</span></div><div class="stat"><b>'+w.sims+'</b><span>Simulationen</span></div></div>';
+  const diff=w.ist-prev.ist;
+  o+='<p class="hint" style="margin-top:12px">'+(w.ist?'Bester Tag: '+fmtDay(best.k)+' ('+fmtH(best.ist)+'). ':'')+(prev.ist?(diff>=0?'Das sind '+fmtH(diff)+' mehr als in der Vorwoche.':'Das sind '+fmtH(-diff)+' weniger als in der Vorwoche. Kein Problem, jede Woche ist neu.'):'')+(w.soll&&w.ist>=w.soll?' Wochenziel erreicht!':'')+'</p>';
+  if(w.wins.length)o+='<div style="margin-top:8px">'+w.wins.slice(-5).reverse().map(x=>'<div class="win"><small>'+fmtDay(x.date)+'</small>'+esc(x.text)+'</div>').join('')+'</div>';
+  return o+'</div>'}
+function subjCardHTML(){const tot=istMin(()=>true);const soll=S.subjects.reduce((a,x)=>a+subjTarget(x),0);
+  let o='<div class="card"><div class="dayh" style="margin-bottom:6px"><b>Stundenkonto je Fach</b><button class="link" data-act="gotoSetupFach">Fächer bearbeiten</button></div><div class="gl-t"><span><b>'+fmtH(tot)+'</b>'+(soll?' von '+fmtH(soll)+' gesamt':' gesamt')+'</span>'+(hasPlan()?'<span class="'+(konto()>=0?'ok':'bad')+'">'+kontoTxt(konto())+'</span>':'')+'</div>';
+  S.subjects.forEach(x=>{const ist=istMin(s=>subjOf(s)===x.id);const t=subjTarget(x);if(!t&&!ist)return;const pc=t?Math.min(100,Math.round(ist/t*100)):100;
+    o+='<div class="srow"><div class="srow-t"><span>'+esc(x.n)+'</span><span>'+fmtH(ist)+(t?' / '+fmtH(t):'')+'</span></div><div class="minibar" style="margin-top:5px"><i style="width:'+pc+'%"></i></div></div>'});
+  return o+'</div>'}
+function badgeCardHTML(){const B=BADGES();const got=B.filter(b=>S.badges[b[0]]).length;
+  return '<div class="card"><div class="dayh" style="margin-bottom:10px"><b>Abzeichen</b><span>'+got+' von '+B.length+'</span></div><div class="badges">'+B.map(b=>{const on=!!S.badges[b[0]];return '<div class="badge'+(on?' on':'')+'" data-act="badgeInfo" data-b="'+b[0]+'"><div class="bic">'+(on?'★':'☆')+'</div><b>'+esc(b[1])+'</b><small>'+esc(b[2])+'</small></div>'}).join('')+'</div></div>'}
+
+function vZiel(){const done=S.exams.filter(e=>e.done);const firstOpen=openSorted()[0];const g=goalD();
+  const days=g?Math.max(0,daysBetween(today(),S.goalDate)):null;
+  const ectsAll=S.exams.reduce((a,e)=>a+(+e.ects||0),0),ectsDone=done.reduce((a,e)=>a+(+e.ects||0),0);
+  const tot=istMin(()=>true);const gk=S.goalDate;const deg=S.profile.degree||'Abschluss';
+  let o='<h1>'+esc(deg)+'</h1><p class="sub">'+(S.exams.length&&done.length===S.exams.length?'Alle Prüfungen geschafft. Gratuliere!':S.exams.length?'Noch '+(S.exams.length-done.length)+' '+(S.exams.length-done.length===1?'Prüfung':'Prüfungen')+' bis zum Ziel.':'Leg deine Prüfungen an, dann siehst du hier deinen Weg.')+'</p>';
+  o+='<div class="row seg" style="margin:-6px 0 18px">'+[['weg','Weg'],['zahlen','Zahlen'],['erfolge','Erfolge']].map(t=>'<button data-act="ztab" data-t="'+t[0]+'" class="'+(zielTab===t[0]?'on':'')+'">'+t[1]+'</button>').join('')+'</div>';
+  if(zielTab==='weg'){
+  const pAll=Math.round(done.length/Math.max(1,S.exams.length)*100);
+  o+='<div class="card hero"><div class="herorow">'+ringSVG(pAll,days!=null?'<text x="66" y="68" text-anchor="middle" class="rnum">'+days+'</text><text x="66" y="90" text-anchor="middle" class="rlbl">TAGE</text>':'<text x="66" y="74" text-anchor="middle" class="rnum">'+pAll+'%</text>')+'<div class="hinfo"><div class="eyebrow">Ziel</div><div class="hname">'+esc(deg)+'</div><div class="hdate">'+(g?'bis '+fmtLong(gk)+', ca. '+Math.round(days/7)+' Wochen':'<button class="link" data-act="gotoSetupProfil" style="padding:0">Zieldatum festlegen</button>')+'</div></div></div>';
+  if(S.exams.length)o+='<div class="segs" style="margin:16px 0 12px">'+S.exams.slice().sort((a,b)=>(b.done-a.done)||(a.date||'9999').localeCompare(b.date||'9999')).map(e=>'<i class="'+(e.done?'on':'')+(firstOpen&&e.id===firstOpen.id?' now':'')+'"></i>').join('')+'</div>';
+  if(ectsAll)o+='<div class="gl-t" style="margin-top:4px"><span><b>'+num(ectsDone)+'</b> von '+num(ectsAll)+' ECTS</span><span><b>'+done.length+'</b> / '+S.exams.length+' Prüfungen</span></div>';
+  o+='</div>';
+  const nowD=new Date();
+  o+='<div class="card"><h2>Dein Weg zum '+esc(deg)+'</h2><div class="tl">'+S.exams.slice().sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999')).map(e=>{const d=exDate(e);const late=d&&gk&&dkey(d)>gk&&!e.done;const past=d&&d<nowD;const cur=firstOpen&&e.id===firstOpen.id;
+    const dl=d?Math.ceil((d-nowD)/864e5):null;
+    return '<div class="tli'+(e.done?' done':'')+(cur?' cur':'')+'"><button class="dot" data-act="'+(e.done?'unpass':'pass')+'" data-e="'+e.id+'" aria-label="bestanden"></button><div class="tlc" data-act="open" data-e="'+e.id+'"><div class="tlh"><b>'+esc(e.name)+'</b>'+(e.ects?'<span class="ects">'+num(e.ects)+' ECTS</span>':'')+'</div><div class="tld">'+fmtEx(e)+(e.done?' · <span class="ok">bestanden'+(e.grade?' ('+GRADES[e.grade]+')':'')+'</span>':dl!=null&&dl>0?' · in '+dl+' '+(dl===1?'Tag':'Tagen'):past?' · vorbei':'')+(e.attempt>1?' · '+e.attempt+'. Antritt':'')+(late?' · <span class="bad">nach Ziel</span>':'')+'</div>'+(e.note?'<div class="tln">'+esc(e.note)+'</div>':'')+(e.topics.length?'<div class="minibar"><i style="width:'+progress(e)+'%"></i></div>':'')+'</div></div>'}).join('')+
+    (S.exams.length?'<div class="tli fin"><span class="dot"></span><div class="tlc"><div class="tlh"><b>'+esc(deg)+'</b></div><div class="tld">'+(gk?fmtLong(gk):'')+'</div></div></div>':'')+'</div>';
+  o+='<div class="row" style="margin-top:14px"><button data-act="calImport">Aus Kalender übernehmen</button><button data-act="addExam">Prüfung hinzufügen</button></div><p class="hint">Antippen öffnet die Prüfung. Der Punkt links markiert sie als bestanden.</p></div>';
+  const avg=gradeAvg();if(avg)o+='<div class="card"><h2>Notenschnitt</h2><div class="planhead"><span class="planh">'+num(avg.toFixed(2))+'</span><span class="plans">'+(GRADES[Math.round(avg)]||'')+'</span></div><p class="hint">Nach ECTS gewichtet, nur benotete Prüfungen. Die Note änderst du in der jeweiligen Prüfung.</p></div>';
+  o+=deadlinesCardHTML()}
+  else if(zielTab==='zahlen'){o+=weekCardHTML()+energyCardHTML()+concCardHTML()+subjCardHTML();
+  o+='<div class="card"><h2>Bisher investiert</h2><div class="stats"><div class="stat"><b>'+fmtH(tot)+'</b><span>Fokus</span></div><div class="stat"><b>'+S.sessions.filter(x=>!x.manual).length+'</b><span>Sprints</span></div><div class="stat"><b>'+bestStreak()+'</b><span>längste Serie</span></div></div></div>';}
+  else{o+=levelCardHTML()+rewardCardHTML()+badgeCardHTML()+duelCardHTML();
+  o+='<div class="card"><h2>Erfolgsliste</h2>'+(S.wins.length?S.wins.slice().reverse().slice(0,50).map((w,i)=>'<div class="win" data-act="winEdit" data-i="'+(S.wins.length-1-i)+'"><small>'+fmtLong(w.date)+'</small>'+esc(w.text)+'</div>').join(''):'<p class="msg">Nach jedem Sprint kannst du notieren, was du geschafft hast. Das sammelt sich hier, für die Tage, an denen es sich anfühlt, als hättest du nichts gemacht.</p>')+'<div class="row" style="margin-top:10px"><button data-act="winAdd">+ Erfolg eintragen</button></div></div>';}
+  return o}
+
+const DEGREES=['Bachelor','Master','Magister','Magistra','Diplom','Doktorat','Lehramt','Abschluss'];
+function vOnboard(){return '<div class="brand">ENDSPURT</div><h1>Willkommen!</h1><p class="sub">Dein Lern- und Motivationstrainer bis zum Abschluss. Richte ihn in einer Minute ein, alles lässt sich später ändern.</p>'+
+  '<div class="card">'+field('Wie heißt du?','<input type="text" id="obName" placeholder="Vorname" autocomplete="given-name" value="'+esc(PRESET.name||'')+'">')+field('Was studierst du? (optional)','<input type="text" id="obStudy" placeholder="z. B. Rechtswissenschaften, Uni Wien">')+
+  field('Welchen Abschluss machst du?','<div class="chips wrap" id="obDeg">'+DEGREES.map(d=>'<button data-act="obDeg" data-d="'+d+'" class="'+(d===(PRESET.degree||'Bachelor')?'on':'')+'">'+d+'</button>').join('')+'</div>')+
+  field('Bis wann willst du fertig sein? (optional)','<input type="date" id="obGoal">')+'</div>'+
+  '<div class="card"><h2>Deine nächste Prüfung (optional)</h2>'+field('Name','<input type="text" id="obEx" placeholder="z. B. Statistik 1">')+field('Termin','<input type="datetime-local" id="obExD">')+field('ECTS','<input type="number" inputmode="decimal" step="0.5" id="obEcts" placeholder="z. B. 6">')+'</div>'+
+  '<button class="btn-main" data-act="obDone">Los geht\'s</button><div class="row" style="margin-top:10px"><button class="btn-ghost" data-act="import">Ich habe schon ein Backup oder Profil</button></div>'}
+
+function sec(id,title,inner){const open=setupSec===id;return '<div class="card setsec'+(open?' open':'')+'"><button class="sechead" data-act="sec" data-s="'+id+'"><b>'+title+'</b><span>'+(open?'−':'+')+'</span></button>'+(open?'<div class="secbody">'+inner+'</div>':'')+'</div>'}
+function vSetup(){const c=S.cfg;let o='<h1>Einstellungen</h1><p class="sub">Alles hier kannst du jederzeit ändern.</p>';
+  o+=sec('profil','Profil und Ziel',field('Name','<input type="text" data-cfg="name" value="'+esc(S.profile.name)+'">')+field('Studium','<input type="text" data-cfg="study" value="'+esc(S.profile.study)+'" placeholder="z. B. Rechtswissenschaften, Uni Salzburg">')+
+    field('Abschluss','<div class="chips wrap">'+DEGREES.map(d=>'<button data-act="setDeg" data-d="'+d+'" class="'+(S.profile.degree===d?'on':'')+'">'+d+'</button>').join('')+'</div>')+field('Zieldatum','<input type="date" data-cfg="goal" value="'+esc(S.goalDate)+'">'));
+  o+=sec('home','Startseite anpassen',homeSetupHTML());
+  o+=sec('fach','Fächer und Soll-Stunden','<p class="hint" style="margin-top:0">Fächer sind das, wofür du Lernzeit sammelst. Jede Prüfung bekommt automatisch ein Fach. Du kannst auch eigene anlegen, etwa für die Abschlussarbeit. Soll leer lassen, dann zählt die Summe aus dem Lernkalender.</p>'+
+    S.subjects.map(x=>'<div class="subrow" data-act="subjEdit" data-s="'+esc(x.id)+'"><span><b>'+esc(x.n)+'</b><small>Kürzel '+esc(x.s)+' · Soll '+(x.t?num(x.t)+' Std.':fmtH(subjTarget(x))+' laut Kalender')+' · Ist '+fmtH(istMin(s=>subjOf(s)===x.id))+'</small></span><span class="go">›</span></div>').join('')+'<div class="row" style="margin-top:12px"><button data-act="subjAdd">+ Fach anlegen</button></div>');
+  o+=sec('kal','Lernkalender','<p class="hint" style="margin-top:0">'+(hasPlan()?Object.keys(S.plan).length+' Tage geplant, '+fmtH(Object.values(S.plan).reduce((a,p)=>a+(+p.h||0),0)*60)+' insgesamt, vom '+fmtLong(planFirst())+' bis '+fmtLong(Object.keys(S.plan).sort().pop())+'.':'Noch kein Lernkalender.')+'</p>'+
+    '<div class="row"><button data-act="genPlan">Zeitraum planen</button><button data-act="planText">Als Text bearbeiten</button></div><div class="row" style="margin-top:6px"><button class="btn-ghost danger" data-act="planClear">'+(arm==='plan'?'Sicher? Nochmal tippen':'Lernkalender leeren')+'</button></div><p class="hint">Einzelne Tage änderst du, indem du sie im Plan oder unter „Heute“ antippst.</p>');
+  o+=sec('motiv','Motivation und eigene Sprüche','<p class="hint" style="margin-top:0">Eigene Sprüche erscheinen bevorzugt als „Gedanke für heute“. Perfekt auch für liebe Worte von Freund:innen.</p>'+
+    (S.msgs.length?S.msgs.map((m,i)=>'<div class="subrow" data-act="msgEdit" data-i="'+i+'"><span>'+esc(m)+'</span><span class="go">›</span></div>').join(''):'')+'<div class="row" style="margin-top:10px"><button data-act="msgAdd">+ Spruch hinzufügen</button></div>'+
+    (S.welcome&&S.welcome.text?'<div class="row" style="margin-top:8px"><button data-act="welcomeAgain">'+(S.welcome.from?'Nachricht von '+esc(S.welcome.from):'Persönliche Nachricht')+' nochmal lesen</button></div>':'')+'<label class="toggle"><input type="checkbox" data-cfg="stdMsgs" '+(c.stdMsgs?'checked':'')+'><span>Eingebaute Sprüche zusätzlich anzeigen</span></label><label class="toggle"><input type="checkbox" data-cfg="night" '+(c.night?'checked':'')+'><span>Nachts an Schlaf erinnern</span></label>');
+  o+=sec('timer','Timer und Klausurmodus',field('Sprint-Längen in Minuten (mit Komma)','<input type="text" data-cfg="sprints" value="'+esc(c.sprints.join(', '))+'">')+'<div class="grid2">'+field('Standard-Sprint','<input type="number" inputmode="numeric" data-cfg="sprint" value="'+c.sprint+'">')+field('Pause (min)','<input type="number" inputmode="numeric" data-cfg="brk" value="'+c.brk+'">')+'</div>'+
+    field('Klausur-Dauern in Minuten (mit Komma)','<input type="text" data-cfg="klDurs" value="'+esc(c.klDurs.join(', '))+'">')+'<div class="sublbl" style="margin-top:6px">Klausurphasen (Name und Gewichtung)</div>'+
+    c.phases.map((p,j)=>'<div class="phrow"><input type="text" data-ph="'+j+'" data-pf="0" value="'+esc(p[0])+'"><input type="number" inputmode="numeric" data-ph="'+j+'" data-pf="2" value="'+p[2]+'"><button class="del" data-act="phDel" data-j="'+j+'">×</button></div>').join('')+
+    '<div class="row" style="margin-top:8px"><button data-act="phAdd">+ Phase</button><button data-act="phReset">Standard</button></div><p class="hint">Die Gewichtung wird auf die Klausurdauer umgerechnet. Standard 2 : 4 : 15 : 3 ergibt bei 4 Stunden 20, 40, 150 und 30 Minuten.</p>');
+  o+=sec('pday','Prüfungstag und Fristen',field('Standard-Checkliste für den Prüfungstag (ein Punkt pro Zeile)','<textarea data-cfg="checklist" rows="6">'+esc(c.checklist.join('\n'))+'</textarea>')+field('Vor Fristen warnen (Tage vorher)','<input type="number" inputmode="numeric" min="1" max="60" data-cfg="warnDays" value="'+c.warnDays+'">')+'<p class="hint">Jede Prüfung bekommt diese Checkliste und kann sie am Prüfungstag einzeln anpassen.</p>');
+  o+=sec('import','Kalender-Import mit Kurzbefehl','<p class="msg" style="font-size:15px">Damit übernimmt die App Prüfungstermine aus deinem iPhone-Kalender. Einmalig einrichten:</p><ol class="steps"><li>App <b>Kurzbefehle</b> öffnen, „+“ tippen.</li><li><b>Kalenderereignisse suchen</b>: Filter „Kalender ist …“ (dein Prüfungskalender) und „Startdatum ist nach Heute“.</li><li><b>Wiederholen mit jedem</b>, darin <b>Text</b>: Wiederholungsobjekt → Titel, dann <code>|</code>, Wiederholungsobjekt → Startdatum (Format ISO 8601 mit Uhrzeit), dann <code>|</code>, Wiederholungsobjekt → Ist ganztägig.</li><li>Danach <b>Text kombinieren</b> mit „Neue Zeilen“ und <b>In Zwischenablage kopieren</b>.</li></ol><p class="hint">Nutzen: Kurzbefehl starten, dann hier unter „Ziel“ auf „Aus Kalender übernehmen“.</p><div class="row" style="margin-top:8px"><button data-act="calImport">Jetzt übernehmen</button></div>');
+  o+=sec('daten','Daten, Backup, Verlauf','<p class="hint" style="margin-top:0">Alles liegt nur auf diesem Gerät. '+(S.lastBackup?'Letztes Backup: '+fmtLong(S.lastBackup)+'.':'Noch kein Backup gemacht.')+'</p><div class="row"><button data-act="export">Backup exportieren</button><button data-act="import">Importieren</button></div>'+
+    '<div class="sublbl" style="margin-top:16px">Lernzeiten (zum Korrigieren antippen)</div>'+(S.sessions.length?S.sessions.slice().reverse().slice(0,40).map((x,i)=>'<div class="subrow" data-act="sessEdit" data-i="'+(S.sessions.length-1-i)+'"><span><b>'+fmtH(x.min)+' '+esc(subjShort(subjOf(x)))+'</b><small>'+fmtDay(x.date)+(x.klausur?' · Klausur':x.manual?' · nachgetragen':'')+'</small></span><span class="go">›</span></div>').join(''):'<p class="hint">Noch keine.</p>')+
+    '<div class="row" style="margin-top:14px"><button class="btn-ghost danger" data-act="reset0">'+(arm==='reset'?'Wirklich alles löschen? Nochmal tippen':'Alles zurücksetzen')+'</button></div>');
+  o+='<p class="hint" style="text-align:center;margin-top:18px">Endspurt '+VERSION+' · Daten bleiben auf deinem Gerät</p>';
+  return o}
+
+/* kleine Bausteine für Dialoge */
+const btnRow=(main,mainAct,ghost)=>'<div class="row" style="margin-top:12px"><button class="btn-main" data-act="'+mainAct+'" style="font-size:16px">'+main+'</button></div><div class="row" style="margin-top:6px">'+(ghost||'')+'<button class="btn-ghost" data-act="close">Abbrechen</button></div>';
+function multiToggle(el){el.classList.toggle('on')}
+function selected(sel){return [...document.querySelectorAll(sel+'.on')].map(b=>b.dataset.s)}
+
+function addTimeModal(){const cs=curSubj();openModal('<h3>Lernzeit nachtragen</h3><p>Für Zeit ohne Timer, zum Beispiel Lernen im Zug oder in der Lerngruppe.</p><div class="grid2">'+field('Minuten','<input type="number" inputmode="numeric" id="atMin" value="30" min="1">')+field('Datum','<input type="date" id="atDate" value="'+today()+'">')+'</div>'+field('Fach',subjChips('atSubj',cs))+btnRow('Speichern','atSave'))}
+function sessEditModal(i){const x=S.sessions[i];if(!x)return;openModal('<h3>Lernzeit bearbeiten</h3><div class="grid2">'+field('Minuten','<input type="number" inputmode="numeric" id="seMin" value="'+x.min+'">')+field('Datum','<input type="date" id="seDate" value="'+x.date+'">')+'</div>'+field('Fach',subjChips('seSubj',subjOf(x),S.subjects.map(s=>s.id)))+btnRow('Speichern','sessSave" data-i="'+i,'<button class="btn-ghost danger" data-act="sessDel" data-i="'+i+'">Löschen</button>'))}
+function errModal(x){const sid=x?x.subj:curSubj();openModal('<h3>'+(x?'Lücke bearbeiten':'Lücke notieren')+'</h3><p>Was hat gefehlt? Schreib es als Frage, dann kann die App dich später abfragen.</p>'+field('Fach',subjChips('errSubj',sid,S.subjects.map(s=>s.id)))+field('Frage oder Lücke','<textarea id="errQ" rows="3" placeholder="z. B. Welche drei Voraussetzungen hat …?">'+esc(x?x.q:'')+'</textarea>')+field('Richtige Antwort (optional)','<textarea id="errA" rows="3" placeholder="Die Lösung in deinen Worten">'+esc(x?x.a:'')+'</textarea>')+
+  btnRow(x?'Speichern':'Notieren','errSave'+(x?'" data-id="'+x.id:''),x?'<button class="btn-ghost danger" data-act="errDel" data-id="'+x.id+'">Löschen</button>':'<button data-act="errSaveMore">Speichern und nächste</button>'))}
+function saveErr(id){const q=(document.getElementById('errQ').value||'').trim();if(!q){toast('Bitte eine Frage eintragen.');return false}
+  const a=(document.getElementById('errA').value||'').trim();const sid=(selected('[data-act=errSubj]')[0])||curSubj();
+  if(id){const x=S.errors.find(e=>e.id===id);if(x){x.q=q;x.a=a;x.subj=sid}}
+  else{const ed=nextExamDateFor(sid);let due=addDays(today(),1);if(ed&&ed<=due)due=today();S.errors.push({id:S.nextId++,subj:sid,q,a,box:0,due,created:today()})}
+  save();return true}
+function startReview(){const q=errDue().sort((a,b)=>a.due.localeCompare(b.due)).map(x=>x.id);if(!q.length){toast('Gerade nichts fällig.');return}
+  review={q,i:0,shown:false,ok:0,n:q.length,again:{}};showReview()}
+function showReview(){const r=review;if(!r)return;if(r.i>=r.q.length){const all=r.ok===r.n;closeModal();if(all)confetti();toast(r.ok+' von '+r.n+' gewusst');review=null;render();checkBadges();return}
+  const x=S.errors.find(e=>e.id===r.q[r.i]);if(!x){r.i++;showReview();return}
+  openModal('<div class="revtop"><span>'+esc(subjShort(x.subj))+'</span><span>'+(r.i+1)+' / '+r.q.length+'</span></div><div class="revq">'+esc(x.q)+'</div>'+(r.shown?'<div class="reva">'+(x.a?esc(x.a):'<span class="hint">Keine Antwort hinterlegt. Schau in deinen Unterlagen nach.</span>')+'</div><div class="row" style="margin-top:14px"><button data-act="revNo">Noch nicht</button><button class="btn-main" style="font-size:16px;padding:13px" data-act="revOk">Wusste ich</button></div>':'<p class="hint">Erst selbst überlegen, am besten laut oder auf Papier. Dann aufdecken.</p><div class="row" style="margin-top:14px"><button class="btn-main" style="font-size:16px" data-act="revShow">Antwort zeigen</button></div>')+'<div class="row" style="margin-top:6px"><button class="btn-ghost" data-act="revStop">Beenden</button></div>')}
+
+function dayModal(k){const p=planOf(k)||{s:[],h:0,n:''};openModal('<h3>'+fmtDay(k)+fmtLong(k).slice(6)+'</h3><p>Was steht an diesem Tag an?</p>'+field('Stunden','<input type="number" inputmode="decimal" step="0.5" min="0" id="dH" value="'+(p.h||0)+'">')+field('Fächer (mehrere möglich)',subjChips('dSubj',p.s||[],S.subjects.map(s=>s.id)))+field('Hinweis','<input type="text" id="dN" value="'+esc(p.n||'')+'" placeholder="z. B. Arbeit bis 17 Uhr, Klausur 9:00">')+
+  btnRow('Speichern','daySave" data-k="'+k,'<button class="btn-ghost danger" data-act="dayClear" data-k="'+k+'">Tag leeren</button>'))}
+function genModal(){const from=today();const to=S.goalDate&&S.goalDate>from?S.goalDate:addDays(from,27);const def=[3,3,3,3,3,4,2];
+  openModal('<h3>Zeitraum planen</h3><p>Leg für einen Zeitraum fest, welches Fach du an welchen Wochentagen wie lange lernst. Einzelne Tage passt du danach an.</p>'+field('Fach oder Fächer',subjChips('gSubj',[curSubj()],S.subjects.map(s=>s.id)))+
+  '<div class="grid2">'+field('Von','<input type="date" id="gFrom" value="'+from+'">')+field('Bis','<input type="date" id="gTo" value="'+to+'">')+'</div>'+
+  field('Stunden je Wochentag','<div class="wdgrid">'+['Mo','Di','Mi','Do','Fr','Sa','So'].map((w,i)=>'<label><small>'+w+'</small><input type="number" inputmode="decimal" step="0.5" min="0" data-wd="'+i+'" value="'+def[i]+'"></label>').join('')+'</div>')+
+  field('Hinweis (optional)','<input type="text" id="gN" placeholder="z. B. Lernphase Europarecht">')+
+  field('Bereits geplante Tage','<div class="chips wrap"><button data-act="gMode" data-m="fill" class="on">Behalten</button><button data-act="gMode" data-m="over">Überschreiben</button></div>')+btnRow('Übernehmen','genApply'))}
+function planTextModal(){const lines=Object.keys(S.plan).sort().map(k=>{const p=S.plan[k];return k+';'+(p.s||[]).map(subjShort).join('+')+';'+num(p.h||0)+';'+(p.n||'')}).join('\n');
+  openModal('<h3>Lernkalender als Text</h3><p>Eine Zeile pro Tag: <code>Datum;Kürzel;Stunden;Hinweis</code>. Mehrere Fächer mit +. Datum als 2027-01-25 oder 25.01.2027. Unbekannte Kürzel werden als neue Fächer angelegt.</p><textarea id="ptIn" rows="10" style="font-family:ui-monospace,Menlo,monospace;font-size:13px">'+esc(lines)+'</textarea>'+btnRow('Übernehmen','planTextSave','<button data-act="ptCopy">Kopieren</button>'))}
+function parseDateLoose(s){s=(s||'').trim();let m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(s);if(m)return s;m=/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/.exec(s);if(m)return m[3]+'-'+pad(+m[2])+'-'+pad(+m[1]);return null}
+function subjEditModal(id){const x=id?S.subjects.find(s=>s.id===id):null;openModal('<h3>'+(x?'Fach bearbeiten':'Neues Fach')+'</h3>'+field('Name','<input type="text" id="sbN" value="'+esc(x?x.n:'')+'" placeholder="z. B. Diplomarbeit">')+'<div class="grid2">'+field('Kürzel','<input type="text" id="sbS" value="'+esc(x?x.s:'')+'" placeholder="z. B. DA">')+field('Soll gesamt (Std.)','<input type="number" inputmode="decimal" step="0.5" id="sbT" value="'+(x&&x.t?x.t:'')+'" placeholder="leer = Kalender">')+'</div>'+
+  btnRow('Speichern','subjSave'+(x?'" data-s="'+esc(x.id):''),x&&x.id!=='X'?'<button class="btn-ghost danger" data-act="subjDel" data-s="'+esc(x.id)+'">'+(arm==='sd'+x.id?'Sicher?':'Löschen')+'</button>':''))}
+function msgModal(i){const m=i!=null?S.msgs[i]:'';openModal('<h3>'+(i!=null?'Spruch bearbeiten':'Eigener Spruch')+'</h3><p>Erscheint als „Gedanke für heute“.</p><textarea id="msgIn" rows="4" placeholder="z. B. Du schaffst das, ich glaub an dich!">'+esc(m)+'</textarea>'+btnRow('Speichern','msgSave'+(i!=null?'" data-i="'+i:''),i!=null?'<button class="btn-ghost danger" data-act="msgDel" data-i="'+i+'">Löschen</button>':''))}
+function winModal(i){const w=i!=null?S.wins[i]:null;openModal('<h3>'+(w?'Erfolg bearbeiten':'Erfolg eintragen')+'</h3><textarea id="wIn" rows="3" placeholder="z. B. Ganzes Kapitel ohne Nachschauen erklärt">'+esc(w?w.text:'')+'</textarea>'+btnRow('Speichern','winSave'+(w?'" data-i="'+i:''),w?'<button class="btn-ghost danger" data-act="winDel" data-i="'+i+'">Löschen</button>':''))}
+function numModal(title,act,val){openModal('<h3>'+title+'</h3>'+field('Minuten','<input type="number" inputmode="numeric" id="numIn" value="'+val+'" min="1">')+btnRow('Übernehmen',act))}
+function passModal(e){openModal('<h3>Bestanden. Gratuliere!</h3><p>'+esc(e.name)+' ist abgehakt. Welche Note? (optional)</p><div class="chips wrap">'+[1,2,3,4].map(g=>'<button data-act="grade" data-g="'+g+'" data-e="'+e.id+'">'+GRADES[g]+'</button>').join('')+'<button data-act="grade" data-g="0" data-e="'+e.id+'">Mit Erfolg</button></div><div class="row" style="margin-top:12px"><button class="btn-ghost" data-act="close">Überspringen</button></div>')}
+function failModal(e){const fb=e.fb||{};openModal('<h3>Ärgerlich. Aber kein Weltuntergang.</h3><p>Sehr viele müssen eine Prüfung wiederholen, und beim zweiten Mal kennst du die Art der Fragen schon. Hier ist dein Plan B:</p>'+
+  (fb.text?'<div class="reva" style="margin-bottom:12px">'+esc(fb.text)+'</div>':'<p class="hint">Für diese Prüfung ist noch kein Notfallplan hinterlegt. Du kannst ihn in der Prüfung unter „Notfallplan“ eintragen.</p>')+
+  (fb.date?'<div class="row"><button class="btn-main" style="font-size:16px" data-act="failApply" data-e="'+e.id+'">Ersatztermin '+esc(fmtEx({date:fb.date}))+' übernehmen</button></div>':'')+
+  '<div class="row" style="margin-top:8px"><button data-act="failNew" data-e="'+e.id+'">Anderen Termin eintragen</button></div><div class="row" style="margin-top:6px"><button class="btn-ghost" data-act="close">Später</button></div>')}
+function exportData(){const txt=JSON.stringify(S);S.lastBackup=today();save();
+  openModal('<h3>Backup</h3><p>Kopier den Text und speichere ihn in einer Notiz oder Mail an dich selbst'+(window.self===window.top?', oder lade ihn als Datei herunter':'')+'.</p><textarea id="bk" rows="5" readonly>'+esc(txt)+'</textarea><div class="row" style="margin-top:12px"><button class="btn-main" data-act="copy" style="font-size:16px">Kopieren</button></div><div class="row" style="margin-top:8px">'+(window.self===window.top?'<button data-act="dl">Als Datei</button>':'')+'<button class="btn-ghost" data-act="close">Schließen</button></div>')}
+function importData(){openModal('<h3>Backup oder Profil importieren</h3><p>Wähle eine Datei oder füge den kopierten Text ein. Die aktuellen Daten werden dabei ersetzt.</p><input type="file" id="bkFile" accept=".json,application/json,text/plain" style="margin-bottom:10px;color:var(--muted)"><textarea id="bkIn" rows="4" placeholder="Backup-Text hier einfügen"></textarea>'+btnRow('Importieren','doImport'))}
+
+/* Kalender-Import */
+const SKIP=/anmeld|abmeld|frist|fenster|erinner|plusonline|schulung|einsicht/i;
+function cleanTitle(t){return t.replace(/\(.*?\)/g,'').replace(/^(klausur|lv-prüfung|fachprüfung|modulprüfung|prüfung|lehrveranstaltungsprüfung)\s+/i,'').replace(/^einführung in die\s+/i,'').replace(/\s+(schriftlich|mündlich)$/i,'').replace(/\s+/g,' ').trim()}
+function matchExam(t){const l=t.toLowerCase();return S.exams.find(e=>[e.name.toLowerCase()].concat((e.alias||[]).map(a=>a.toLowerCase())).some(k=>k&&k.length>1&&l.includes(k)))||null}
+function parseCalDate(str){str=(str||'').trim();let m=/^(\d{4})-(\d{2})-(\d{2})(?:[T ](\d{2}):(\d{2}))?/.exec(str);
+  if(m&&/[zZ]|[+-]\d{2}:?\d{2}$/.test(str)&&m[4]!=null){const d=new Date(str);if(!isNaN(d))return {k:dkey(d),hm:pad(d.getHours())+':'+pad(d.getMinutes())}}
+  if(m)return {k:m[1]+'-'+m[2]+'-'+m[3],hm:m[4]!=null?m[4]+':'+m[5]:null};
+  m=/(\d{1,2})\.\s?(\d{1,2})\.\s?(\d{4})(?:[^\d]+(\d{1,2})[:.](\d{2}))?/.exec(str);
+  if(m)return {k:m[3]+'-'+pad(+m[2])+'-'+pad(+m[1]),hm:m[4]!=null?pad(+m[4])+':'+m[5]:null};return null}
+function parseCal(text){const out=[];(text||'').split(/\r?\n/).forEach(line=>{const p=line.split('|').map(x=>x.trim());if(p.length<2||!p[0])return;
+  const d=parseCalDate(p[1]);if(!d)return;const allday=/^(ja|yes|true|1|wahr)$/i.test(p[2]||'')||!d.hm;
+  const date=d.k+'T'+(allday?'09:00':d.hm);const ex=matchExam(p[0]);const skip=SKIP.test(p[0]);
+  const same=ex&&ex.date===date;const looks=/prüfung|klausur|test|exam/i.test(p[0]);
+  const isDl=skip&&/anmeld|abmeld|frist/i.test(p[0]);const dupe=isDl&&S.deadlines.some(d=>d.title===p[0]&&d.date===date.slice(0,10));
+  out.push({title:p[0],date,allday,ex,same:same||dupe,skip,dl:isDl,checked:isDl?!dupe&&date.slice(0,10)>=today():!skip&&!same&&(!!ex||looks)})});return out}
+function calPaste(){openModal('<h3>Aus Kalender übernehmen</h3><p>Füge hier ein, was dein Kurzbefehl kopiert hat. Tipp lange ins Feld und wähle „Einsetzen“. Die Anleitung für den Kurzbefehl findest du in den Einstellungen.</p><textarea id="calIn" rows="5" placeholder="Titel|2026-11-27T09:00:00+01:00|Nein"></textarea>'+btnRow('Weiter','calParse'))}
+function calPreview(text){calItems=parseCal(text);
+  if(!calItems.length){openModal('<h3>Nichts gefunden</h3><p>Im kopierten Text sind keine Termine. Lass den Kurzbefehl nochmal laufen oder füge den Text von Hand ein.</p><div class="row"><button data-act="calPasteOpen">Von Hand einfügen</button><button class="btn-ghost" data-act="close">Schließen</button></div>');return}
+  openModal('<h3>Aus Kalender übernehmen</h3><p>Angehakte Termine werden übernommen. Deine Lernpläne bleiben erhalten.</p><div class="calist">'+calItems.map((c,i)=>{const lbl=c.same?'schon aktuell':c.dl?'als Frist übernehmen':c.skip?'kein Prüfungstermin, wird ignoriert':c.ex?'neues Datum für '+esc(c.ex.name):'neue Prüfung „'+esc(cleanTitle(c.title))+'“';
+    return '<label class="calrow"><input type="checkbox" data-ci="'+i+'" '+(c.checked?'checked':'')+(c.same?' disabled':'')+'><span><b>'+esc(c.title)+'</b><small>'+fmtDay(c.date.slice(0,10))+c.date.slice(0,4)+(c.allday?', ganztägig':', '+c.date.slice(11))+' · '+lbl+'</small></span></label>'}).join('')+'</div>'+btnRow('Übernehmen','calApply'))}
+function calApply(){let up=0,nw=0,fr=0;document.querySelectorAll('[data-ci]').forEach(cb=>{const c=calItems[+cb.dataset.ci];if(!cb.checked||c.same)return;
+  if(c.dl){S.deadlines.push({id:S.nextId++,title:c.title,date:c.date.slice(0,10),time:c.allday?'':c.date.slice(11),kind:/abmeld/i.test(c.title)?'Abmeldung':/anmeld/i.test(c.title)?'Anmeldung':'Sonstiges',examId:(matchExam(c.title)||{}).id||null,done:false});fr++;return}
+  if(c.ex){c.ex.date=c.date;c.ex.asked=false;if(c.allday&&!/Uhrzeit offen/.test(c.ex.note||''))c.ex.note=((c.ex.note||'')+(c.ex.note?' · ':'')+'Uhrzeit offen').trim();if(c.ex.topics.length)distribute(c.ex);up++}
+  else{const e=newExam(cleanTitle(c.title)||c.title,c.date);if(c.allday)e.note='Uhrzeit offen';nw++}});
+  save();closeModal();render();toast([up?up+' aktualisiert':'',nw?nw+' neue Prüfung'+(nw>1?'en':''):'',fr?fr+' Frist'+(fr>1?'en':''):''].filter(Boolean).join(', ')||'Nichts geändert')}
+function sos(){openModal('<h3>Okay. Nur ein winziger Schritt.</h3><p style="font-size:18px">'+rnd(RESCUE)+'</p><div class="row"><button class="btn-main" data-act="sos5" style="font-size:16px">5 Minuten starten</button></div><div class="row" style="margin-top:8px"><button data-act="sos">Anderer Schritt</button><button class="btn-ghost" data-act="close">Schließen</button></div>')}
+
+function setActiveTo(id){S.activeId=id;save()}
+function doPass(e){e.done=true;e.asked=true;e.hist=e.hist||[];e.hist.push(fmtLong(today())+' bestanden ('+e.attempt+'. Antritt)');S.wins.push({date:today(),text:e.name+' bestanden!',examId:e.id,pass:true});
+  const nx=openSorted()[0];if(nx)S.activeId=nx.id;save();confetti();passModal(e);render();checkBadges()}
+function undoPass(e){e.done=false;e.grade=null;S.wins=S.wins.filter(w=>!(w.examId===e.id&&w.pass));if(e.hist&&e.hist.length&&/bestanden \(/.test(e.hist[e.hist.length-1])&&!/nicht/.test(e.hist[e.hist.length-1]))e.hist.pop();
+  const o=openSorted();S.activeId=(o[0]||e).id;save();toast('Rückgängig gemacht.');render()}
+
+document.addEventListener('click',ev=>{const el=ev.target.closest('[data-act],[data-tab]');if(!el)return;
+  if(el.dataset.tab&&!el.dataset.act){go(el.dataset.tab);return}
+  const a=el.dataset.act;const [te,tp]=findTopic(+el.dataset.id);const ex=S.exams.find(x=>x.id===+el.dataset.e);
+  if(!['delExam','reset0','kreset','planClear','subjDel'].includes(a))arm=null;
+  switch(a){
+    /* Navigation */
+    case 'gotoSetup':go(tab==='setup'?'heute':'setup');break;
+    case 'gotoSetupProfil':setupSec='profil';go('setup');break;
+    case 'gotoSetupFach':setupSec='fach';go('setup');break;
+    case 'gotoWeek':weekOff=0;zielTab='zahlen';go('ziel');setTimeout(()=>{const w=document.getElementById('week');if(w)w.scrollIntoView({behavior:'smooth',block:'start'})},50);break;
+    case 'sec':setupSec=setupSec===el.dataset.s?null:el.dataset.s;render();break;
+    /* Einrichtung */
+    case 'obDeg':document.querySelectorAll('[data-act=obDeg]').forEach(b=>b.classList.toggle('on',b===el));break;
+    case 'obDone':{const g=v=>(document.getElementById(v)||{}).value||'';S.profile.name=g('obName').trim();S.profile.study=g('obStudy').trim();
+      const d=document.querySelector('[data-act=obDeg].on');S.profile.degree=d?d.dataset.d:'Abschluss';S.goalDate=g('obGoal');
+      if(g('obEx').trim()){const e=newExam(g('obEx').trim(),g('obExD'));e.ects=Math.max(0,pnum(g('obEcts'))||0);S.activeId=e.id}
+      S.onboarded=true;S.tourDone=false;editWhy=true;save();go('heute');toast('Willkommen'+(S.profile.name?', '+S.profile.name:'')+'!');setTimeout(startTour,700);break}
+    /* Themen */
+    case 'cyc':if(tp){tp.status=(tp.status+1)%3;if(tp.status===0&&(!tp.day||tp.day<today()))tp.day=today();save();toast(tp.status===2?'Wiederholt. Sitzt.':tp.status===1?'Gelernt. Später einmal wiederholen.':'Wieder offen.');render()}break;
+    case 'size':if(tp){tp.size=tp.size%3+1;save();render()}break;
+    case 'del':if(te){te.topics=te.topics.filter(t=>t!==tp);save();render()}break;
+    case 'editTopic':if(tp)openModal('<h3>Thema umbenennen</h3><input type="text" id="tpIn" value="'+esc(tp.name)+'">'+btnRow('Speichern','tpSave" data-id="'+tp.id));break;
+    case 'tpSave':if(tp){const v=document.getElementById('tpIn').value.trim();if(v)tp.name=v;save();closeModal();render()}break;
+    case 'redist':distribute(active());toast('Plan angepasst.');render();break;
+    case 'redistAll':S.exams.filter(e=>!e.done).forEach(distribute);toast('Plan angepasst.');render();break;
+    case 'addTop':{const e=active();const v=(document.getElementById('topIn').value||'').split('\n').map(s=>s.trim()).filter(Boolean);
+      v.forEach(n=>e.topics.push({id:S.nextId++,name:n,size:2,status:0,day:null}));if(v.length){distribute(e);toast(v.length+' Themen verteilt.')}if(modalOpen())closeModal();render();break}
+    /* Warum, Wenn-dann, Energie */
+    case 'saveWhy':S.why=(document.getElementById('whyIn').value||'').trim();editWhy=!S.why;save();render();break;
+    case 'editWhy':editWhy=true;render();break;
+    case 'saveIf':S.ifthen=(document.getElementById('ifIn').value||'').trim();S.editIf=false;save();render();break;
+    case 'editIf':S.editIf=true;render();break;
+    case 'energy':{const l=+el.dataset.l;S.energy={date:today(),level:l};S.energyLog[today()]=l;if(!busy())S.timer.dur=ENERGY[l].d;save();render();break}
+    /* Sprint */
+    case 'go':if(klBusy()){S.tmode='klausur';go('timer');break}S.tmode='sprint';if(busy()){go('timer');break}S.timer.isBreak=false;startTimer();go('timer');break;
+    case 'sos':sos();break;
+    case 'sos5':closeModal();if(klBusy()){S.tmode='klausur';go('timer');break}S.tmode='sprint';S.timer={dur:5,endAt:null,left:null,isBreak:false};startTimer();go('timer');break;
+    case 'dur':S.timer.dur=+el.dataset.m;S.timer.left=null;save();render();break;
+    case 'durCustom':numModal('Eigene Sprint-Dauer','durSet',S.timer.dur);break;
+    case 'durSet':{const m=Math.round(pnum(document.getElementById('numIn').value));if(m>0&&m<=240){S.timer.dur=m;S.timer.left=null;save()}closeModal();render();break}
+    case 'start':if(klBusy()){toast('Erst die Klausur beenden.');break}startTimer();render();break;
+    case 'pause':S.timer.left=tLeft();S.timer.endAt=null;soundStop();save();render();break;
+    case 'reset':{const t=S.timer;const m=Math.round((t.dur*60000-tLeft())/60000);const wasBreak=t.isBreak;t.endAt=null;t.left=null;t.isBreak=false;soundStop();save();render();
+      if(!wasBreak&&m>=5)openModal('<h3>'+m+' Minuten zählen?</h3><p>Du hast den Sprint abgebrochen. Sollen die bisherigen '+m+' Minuten in dein Stundenkonto?</p><div class="row"><button class="btn-main" data-act="keepPart" data-m="'+m+'" style="font-size:16px">Ja, zählen</button></div><div class="row" style="margin-top:8px"><button class="btn-ghost" data-act="close">Nein</button></div>');break}
+    case 'keepPart':S.sessions.push({date:today(),min:+el.dataset.m,at:Date.now(),examId:S.activeId,subj:curSubj(),partial:true,dist:S.timer.dist||S.kl.dist||0});S.timer.dist=0;S.kl.dist=0;save();closeModal();toast(fmtH(+el.dataset.m)+' gezählt.');render();checkBadges();break;
+    case 'mBreak':saveWin();closeModal();S.tmode='sprint';S.timer.isBreak=true;S.timer.left=null;startTimer();go('timer');break;
+    case 'mStart':saveWin();closeModal();S.tmode='sprint';S.timer.isBreak=false;S.timer.left=null;startTimer();go('timer');break;
+    case 'close':saveWin();closeModal();if(review){review=null}render();break;
+    case 'setSubj':S.subj=el.dataset.s;S.subjDate=today();save();render();break;
+    case 'tmode':S.tmode=el.dataset.m;save();render();break;
+    /* Klausur */
+    case 'kdur':S.kl.dur=+el.dataset.m;S.kl.left=null;save();render();break;
+    case 'kdurCustom':numModal('Eigene Klausurdauer','kdurSet',S.kl.dur);break;
+    case 'kdurSet':{const m=Math.round(pnum(document.getElementById('numIn').value));if(m>=10&&m<=600){S.kl.dur=m;S.kl.left=null;save()}closeModal();render();break}
+    case 'kstart':if(busy()){toast('Erst den laufenden Sprint beenden.');break}unlockAudio();if(S.kl.left==null){S.kl.ph=0;S.kl.dist=0}S.kl.endAt=Date.now()+klLeft();S.kl.left=null;save();if(S.cfg.soundKl)soundStart();render();break;
+    case 'kpause':S.kl.left=klLeft();S.kl.endAt=null;soundStop();save();render();break;
+    case 'kreset':{const k=S.kl;const m=Math.round((k.dur*60000-klLeft())/60000);if(arm!=='kl'){arm='kl';toast('Nochmal tippen zum Abbrechen.');setTimeout(()=>{if(arm==='kl')arm=null},3000);break}
+      arm=null;k.endAt=null;k.left=null;k.ph=0;soundStop();save();render();
+      if(m>=5)openModal('<h3>'+fmtH(m)+' zählen?</h3><p>Du hast die Simulation abgebrochen. Sollen die bisherigen '+fmtH(m)+' in dein Stundenkonto?</p><div class="row"><button class="btn-main" data-act="keepPart" data-m="'+m+'" style="font-size:16px">Ja, zählen</button></div><div class="row" style="margin-top:8px"><button class="btn-ghost" data-act="close">Nein</button></div>');break}
+    /* Lernzeit */
+    case 'addTime':addTimeModal();break;
+    case 'atSubj':case 'seSubj':case 'errSubj':document.querySelectorAll('[data-act='+a+']').forEach(b=>b.classList.toggle('on',b===el));break;
+    case 'atSave':{const m=Math.round(pnum(document.getElementById('atMin').value)||0);const on=document.querySelector('[data-act=atSubj].on');const d=document.getElementById('atDate').value||today();
+      if(m<=0||m>720){toast('Bitte Minuten zwischen 1 und 720.');break}
+      S.sessions.push({date:d,min:m,at:Date.now(),examId:S.activeId,subj:on?on.dataset.s:curSubj(),manual:true});save();closeModal();toast(fmtH(m)+' nachgetragen.');render();checkBadges();break}
+    case 'sessEdit':sessEditModal(+el.dataset.i);break;
+    case 'sessSave':{const x=S.sessions[+el.dataset.i];if(x){const m=Math.round(pnum(document.getElementById('seMin').value)||0);if(m>0)x.min=m;x.date=document.getElementById('seDate').value||x.date;const on=document.querySelector('[data-act=seSubj].on');if(on)x.subj=on.dataset.s;save()}closeModal();render();break}
+    case 'sessDel':S.sessions.splice(+el.dataset.i,1);save();closeModal();toast('Gelöscht.');render();break;
+    /* Prüfungen */
+    case 'setActive':setActiveTo(+el.dataset.e);render();break;
+    case 'open':setActiveTo(+el.dataset.e);go('plan');break;
+    case 'addExam':{const e=newExam('Neue Prüfung','');S.activeId=e.id;save();go('plan');toast('Neue Prüfung angelegt. Name und Termin eintragen.');break}
+    case 'pass':if(ex)doPass(ex);break;
+    case 'grade':if(ex){const g=+el.dataset.g;ex.grade=g||null;save();closeModal();render()}break;
+    case 'unpass':if(ex)undoPass(ex);break;
+    case 'fail':if(ex)failModal(ex);break;
+    case 'failApply':if(ex){ex.hist=ex.hist||[];ex.hist.push(fmtLong(today())+' nicht bestanden ('+ex.attempt+'. Antritt)');ex.attempt=(ex.attempt||1)+1;ex.date=ex.fb.date;ex.asked=false;ex.note=((ex.note||'')+(ex.note?' · ':'')+'Ersatztermin aus Notfallplan').trim();if(ex.topics.length)distribute(ex);S.activeId=ex.id;save();closeModal();toast('Neuer Termin eingetragen. Du schaffst das.');go('plan')}break;
+    case 'failNew':if(ex){ex.hist=ex.hist||[];ex.hist.push(fmtLong(today())+' nicht bestanden ('+ex.attempt+'. Antritt)');ex.attempt=(ex.attempt||1)+1;ex.date='';ex.asked=false;S.activeId=ex.id;save();closeModal();go('plan');toast('Trag den neuen Termin ein.')}break;
+    case 'waitRes':if(ex){ex.asked=true;save();render();toast('Alles klar. Markier das Ergebnis später im Plan.')}break;
+    case 'delExam':if(arm!=='ex'+el.dataset.e){arm='ex'+el.dataset.e;el.textContent='Sicher? Nochmal tippen';if(!modalOpen())render()}else{if(modalOpen())closeModal();S.exams=S.exams.filter(x=>x.id!==+el.dataset.e);S.activeId=(openSorted()[0]||S.exams[0]||{id:null}).id;arm=null;save();go('ziel')}break;
+    case 'pickExamSubj':{const e=active();openModal('<h3>Fach im Stundenkonto</h3><p>Zu welchem Fach zählt die Lernzeit für '+esc(e.name)+'?</p>'+subjChips('setExamSubj',e.subj,S.subjects.map(s=>s.id))+'<div class="row" style="margin-top:12px"><button class="btn-ghost" data-act="close">Schließen</button></div>');break}
+    case 'setExamSubj':{const e=active();e.subj=el.dataset.s;save();render();openModal('<h3>Prüfung bearbeiten</h3>'+examFormHTML(e));break}
+    /* Fehlerliste */
+    case 'errAdd':saveWin();errModal(null);break;
+    case 'errEdit':{const x=S.errors.find(e=>e.id===+el.dataset.id);if(x)errModal(x);break}
+    case 'errSave':if(saveErr(el.dataset.id?+el.dataset.id:null)){closeModal();toast('Notiert.');render()}break;
+    case 'errSaveMore':if(saveErr(null)){toast('Notiert. Nächste Lücke.');document.getElementById('errQ').value='';document.getElementById('errA').value='';document.getElementById('errQ').focus()}break;
+    case 'errDel':S.errors=S.errors.filter(e=>e.id!==+el.dataset.id);save();closeModal();render();break;
+    case 'review':startReview();break;
+    case 'revShow':review.shown=true;showReview();break;
+    case 'revOk':case 'revNo':{const r=review;const x=S.errors.find(e=>e.id===r.q[r.i]);if(x){errAnswer(x,a==='revOk');if(a==='revOk')r.ok++;else if(!r.again[x.id]){r.again[x.id]=1;r.q.push(x.id);r.n++}}r.i++;r.shown=false;showReview();break}
+    case 'revStop':review=null;closeModal();render();break;
+    /* Woche, Abzeichen, Erfolge */
+    case 'wk':weekOff=Math.min(0,weekOff+(+el.dataset.d));render();setTimeout(()=>{const w=document.getElementById('week');if(w)w.scrollIntoView({block:'start'})},10);break;
+    case 'badgeInfo':{const b=BADGES().find(b=>b[0]===el.dataset.b);if(b)toast(S.badges[b[0]]?b[1]+': seit '+fmtLong(S.badges[b[0]]):'Noch offen: '+b[2]);break}
+    case 'winAdd':winModal(null);break;
+    case 'winEdit':winModal(+el.dataset.i);break;
+    case 'winSave':{const v=(document.getElementById('wIn').value||'').trim();if(v){if(el.dataset.i!=null)S.wins[+el.dataset.i].text=v;else S.wins.push({date:today(),text:v,examId:S.activeId})}save();closeModal();render();break}
+    case 'winDel':S.wins.splice(+el.dataset.i,1);save();closeModal();render();break;
+    /* Lernkalender */
+    case 'editDay':dayModal(el.dataset.k);break;
+    case 'dSubj':case 'gSubj':multiToggle(el);break;
+    case 'daySave':{const k=el.dataset.k;const h=Math.max(0,pnum(document.getElementById('dH').value)||0);const s=selected('[data-act=dSubj]');const n=(document.getElementById('dN').value||'').trim();
+      if(!h&&!s.length&&!n)delete S.plan[k];else S.plan[k]={s,h,n};save();closeModal();render();break}
+    case 'dayClear':delete S.plan[el.dataset.k];save();closeModal();render();break;
+    case 'genPlan':genModal();break;
+    case 'gMode':document.querySelectorAll('[data-act=gMode]').forEach(b=>b.classList.toggle('on',b===el));break;
+    case 'genApply':{const s=selected('[data-act=gSubj]');const f=document.getElementById('gFrom').value,t=document.getElementById('gTo').value;const n=(document.getElementById('gN').value||'').trim();
+      const over=(document.querySelector('[data-act=gMode].on')||{}).dataset.m==='over';const wd=[...document.querySelectorAll('[data-wd]')].map(i=>Math.max(0,pnum(i.value)||0));
+      if(!s.length){toast('Bitte mindestens ein Fach wählen.');break}if(!f||!t||t<f){toast('Bitte einen gültigen Zeitraum wählen.');break}
+      let k=f,c=0,g=0;while(k<=t&&g<800){const h=wd[(parseKey(k).getDay()+6)%7];if(h>0&&(over||!S.plan[k])){S.plan[k]={s:s.slice(),h,n};c++}k=addDays(k,1);g++}
+      save();closeModal();toast(c+' Tage geplant.');render();break}
+    case 'planText':planTextModal();break;
+    case 'ptCopy':{const t=document.getElementById('ptIn');try{navigator.clipboard.writeText(t.value).then(()=>toast('Kopiert.'),()=>{t.select();document.execCommand('copy');toast('Kopiert.')})}catch(e){t.select();try{document.execCommand('copy');toast('Kopiert.')}catch(e2){}}break}
+    case 'planTextSave':{const lines=(document.getElementById('ptIn').value||'').split(/\r?\n/);const np={};let bad=0;
+      lines.forEach(l=>{if(!l.trim())return;const p=l.split(';');const k=parseDateLoose(p[0]);if(!k){bad++;return}
+        const codes=(p[1]||'').split('+').map(x=>x.trim()).filter(Boolean).map(c=>{let x=S.subjects.find(s=>s.s.toLowerCase()===c.toLowerCase()||s.n.toLowerCase()===c.toLowerCase());if(!x){x={id:'s'+(S.nextId++),n:c,s:c,t:0};S.subjects.splice(S.subjects.length-1,0,x)}return x.id});
+        np[k]={s:codes,h:Math.max(0,pnum(p[2])||0),n:(p.slice(3).join(';')||'').trim()}});
+      S.plan=np;save();closeModal();toast(Object.keys(np).length+' Tage übernommen'+(bad?', '+bad+' Zeilen ignoriert':''));render();break}
+    case 'planClear':if(arm!=='plan'){arm='plan';render()}else{S.plan={};arm=null;save();toast('Lernkalender geleert.');render()}break;
+    /* Fächer */
+    case 'subjAdd':subjEditModal(null);break;
+    case 'subjEdit':subjEditModal(el.dataset.s);break;
+    case 'subjSave':{const n=(document.getElementById('sbN').value||'').trim();if(!n){toast('Bitte einen Namen eingeben.');break}const sh=(document.getElementById('sbS').value||'').trim()||shortName(n);const t=Math.max(0,pnum(document.getElementById('sbT').value)||0);
+      if(el.dataset.s){const x=S.subjects.find(s=>s.id===el.dataset.s);Object.assign(x,{n,s:sh,t})}else S.subjects.splice(S.subjects.length-1,0,{id:'s'+(S.nextId++),n,s:sh,t});save();closeModal();render();break}
+    case 'subjDel':{const id=el.dataset.s;if(arm!=='sd'+id){arm='sd'+id;el.textContent='Sicher? Nochmal tippen';break}
+      S.subjects=S.subjects.filter(s=>s.id!==id);S.exams.forEach(e=>{if(e.subj===id)e.subj='X'});S.sessions.forEach(x=>{if(x.subj===id)x.subj='X'});S.errors.forEach(x=>{if(x.subj===id)x.subj='X'});
+      Object.values(S.plan).forEach(p=>{p.s=(p.s||[]).filter(c=>c!==id)});arm=null;save();closeModal();render();break}
+    /* Sprüche */
+    case 'msgAdd':msgModal(null);break;
+    case 'msgEdit':msgModal(+el.dataset.i);break;
+    case 'msgSave':{const v=(document.getElementById('msgIn').value||'').trim();if(v){if(el.dataset.i!=null)S.msgs[+el.dataset.i]=v;else S.msgs.push(v)}save();closeModal();render();break}
+    case 'msgDel':S.msgs.splice(+el.dataset.i,1);save();closeModal();render();break;
+    /* Einstellungen */
+    case 'setDeg':S.profile.degree=el.dataset.d;save();render();break;
+    case 'phDel':if(S.cfg.phases.length>1){S.cfg.phases.splice(+el.dataset.j,1);save();render()}break;
+    case 'phAdd':S.cfg.phases.push(['Neue Phase','Neu',2]);save();render();break;
+    case 'phReset':S.cfg.phases=JSON.parse(JSON.stringify(DEF_CFG.phases));save();render();break;
+    /* Daten */
+    case 'export':exportData();break;
+    case 'import':importData();break;
+    case 'copy':{const t=document.getElementById('bk');const ok=()=>toast('Kopiert.');
+      try{navigator.clipboard.writeText(t.value).then(ok,()=>{t.select();try{document.execCommand('copy');ok()}catch(e){toast('Bitte manuell kopieren.')}})}catch(e){t.select();try{document.execCommand('copy');ok()}catch(e2){toast('Bitte manuell kopieren.')}}break}
+    case 'dl':{try{const b=new Blob([document.getElementById('bk').value],{type:'application/json'});const u=URL.createObjectURL(b);const l=document.createElement('a');l.href=u;l.download='endspurt-backup-'+today()+'.json';document.body.appendChild(l);l.click();setTimeout(()=>{URL.revokeObjectURL(u);l.remove()},1500)}catch(e){toast('Download nicht möglich. Nutze Kopieren.')}break}
+    case 'doImport':{try{const o=JSON.parse(document.getElementById('bkIn').value);let n;
+      if(o&&Array.isArray(o.exams))n=normalize(o);else if(o&&('topics' in o||'examDate' in o))n=normalize(migrate1(o));else throw 0;
+      n.onboarded=true;S=n;editWhy=!S.why;save();closeModal();go('heute');toast('Import erfolgreich.');if(!S.tourDone)setTimeout(startTour,900)}catch(e){toast('Das ist kein gültiges Backup.')}break}
+    case 'calImport':try{navigator.clipboard.readText().then(t=>{if(t&&t.includes('|'))calPreview(t);else calPaste()},()=>calPaste())}catch(e){calPaste()}break;
+    case 'calPasteOpen':calPaste();break;
+    case 'calParse':calPreview(document.getElementById('calIn').value);break;
+    case 'calApply':calApply();break;
+    case 'reset0':if(arm!=='reset'){arm='reset';render()}else{S=defaults();editWhy=true;arm=null;save();go('heute')}break;
+  }});
+
+document.addEventListener('change',ev=>{const el=ev.target;
+  if(el.dataset.f){const e=active();if(!e)return;const f=el.dataset.f;const v=el.value;
+    if(f==='name'){const old=e.name;e.name=v.trim()||e.name;const sx=S.subjects.find(s=>s.id===e.subj);if(sx&&sx.n===old){sx.n=e.name;if(sx.s===shortName(old))sx.s=shortName(e.name)}}
+    else if(f==='note')e.note=v.trim();
+    else if(f==='ects')e.ects=Math.max(0,pnum(v)||0);
+    else if(f==='attempt')e.attempt=Math.max(1,Math.round(pnum(v)||1));
+    else if(f==='fbdate')e.fb.date=v||'';
+    else if(f==='fbtext')e.fb.text=v.trim();
+    else if(f==='alias')e.alias=v.split(',').map(x=>x.trim()).filter(Boolean);
+    else{e[f]=v||'';if(f==='date')e.asked=false}
+    if(f==='date'||f==='start')distribute(e);save();if(!['fbtext','alias','note'].includes(f))render()}
+  if(el.dataset.cfg){const k=el.dataset.cfg,v=el.value;
+    if(k==='name')S.profile.name=v.trim();else if(k==='study')S.profile.study=v.trim();else if(k==='goal')S.goalDate=v||'';
+    else if(k==='stdMsgs'||k==='night'||k==='soundKl'){S.cfg[k]=el.checked;if(k==='soundKl'){if(S.kl.endAt&&el.checked)soundStart();else if(S.kl.endAt)soundStop()}}
+    else if(k==='vol'){S.cfg.vol=pnum(v);save();return}
+    else if(k==='warnDays'){const n=Math.round(pnum(v));if(n>=1&&n<=60)S.cfg.warnDays=n}
+    else if(k==='checklist'){const l=v.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);if(l.length)S.cfg.checklist=l}
+    else if(k==='sprints'||k==='klDurs'){const l=v.split(/[,;\s]+/).map(x=>Math.round(pnum(x))).filter(x=>x>0&&x<=600);if(l.length)S.cfg[k]=[...new Set(l)]}
+    else if(k==='sprint'||k==='brk'){const m=Math.round(pnum(v));if(m>0&&m<=240){S.cfg[k]=m;if(k==='sprint'&&!busy())S.timer.dur=m}}
+    save();render()}
+  if(el.dataset.ph!=null){const p=S.cfg.phases[+el.dataset.ph];if(p){if(el.dataset.pf==='0'){p[0]=el.value.trim()||p[0];p[1]=p[0].split(' ').pop()}else p[2]=Math.max(1,Math.round(pnum(el.value)||1))}save()}
+  if(el.id==='bkFile'&&el.files&&el.files[0]){const r=new FileReader();r.onload=()=>{document.getElementById('bkIn').value=r.result};r.readAsText(el.files[0])}});
+document.getElementById('modal').addEventListener('click',ev=>{if(ev.target.id==='modal'){saveWin();review=null;closeModal();render()}});
+window.addEventListener('hashchange',()=>{const t=location.hash.slice(1);if(['heute','timer','plan','ziel','setup','pday'].includes(t)&&t!==tab){tab=t;render()}});
+
+
+/* ===== 6 Belohnungen ===== */
+const RWK={hours:'Fokusstunden',sprints:'Sprints',streak:'Tage in Folge',level:'Level',exam:'Prüfung bestanden'};
+let rwDraft=null;
+function rwCurrent(r){if(r.kind==='hours')return istMin(()=>true)/60-(r.base||0);if(r.kind==='sprints')return S.sessions.filter(x=>!x.manual).length-(r.base||0);
+  if(r.kind==='streak')return streak();if(r.kind==='level')return levelInfo().n;if(r.kind==='exam'){const e=S.exams.find(e=>e.id===r.examId);return e&&e.done?1:0}return 0}
+function rwTarget(r){return r.kind==='exam'?1:Math.max(1,+r.val||1)}
+function rwLabel(r){const v=num(r.val);if(r.kind==='hours')return 'nach '+v+' weiteren Fokusstunden';if(r.kind==='sprints')return 'nach '+v+' weiteren Sprints';if(r.kind==='streak')return 'bei '+v+' Tagen in Folge';if(r.kind==='level')return 'ab Level '+v;
+  const e=S.exams.find(e=>e.id===r.examId);return 'wenn '+(e?e.name:'die Prüfung')+' bestanden ist'}
+function rwProgress(r){const c=Math.max(0,rwCurrent(r)),t=rwTarget(r);if(r.kind==='exam')return c?'geschafft':'offen';if(r.kind==='hours')return fmtH(Math.min(c,t)*60)+' von '+num(t)+' Std.';return Math.min(Math.floor(c),t)+' von '+t}
+function checkRewards(){const nw=[];S.rewards.forEach(r=>{if(!r.unlocked&&rwCurrent(r)>=rwTarget(r)){r.unlocked=today();nw.push(r)}});
+  if(nw.length){save();setTimeout(()=>{confetti();queueModal('<div class="badgebig">🎁</div><h3 style="text-align:center">Belohnung verdient!</h3>'+nw.map(r=>'<p class="revq" style="text-align:center">'+esc(r.text)+'</p>').join('')+'<p class="hint" style="text-align:center;margin-bottom:14px">Gönn sie dir wirklich. Belohnungen wirken nur, wenn du sie auch einlöst.</p><div class="row"><button class="btn-main" data-act="close">Juhu!</button></div>')},500)}}
+function rewardCardHTML(){const open=S.rewards.filter(r=>!r.redeemed),done=S.rewards.filter(r=>r.redeemed);
+  let o='<div class="card"><div class="dayh" style="margin-bottom:6px"><b>Belohnungen</b><span>'+S.rewards.filter(r=>r.unlocked&&!r.redeemed).length+' bereit</span></div>';
+  if(!S.rewards.length)o+='<p class="msg">Leg selbst fest, womit du dich belohnst, zum Beispiel „Kino nach 20 Stunden“ oder „Wellness-Tag, wenn Europarecht bestanden ist“. Die App meldet sich, sobald du sie dir verdient hast.</p>';
+  o+=open.map(r=>{const pc=Math.max(0,Math.min(100,rwCurrent(r)/rwTarget(r)*100));return '<div class="rwrow'+(r.unlocked?' ready':'')+'"><div class="rwt" data-act="rwEdit" data-id="'+r.id+'"><b>'+esc(r.text)+'</b><small>'+esc(rwLabel(r))+(r.unlocked?' · <span class="ok">verdient am '+fmtLong(r.unlocked)+'</span>':' · '+esc(rwProgress(r)))+'</small>'+(r.unlocked?'':'<div class="minibar"><i style="width:'+pc+'%"></i></div>')+'</div>'+(r.unlocked?'<button class="rwbtn" data-act="rwRedeem" data-id="'+r.id+'">Eingelöst</button>':'')+'</div>'}).join('');
+  if(done.length)o+='<p class="hint">Schon gegönnt: '+done.map(r=>esc(r.text)).join(', ')+'</p>';
+  return o+'<div class="row" style="margin-top:12px"><button data-act="rwAdd">+ Belohnung festlegen</button></div></div>'}
+function rewardModal(){const d=rwDraft;const exams=S.exams.filter(e=>!e.done);
+  openModal('<h3>'+(d.id?'Belohnung bearbeiten':'Belohnung festlegen')+'</h3>'+field('Womit belohnst du dich?','<input type="text" id="rwText" value="'+esc(d.text)+'" placeholder="z. B. Kinoabend, neues Buch, Pizza">')+
+   field('Wann hast du sie dir verdient?','<div class="chips wrap">'+Object.keys(RWK).map(k=>'<button data-act="rwKind" data-k="'+k+'" class="'+(d.kind===k?'on':'')+'">'+RWK[k]+'</button>').join('')+'</div>')+
+   (d.kind==='exam'?field('Welche Prüfung?',exams.length?'<div class="chips wrap">'+exams.map(e=>'<button data-act="rwExam" data-e="'+e.id+'" class="'+(d.examId===e.id?'on':'')+'">'+esc(e.name)+'</button>').join('')+'</div>':'<p class="hint">Keine offene Prüfung angelegt.</p>')
+     :field(d.kind==='hours'?'Wie viele Fokusstunden ab jetzt?':d.kind==='sprints'?'Wie viele Sprints ab jetzt?':d.kind==='streak'?'Wie viele Tage in Folge?':'Ab welchem Level?','<input type="number" inputmode="decimal" id="rwVal" min="1" value="'+(d.val||'')+'">'))+
+   btnRow('Speichern','rwSave',d.id?'<button class="btn-ghost danger" data-act="rwDel" data-id="'+d.id+'">Löschen</button>':''))}
+function rwReadDraft(){const t=document.getElementById('rwText');if(t)rwDraft.text=t.value;const v=document.getElementById('rwVal');if(v)rwDraft.val=pnum(v.value)||''}
+
+/* ===== 7 Ablenkungszähler und 9 Tageszeiten ===== */
+const BLOCKS=[[5,11,'Morgens'],[11,14,'Mittags'],[14,18,'Nachmittags'],[18,22,'Abends'],[22,29,'Nachts']];
+function blockOf(x){let h=new Date(x.at-x.min*60000).getHours();if(h<5)h+=24;return BLOCKS.findIndex(b=>h>=b[0]&&h<b[1])}
+function concStats(){const st=BLOCKS.map(b=>({n:b[2],min:0,cnt:0,tmin:0,dist:0}));
+  S.sessions.forEach(x=>{if(x.manual||!x.at)return;const i=blockOf(x);if(i<0)return;st[i].min+=x.min;st[i].cnt++;if(x.dist!=null){st[i].tmin+=x.min;st[i].dist+=x.dist}});return st}
+function concCardHTML(){const st=concStats();const tracked=S.sessions.filter(x=>x.dist!=null&&!x.manual).length;
+  let o='<div class="card"><h2>Deine Konzentration</h2>';
+  if(tracked<3)return o+'<p class="msg">Tippe während eines Sprints jedes Mal auf „Abgelenkt“, wenn deine Gedanken abschweifen oder du zum Handy greifst. Schon das Bemerken hilft, schneller zurückzukommen. Nach ein paar Sprints siehst du hier, wann du dich am besten konzentrierst.</p><p class="hint">'+tracked+' von 3 Sprints mit Zählung</p></div>';
+  const rated=st.filter(b=>b.tmin>=20).map(b=>Object.assign(b,{rate:b.dist/b.tmin*25}));const best=rated.slice().sort((a,b)=>a.rate-b.rate)[0];const mx=Math.max(1,...rated.map(b=>b.rate));
+  o+=rated.map(b=>'<div class="srow"><div class="srow-t"><span>'+b.n+(best&&b===best?' <span class="tag">beste Zeit</span>':'')+'</span><span>'+num(b.rate.toFixed(1))+' pro 25 min</span></div><div class="minibar warm" style="margin-top:5px"><i style="width:'+Math.max(4,b.rate/mx*100)+'%"></i></div></div>').join('');
+  return o+'<p class="hint">Weniger ist besser. '+(best?'Am wenigsten abgelenkt bist du '+best.n.toLowerCase()+'. Leg schwierige Themen in diese Zeit.':'')+'</p></div>'}
+
+/* ===== 8 Fokus-Geräusche ===== */
+const SOUNDS=[['off','Aus'],['brown','Rauschen'],['rain','Regen'],['sea','Meer']];
+let snd=null,sndPrev=null;
+function noiseSrc(type){const ctx=actx;const len=ctx.sampleRate*4;const buf=ctx.createBuffer(2,len,ctx.sampleRate);
+  for(let ch=0;ch<2;ch++){const d=buf.getChannelData(ch);let last=0;for(let i=0;i<len;i++){const w=Math.random()*2-1;if(type==='white')d[i]=w*0.5;else{last=(last+0.02*w)/1.02;d[i]=last*3.5}}}
+  const s=ctx.createBufferSource();s.buffer=buf;s.loop=true;return s}
+function soundStart(type){type=type||S.cfg.sound;if(type==='off')return;unlockAudio();if(!actx)return;soundStop(true);
+  try{if(navigator.audioSession)navigator.audioSession.type='playback'}catch(e){}
+  const ctx=actx;const out=ctx.createGain();out.gain.value=0.0001;out.connect(ctx.destination);const nodes=[];
+  if(type==='brown'){const b=noiseSrc('brown');b.connect(out);nodes.push(b)}
+  else if(type==='rain'){const w=noiseSrc('white');const hp=ctx.createBiquadFilter();hp.type='highpass';hp.frequency.value=900;const lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=6500;const g=ctx.createGain();g.gain.value=0.5;w.connect(hp);hp.connect(lp);lp.connect(g);g.connect(out);
+    const b=noiseSrc('brown');const gb=ctx.createGain();gb.gain.value=0.45;b.connect(gb);gb.connect(out);nodes.push(w,b)}
+  else if(type==='sea'){const b=noiseSrc('brown');const lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=900;const g=ctx.createGain();g.gain.value=0.6;const lfo=ctx.createOscillator();lfo.frequency.value=0.085;const lg=ctx.createGain();lg.gain.value=0.5;lfo.connect(lg);lg.connect(g.gain);b.connect(lp);lp.connect(g);g.connect(out);nodes.push(b,lfo)}
+  nodes.forEach(n=>{try{n.start()}catch(e){}});out.gain.exponentialRampToValueAtTime(Math.max(0.001,S.cfg.vol),ctx.currentTime+1.5);snd={out,nodes}}
+function soundStop(now){if(!snd||!actx)return;const s=snd;snd=null;try{s.out.gain.cancelScheduledValues(actx.currentTime);s.out.gain.setValueAtTime(Math.max(0.0001,s.out.gain.value),actx.currentTime);s.out.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(now?0.1:0.8))}catch(e){}
+  setTimeout(()=>{s.nodes.forEach(n=>{try{n.stop()}catch(e){}});try{s.out.disconnect()}catch(e){}},now?150:900)}
+function soundVol(v){S.cfg.vol=v;if(snd&&actx){try{snd.out.gain.cancelScheduledValues(actx.currentTime);snd.out.gain.setValueAtTime(Math.max(0.001,v),actx.currentTime)}catch(e){}}}
+function soundShouldPlay(){return (S.timer.endAt&&!S.timer.isBreak)||(S.kl.endAt&&S.cfg.soundKl)}
+function soundCardHTML(kl){return '<div class="card"><h2>Fokus-Geräusch</h2><div class="row seg">'+SOUNDS.map(x=>'<button data-act="sound" data-s="'+x[0]+'" class="'+(S.cfg.sound===x[0]?'on':'')+'">'+x[1]+'</button>').join('')+'</div>'+
+  (S.cfg.sound!=='off'?'<div class="volrow"><span>leise</span><input type="range" min="0.05" max="1" step="0.05" value="'+S.cfg.vol+'" data-cfg="vol"><span>laut</span></div>':'')+
+  (kl?'<label class="toggle"><input type="checkbox" data-cfg="soundKl" '+(S.cfg.soundKl?'checked':'')+'><span>Auch im Klausurmodus abspielen</span></label>':'')+
+  '<p class="hint">Läuft automatisch mit dem Sprint und stoppt in der Pause. Gleichmäßiges Rauschen überdeckt Störgeräusche. Am besten mit Kopfhörern.</p></div>'}
+
+/* ===== 9 Energie-Verlauf ===== */
+function energyCardHTML(){const days=[];for(let i=13;i>=0;i--){const k=addDays(today(),-i);days.push({k,e:S.energyLog[k]||0,m:istMin(x=>x.date===k)})}
+  const mx=Math.max(60,...days.map(d=>d.m));const by={1:[],2:[],3:[]};Object.keys(S.energyLog).forEach(k=>{const l=S.energyLog[k];if(by[l]&&k<today())by[l].push(istMin(x=>x.date===k))});
+  const avg=l=>by[l].length?by[l].reduce((a,b)=>a+b,0)/by[l].length:null;
+  let o='<div class="card"><h2>Energie und Lernzeit</h2><div class="enchart">'+days.map(d=>'<div class="encol'+(d.k===today()?' now':'')+'"><div class="enbar"><i style="height:'+Math.round(d.m/mx*100)+'%"></i></div><span class="endot e'+d.e+'"></span><small>'+parseKey(d.k).getDate()+'</small></div>').join('')+'</div>';
+  o+='<div class="enleg"><span><i class="endot e1"></i>leer</span><span><i class="endot e2"></i>okay</span><span><i class="endot e3"></i>gut</span><span><i class="endot e0"></i>kein Check</span></div>';
+  const a1=avg(1),a3=avg(3),a2=avg(2);
+  if(a1!=null||a2!=null||a3!=null)o+='<div class="stats" style="margin-top:12px">'+[[1,'an leeren Tagen'],[2,'an okay Tagen'],[3,'an guten Tagen']].map(x=>'<div class="stat"><b>'+(avg(x[0])!=null?fmtH(avg(x[0])):'–')+'</b><span>'+x[1]+'</span></div>').join('')+'</div>';
+  o+='<p class="hint">'+(a1!=null&&a1>0?'Auch an leeren Tagen schaffst du im Schnitt '+fmtH(a1)+'. Das zählt.':'Mach morgens den Energie-Check unter „Heute“. Mit der Zeit siehst du, wie viel du an welchen Tagen schaffst, und kannst realistischer planen.')+'</p>';
+  const st=concStats();const tot=st.reduce((a,b)=>a+b.min,0);
+  if(tot>=60){const mb=Math.max(...st.map(b=>b.min));const top=st.find(b=>b.min===mb);
+    o+='<div class="sublbl" style="margin-top:14px">Wann du lernst</div>'+st.map(b=>'<div class="srow"><div class="srow-t"><span>'+b.n+'</span><span>'+fmtH(b.min)+'</span></div><div class="minibar" style="margin-top:5px"><i style="width:'+Math.round(b.min/mb*100)+'%"></i></div></div>').join('')+'<p class="hint">Die meiste Zeit lernst du '+top.n.toLowerCase()+'.</p>'}
+  return o+'</div>'}
+
+/* ===== 10 Fristen ===== */
+const DLK=['Anmeldung','Abmeldung','Abgabe','Termin vereinbaren','Sonstiges'];
+function dlDays(d){return daysBetween(today(),d.date)}
+function dlWhen(d){const n=dlDays(d);return n<0?'seit '+(-n)+' '+(n===-1?'Tag':'Tagen')+' vorbei':n===0?'heute'+(d.time?' bis '+d.time:''):n===1?'morgen'+(d.time?' bis '+d.time:''):'in '+n+' Tagen'}
+function dlRow(d){const n=dlDays(d);const e=S.exams.find(x=>x.id===d.examId);
+  return '<div class="dlrow'+(d.done?' done':'')+(n<0&&!d.done?' late':n<=2&&!d.done?' soon':'')+'"><button class="st'+(d.done?' s2':'')+'" data-act="dlDone" data-id="'+d.id+'" aria-label="erledigt">.</button><div class="nm" data-act="dlEdit" data-id="'+d.id+'"><span class="from">'+esc(d.kind)+(e?' · '+esc(e.name):'')+'</span><b>'+esc(d.title)+'</b><small>'+fmtDay(d.date)+d.date.slice(0,4)+(d.time?', '+d.time:'')+' · '+dlWhen(d)+'</small></div></div>'}
+function deadlineWarnHTML(){const l=S.deadlines.filter(d=>!d.done&&dlDays(d)<=S.cfg.warnDays&&dlDays(d)>=-14).sort((a,b)=>a.date.localeCompare(b.date));if(!l.length)return '';
+  return '<div class="card dlcard"><h2>Fristen</h2>'+l.map(dlRow).join('')+'<p class="hint">Abhaken, sobald erledigt. Eine verpasste Anmeldung kostet sonst einen ganzen Termin.</p></div>'}
+function deadlinesCardHTML(){const open=S.deadlines.filter(d=>!d.done).sort((a,b)=>a.date.localeCompare(b.date)),done=S.deadlines.filter(d=>d.done);
+  return '<div class="card"><div class="dayh" style="margin-bottom:6px"><b>Fristen</b><span>'+open.length+' offen</span></div>'+(open.length?open.map(dlRow).join(''):'<p class="msg">Trag An- und Abmeldefristen ein. „Heute“ warnt dich '+S.cfg.warnDays+' Tage vorher.</p>')+
+    (done.length?'<p class="hint">'+done.length+' erledigt</p>':'')+'<div class="row" style="margin-top:12px"><button data-act="dlAdd">+ Frist eintragen</button></div></div>'}
+function deadlineModal(d){const x=d||{title:'',date:addDays(today(),7),time:'',kind:'Anmeldung',examId:S.activeId};const exams=S.exams.filter(e=>!e.done||e.id===x.examId);
+  openModal('<h3>'+(d?'Frist bearbeiten':'Neue Frist')+'</h3>'+field('Was?','<input type="text" id="dlT" value="'+esc(x.title)+'" placeholder="z. B. Anmeldung Europarecht in PLUSonline">')+
+    '<div class="grid2">'+field('Bis wann?','<input type="date" id="dlD" value="'+esc(x.date)+'">')+field('Uhrzeit (optional)','<input type="time" id="dlH" value="'+esc(x.time||'')+'">')+'</div>'+
+    field('Art','<div class="chips wrap">'+DLK.map(k=>'<button data-act="dlKind" data-k="'+k+'" class="'+(x.kind===k?'on':'')+'">'+k+'</button>').join('')+'</div>')+
+    (exams.length?field('Zu welcher Prüfung? (optional)','<div class="chips wrap">'+exams.map(e=>'<button data-act="dlExam" data-e="'+e.id+'" class="'+(x.examId===e.id?'on':'')+'">'+esc(e.name)+'</button>').join('')+'</div>'):'')+
+    btnRow('Speichern','dlSave'+(d?'" data-id="'+d.id:''),d?'<button class="btn-ghost danger" data-act="dlDel" data-id="'+d.id+'">Löschen</button>':''))}
+
+/* ===== 11 Prüfungstag ===== */
+function exChecklist(e){return e.check||S.cfg.checklist.map(t=>({t,d:false}))}
+function examTodayFor(){return S.exams.find(e=>!e.done&&exDate(e)&&dkey(exDate(e))===today()&&exDate(e)>new Date(Date.now()-6*36e5))}
+function examTomorrow(){return S.exams.find(e=>!e.done&&exDate(e)&&dkey(exDate(e))===addDays(today(),1))}
+function checklistHTML(e){const l=exChecklist(e);const n=l.filter(x=>x.d).length;
+  return '<div class="sublbl" style="margin-top:14px">Checkliste · '+n+' von '+l.length+'</div>'+l.map((x,i)=>'<label class="chk'+(x.d?' done':'')+'"><input type="checkbox" data-chk="'+i+'" data-e="'+e.id+'" '+(x.d?'checked':'')+'><span>'+esc(x.t)+'</span><button class="del" data-act="chkDel" data-i="'+i+'" data-e="'+e.id+'">×</button></label>').join('')+
+    '<div class="row" style="margin-top:8px"><input type="text" id="chkNew" placeholder="Weiterer Punkt" style="flex:1"><button data-act="chkAdd" data-e="'+e.id+'" style="flex:none">+</button></div>'}
+function examDayHTML(e,preview){const d=exDate(e);const ms=d-Date.now();const h=Math.floor(Math.max(0,ms)/36e5),m=Math.floor(Math.max(0,ms)%36e5/6e4);
+  let leave='';if(e.leave){const p=e.leave.split(':');const ld=new Date(d);ld.setHours(+p[0],+p[1],0,0);const lm=Math.round((ld-Date.now())/6e4);leave='<div class="pdrow"><span>Losgehen</span><b>'+esc(e.leave)+(lm>0&&lm<600&&!preview?' · in '+(lm>=60?Math.floor(lm/60)+' h '+pad(lm%60)+' min':lm+' min'):'')+'</b></div>'}
+  return '<div class="card pday"><div class="eyebrow">'+(preview?'Vorschau Prüfungstag':'Heute ist Prüfungstag')+'</div><div class="hname" style="font-size:26px">'+esc(e.name)+'</div>'+
+    (!preview&&ms>0?'<div class="pdcount" id="pdcd">'+(h?h+' h ':'')+pad(m)+' min</div><div class="hint" style="margin-top:0">bis zum Beginn</div>':preview?'':'<div class="pdcount">Läuft</div>')+
+    '<div class="pdrow"><span>Beginn</span><b>'+pad(d.getHours())+':'+pad(d.getMinutes())+'</b></div>'+(e.place?'<div class="pdrow"><span>Ort</span><b>'+esc(e.place)+'</b></div>':'')+leave+
+    (!e.place||!e.leave?'<p class="hint">Ort und Abfahrtszeit trägst du in der Prüfung unter „Prüfungstag“ ein.</p>':'')+checklistHTML(e)+
+    '<div class="row" style="margin-top:14px"><button class="btn-main" style="font-size:16px;padding:13px" data-act="breathe">Atemübung, 2 Minuten</button></div>'+
+    '<p class="msg" style="margin-top:14px">Du hast dich vorbereitet. Lies jede Frage zweimal, teil dir die Zeit ein und fang mit dem an, was du sicher kannst.</p></div>'}
+function examEveHTML(e){const d=exDate(e);return '<div class="card pday"><div class="eyebrow">Morgen ist Prüfung</div><div class="hname">'+esc(e.name)+'</div><div class="hdate">'+fmtEx(e)+(e.place?' · '+esc(e.place):'')+'</div><p class="msg" style="margin-top:10px">Heute Abend einpacken, Wecker stellen und keinen neuen Stoff mehr anfangen.</p>'+checklistHTML(e)+'<div class="row" style="margin-top:14px"><button data-act="breathe">Atemübung</button><button data-act="pdayPrev" data-e="'+e.id+'">Prüfungstag-Ansicht</button></div></div>'}
+let breathT=null;
+function breatheModal(){openModal('<h3 style="text-align:center">Ruhig atmen</h3><div class="breath"><div class="bcirc" id="bc"></div><div class="blbl" id="bl">Bereit</div></div><p class="hint" style="text-align:center" id="bn">4 Sekunden ein, 6 Sekunden aus. Langsames Ausatmen hilft vielen, ruhiger zu werden.</p><div class="row" style="margin-top:12px"><button class="btn-main" data-act="breathGo" style="font-size:16px">Start</button></div><div class="row" style="margin-top:6px"><button class="btn-ghost" data-act="breathStop">Schließen</button></div>')}
+function breatheRun(){clearInterval(breathT);let t=0;const gb=document.querySelector('[data-act=breathGo]');if(gb)gb.textContent='Neu starten';const cycles=12;const bc=document.getElementById('bc'),bl=document.getElementById('bl'),bn=document.getElementById('bn');
+  const step=()=>{const c=Math.floor(t/10),p=t%10;if(c>=cycles){clearInterval(breathT);bl.textContent='Geschafft';bc.className='bcirc';bn.textContent='Gut gemacht. Du bist bereit.';return}
+    if(p===0){bc.className='bcirc in';bl.textContent='Einatmen'}if(p===4){bc.className='bcirc out';bl.textContent='Ausatmen'}bn.textContent='Runde '+(c+1)+' von '+cycles;t++};step();breathT=setInterval(step,1000)}
+
+/* ===== 12 Lernduell ===== */
+function b64e(o){return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
+function b64d(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return JSON.parse(decodeURIComponent(escape(atob(s))))}
+function myDuel(){const ws=weekStart(today());const w=weekStats(ws);return {v:1,n:S.profile.name||'Ich',w:ws,h:Math.round(w.ist),s:w.sprints,st:streak(),l:levelInfo().n}}
+function myCode(){return 'ES1-'+b64e(myDuel())}
+function duelCardHTML(){const me=myDuel();const ws=me.w;const fr=S.duel.friends;
+  const cur=[Object.assign({me:true},me)].concat(fr.filter(f=>f.w===ws)).sort((a,b)=>b.h-a.h);const old=fr.filter(f=>f.w!==ws);const mx=Math.max(60,...cur.map(x=>x.h));
+  let o='<div class="card"><div class="dayh" style="margin-bottom:6px"><b>Lernduell</b><span>Woche ab '+fmtDay(ws)+'</span></div>';
+  if(!fr.length)o+='<p class="msg">Lernt gemeinsam, auch ohne Server: Teil deinen Code mit Freund:innen, sie fügen ihn in ihrer Endspurt-App ein und schicken dir ihren zurück. So seht ihr gegenseitig eure Wochenstunden.</p>';
+  else{o+=cur.map((x,i)=>'<div class="duel'+(x.me?' me':'')+'" '+(x.me?'':'data-act="duelDel" data-n="'+esc(x.n)+'"')+'><span class="dpos">'+(i+1)+'</span><div style="flex:1;min-width:0"><div class="srow-t"><span><b>'+esc(x.me?x.n+' (du)':x.n)+'</b></span><span>'+fmtH(x.h)+'</span></div><div class="minibar" style="margin-top:5px"><i style="width:'+Math.round(x.h/mx*100)+'%"></i></div><small class="hint">'+x.s+' Sprints · Serie '+x.st+' · Level '+x.l+(x.at&&!x.me?' · Stand '+fmtDay(x.at):'')+'</small></div></div>').join('');
+    const lead=cur[0];o+='<p class="hint" style="margin-top:10px">'+(cur.length<2?'Noch kein aktueller Code von dieser Woche. Bitte um einen neuen.':lead.me?'Du führst diese Woche! Bleib dran.':esc(lead.n)+' liegt vorne. Ein Sprint, und der Abstand schrumpft.')+'</p>';
+    if(old.length)o+='<p class="hint">Älterer Stand: '+old.map(f=>esc(f.n)+' '+fmtH(f.h)+' (Woche ab '+fmtDay(f.w)+')').join(', ')+'</p>'}
+  return o+'<div class="row" style="margin-top:12px"><button data-act="duelShare">Meinen Stand teilen</button><button data-act="duelPaste">Code einfügen</button></div></div>'}
+function duelShareText(){const me=myDuel();return 'Mein Endspurt-Stand diese Woche: '+fmtH(me.h)+', '+me.s+' Sprints. Füg den Code in deiner Endspurt-App unter Ziel, Lernduell ein: '+myCode()}
+
+/* ===== Aktionen ===== */
+document.addEventListener('click',ev=>{const el=ev.target.closest('[data-act]');if(!el)return;const a=el.dataset.act;const id=+el.dataset.id;
+  switch(a){
+    case 'rwAdd':rwDraft={text:'',kind:'hours',val:10,examId:(openSorted()[0]||{}).id};rewardModal();break;
+    case 'rwEdit':{const r=S.rewards.find(x=>x.id===id);if(r){rwDraft=Object.assign({},r);rewardModal()}break}
+    case 'rwKind':rwReadDraft();rwDraft.kind=el.dataset.k;if(rwDraft.kind==='exam'&&!rwDraft.examId)rwDraft.examId=(openSorted()[0]||{}).id;rewardModal();break;
+    case 'rwExam':rwReadDraft();rwDraft.examId=+el.dataset.e;rewardModal();break;
+    case 'rwSave':{rwReadDraft();const d=rwDraft;if(!String(d.text).trim()){toast('Womit belohnst du dich?');break}if(d.kind!=='exam'&&!(+d.val>0)){toast('Bitte eine Zahl eintragen.');break}
+      let r=d.id?S.rewards.find(x=>x.id===d.id):null;const base=d.kind==='hours'?istMin(()=>true)/60:d.kind==='sprints'?S.sessions.filter(x=>!x.manual).length:0;
+      if(r){const changed=r.kind!==d.kind;Object.assign(r,{text:d.text.trim(),kind:d.kind,val:+d.val||1,examId:d.examId});if(changed){r.base=base;r.unlocked=null}}
+      else S.rewards.push({id:S.nextId++,text:d.text.trim(),kind:d.kind,val:+d.val||1,examId:d.examId,base,created:today(),unlocked:null,redeemed:null});
+      save();closeModal();render();checkRewards();break}
+    case 'rwDel':S.rewards=S.rewards.filter(x=>x.id!==id);save();closeModal();render();break;
+    case 'rwRedeem':{const r=S.rewards.find(x=>x.id===id);if(r){r.redeemed=today();S.wins.push({date:today(),text:'Belohnung gegönnt: '+r.text});save();toast('Viel Spaß damit!');render()}break}
+    case 'dist':S.timer.dist=(S.timer.dist||0)+1;save();{const n=document.getElementById('distn');if(n)n.textContent=S.timer.dist}toast(rnd(['Bemerkt. Zurück zum Thema.','Gut erkannt. Weiter geht\'s.','Notiert. Ein Atemzug, dann weiter.']));break;
+    case 'kdist':S.kl.dist=(S.kl.dist||0)+1;save();{const n=document.getElementById('kdistn');if(n)n.textContent=S.kl.dist}toast('Notiert. Zurück zur Klausur.');break;
+    case 'sound':{const v=el.dataset.s;S.cfg.sound=v;save();if(v==='off'){soundStop();clearTimeout(sndPrev)}else if(soundShouldPlay())soundStart();else{soundStart(v);clearTimeout(sndPrev);sndPrev=setTimeout(()=>{if(!soundShouldPlay())soundStop()},3500)}render();break}
+    case 'dlAdd':deadlineModal(null);break;
+    case 'dlEdit':{const d=S.deadlines.find(x=>x.id===id);if(d)deadlineModal(d);break}
+    case 'dlKind':case 'dlExam':{const was=el.classList.contains('on');document.querySelectorAll('[data-act='+a+']').forEach(b=>b.classList.remove('on'));if(!(a==='dlExam'&&was))el.classList.add('on');break}
+    case 'dlSave':{const t=(document.getElementById('dlT').value||'').trim();const dt=document.getElementById('dlD').value;if(!t||!dt){toast('Bitte Titel und Datum eintragen.');break}
+      const k=document.querySelector('[data-act=dlKind].on'),ex=document.querySelector('[data-act=dlExam].on');const v={title:t,date:dt,time:document.getElementById('dlH').value||'',kind:k?k.dataset.k:'Sonstiges',examId:ex?+ex.dataset.e:null};
+      if(el.dataset.id){Object.assign(S.deadlines.find(x=>x.id===+el.dataset.id),v)}else S.deadlines.push(Object.assign({id:S.nextId++,done:false},v));save();closeModal();render();break}
+    case 'dlDel':S.deadlines=S.deadlines.filter(x=>x.id!==id);save();closeModal();render();break;
+    case 'dlDone':{const d=S.deadlines.find(x=>x.id===id);if(d){d.done=!d.done;save();if(d.done)toast('Erledigt. Eine Sorge weniger.');render()}break}
+    case 'chkAdd':{const e=S.exams.find(x=>x.id===+el.dataset.e);const i=document.getElementById('chkNew');if(e&&i&&i.value.trim()){e.check=exChecklist(e);e.check.push({t:i.value.trim(),d:false});save();render()}break}
+    case 'chkDel':{const e=S.exams.find(x=>x.id===+el.dataset.e);if(e){e.check=exChecklist(e);e.check.splice(+el.dataset.i,1);save();render()}ev.preventDefault();break}
+    case 'breathe':breatheModal();break;
+    case 'breathGo':breatheRun();break;
+    case 'breathStop':clearInterval(breathT);closeModal();break;
+    case 'pdayPrev':S.activeId=+el.dataset.e||S.activeId;save();go('pday');break;
+    case 'duelShare':{const t=duelShareText();const done=()=>toast('Kopiert. Schick es per WhatsApp oder Nachricht.');
+      if(navigator.share&&window.self===window.top){navigator.share({text:t}).catch(()=>{})}else{try{navigator.clipboard.writeText(t).then(done,()=>openModal('<h3>Dein Code</h3><textarea rows="5" readonly>'+esc(t)+'</textarea><div class="row" style="margin-top:12px"><button class="btn-ghost" data-act="close">Schließen</button></div>'))}catch(e){openModal('<h3>Dein Code</h3><textarea rows="5" readonly>'+esc(t)+'</textarea><div class="row" style="margin-top:12px"><button class="btn-ghost" data-act="close">Schließen</button></div>')}}break}
+    case 'duelPaste':openModal('<h3>Code einfügen</h3><p>Füg die Nachricht oder den Code ein, den du bekommen hast.</p><textarea id="duIn" rows="4" placeholder="ES1-…"></textarea>'+btnRow('Übernehmen','duelSave'));break;
+    case 'duelSave':{const m=/ES1-[A-Za-z0-9_-]+/.exec(document.getElementById('duIn').value||'');if(!m){toast('Kein gültiger Code gefunden.');break}
+      try{const d=b64d(m[0].slice(4));if(!d||!d.n||!d.w)throw 0;if(d.n===(S.profile.name||'Ich')&&d.h===myDuel().h){toast('Das ist dein eigener Code.');break}
+        const f=S.duel.friends.filter(x=>x.n.toLowerCase()!==String(d.n).toLowerCase());f.push({n:String(d.n).slice(0,30),w:d.w,h:+d.h||0,s:+d.s||0,st:+d.st||0,l:+d.l||1,at:today()});S.duel.friends=f;save();closeModal();toast(d.n+' ist dabei!');render()}catch(e){toast('Der Code ist beschädigt.')}break}
+    case 'duelDel':openModal('<h3>'+esc(el.dataset.n)+' entfernen?</h3><p>Der Stand wird aus deinem Lernduell gelöscht.</p>'+btnRow('Entfernen','duelDelOk" data-n="'+esc(el.dataset.n)));break;
+    case 'duelDelOk':S.duel.friends=S.duel.friends.filter(x=>x.n!==el.dataset.n);save();closeModal();render();break;
+  }});
+document.addEventListener('change',ev=>{const el=ev.target;
+  if(el.dataset.chk!=null){const e=S.exams.find(x=>x.id===+el.dataset.e);if(e){e.check=exChecklist(e);e.check[+el.dataset.chk].d=el.checked;save();render();if(e.check.every(x=>x.d))toast('Alles eingepackt!')}}
+  if(el.dataset.cfg==='vol')soundVol(pnum(el.value));});
+document.addEventListener('input',ev=>{const el=ev.target;if(el.dataset.cfg==='vol')soundVol(pnum(el.value))});
+
+/* ===== Einführung ===== */
+const TOUR=[
+ ['heute','Heute','Hier startest du jeden Tag: Countdown zur nächsten Prüfung, dein Tagessoll und der große Start-Knopf. Mit einem Tipp auf die Energie bekommst du einen passenden Vorschlag.'],
+ ['timer','Sprint','Der Timer für deine Lernsprints. Oben wechselst du in den Klausurmodus für Probeklausuren. Dazu Fokus-Geräusche und der Knopf „Abgelenkt“.'],
+ ['plan','Plan','Deine Prüfung, die Themen bis zum Termin, die Fehlerliste und der Lernkalender. Mit „bearbeiten“ änderst du alle Angaben.'],
+ ['ziel','Ziel','Drei Bereiche: Weg mit Zeitstrahl und Fristen, Zahlen mit deiner Statistik, Erfolge mit Level, Abzeichen, Belohnungen und Lernduell.'],
+ ['gear','Einstellungen','Über das Zahnrad änderst du alles: Profil, Fächer, Lernkalender, eigene Sprüche, Timer und welche Karten unter „Heute“ erscheinen.']];
+let tourStep=-1;
+function startTour(){tourStep=0;showTour()}
+function showTour(){let c=document.getElementById('coach');if(!c){c=document.createElement('div');c.id='coach';document.body.appendChild(c)}
+  document.querySelectorAll('.tourhi').forEach(x=>x.classList.remove('tourhi'));
+  if(tourStep<0||tourStep>=TOUR.length){c.remove();document.body.classList.remove('touring');tourStep=-1;S.tourDone=true;save();go('heute');setTimeout(checkBadges,400);return}
+  const t=TOUR[tourStep];document.body.classList.add('touring');
+  if(t[0]!=='gear'){if(tab!==t[0])go(t[0]);const b=document.querySelector('nav button[data-tab='+t[0]+']');if(b)b.classList.add('tourhi')}
+  else{go('heute');setTimeout(()=>{const g=document.querySelector('.gear');if(g)g.classList.add('tourhi')},30)}
+  c.innerHTML='<div class="coachcard'+(t[0]==='gear'?' low':'')+'"><div class="eyebrow">'+(tourStep+1)+' von '+TOUR.length+'</div><h3>'+t[1]+'</h3><p>'+t[2]+'</p><div class="dots">'+TOUR.map((_,i)=>'<i class="'+(i===tourStep?'on':'')+'"></i>').join('')+'</div><div class="row"><button class="btn-ghost" data-act="tourEnd">Überspringen</button><button class="btn-main" data-act="tourNext" style="font-size:16px;padding:12px">'+(tourStep===TOUR.length-1?'Los geht\'s':'Weiter')+'</button></div></div>'}
+
+/* ===== Startseite anpassen ===== */
+function homeSetupHTML(){return '<p class="hint" style="margin-top:0">Wähle, welche Karten unter „Heute“ erscheinen. Countdown und Start-Knopf bleiben immer.</p>'+HOME_CARDS.map(x=>'<label class="toggle"><input type="checkbox" data-home="'+x[0]+'" '+(homeOn(x[0])?'checked':'')+'><span>'+x[1]+'</span></label>').join('')+'<div class="row" style="margin-top:14px"><button data-act="tourStart">Einführung nochmal ansehen</button></div>'}
+
+document.addEventListener('click',ev=>{const el=ev.target.closest('[data-act]');if(!el)return;const a=el.dataset.act;
+  switch(a){
+    case 'tourNext':tourStep++;showTour();break;
+    case 'tourEnd':tourStep=-1;showTour();break;
+    case 'tourStart':startTour();break;
+    case 'antrieb':antriebOpen=!antriebOpen;if(antriebOpen&&!S.why)editWhy=true;render();break;
+    case 'gotoErfolge':zielTab='erfolge';go('ziel');break;
+    case 'ztab':zielTab=el.dataset.t;render();break;
+    case 'examEdit':{const e=active();if(e)openModal('<h3>Prüfung bearbeiten</h3>'+examFormHTML(e));break}
+    case 'topAddOpen':openModal('<h3>Themen hinzufügen</h3><p>Ein Kapitel oder Stoffgebiet pro Zeile, so wie es in deinen Unterlagen steht. Die App verteilt alles vom Lernbeginn bis zur Prüfung und hält den letzten Tag für Wiederholung frei.</p><textarea id="topIn" rows="7" placeholder="Kapitel 1\nKapitel 2\nKapitel 3"></textarea>'+btnRow('Hinzufügen und verteilen','addTop'));break;
+    case 'calMore':calMore=!calMore;render();break;
+    case 'nextQuote':quoteOff++;render();break;
+    case 'welcomeSeen':if(S.welcome){S.welcome.seen=true;save();confetti();render()}break;
+    case 'welcomeAgain':if(S.welcome){S.welcome.seen=false;save();go('heute')}break;
+    case 'errAll':errAll=!errAll;render();break;
+  }});
+document.addEventListener('change',ev=>{const el=ev.target;if(el.dataset.home){S.cfg.home=Object.assign({},S.cfg.home||{});S.cfg.home[el.dataset.home]=el.checked;save();render()}});
+
+let lastDay=today(),heroMin=Math.floor(Date.now()/60000);
+setInterval(()=>{if(S.timer.endAt&&tLeft()<=0){finish();return}
+  if(S.kl.endAt){if(klLeft()<=0){klFinish();return}const i=klPhase();if(i>S.kl.ph){S.kl.ph=i;save();chime();toast('Phase: '+phases(S.kl.dur)[i].n);if(tab==='timer')render()}}
+  if(tab==='timer'){updTimer();updKl()}const mk=Math.floor(Date.now()/60000);if(mk!==heroMin){heroMin=mk;const cd=document.getElementById('cd');if(cd&&!modalOpen())cd.innerHTML=heroHTML();if(document.getElementById('pdcd')&&!modalOpen()&&!(document.activeElement&&/INPUT|TEXTAREA/.test(document.activeElement.tagName)))render()}
+  if(today()!==lastDay){lastDay=today();render()}},500);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){if(S.kl.endAt&&klLeft()<=0)klFinish();else if(S.timer.endAt&&tLeft()<=0)finish();else if(!modalOpen()&&!(document.activeElement&&/INPUT|TEXTAREA/.test(document.activeElement.tagName)))render()}});
+if(S.kl.endAt&&klLeft()<=0)klFinish();else if(S.timer.endAt&&tLeft()<=0)finish();else render();
+setTimeout(()=>{if(S.onboarded&&!S.tourDone)startTour();else checkBadges()},800);
+try{if('serviceWorker' in navigator&&location.protocol==='https:'&&!/claude/.test(location.hostname))navigator.serviceWorker.register('sw.js').catch(()=>{})}catch(e){}
+
+})();
+</script>
+</body>
+</html>
