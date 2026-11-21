@@ -334,6 +334,56 @@ body.touring .gear.tourhi{z-index:29;position:fixed}
 
 .qtext[data-act]{cursor:pointer}
 .qhint{font-size:11px;color:#62647a;margin-top:6px;letter-spacing:.04em}
+.wed{border-color:rgba(255,70,170,.4);background:linear-gradient(160deg,rgba(255,70,170,.14),rgba(140,90,255,.08) 60%,rgba(255,255,255,.02))}
+.heartbal{color:#ff7ab6;font-weight:800}
+.scene{position:relative;width:100%;aspect-ratio:16/11;border-radius:18px;overflow:hidden;background:#1a1030}
+.scene.big{margin:6px 0 14px}
+.scene .sky{position:absolute;inset:0;background:linear-gradient(180deg,#2a1b5c 0%,#6b3f8f 45%,#f08fb8 75%,#ffc9a8 100%)}
+.scene .grass{position:absolute;left:0;right:0;bottom:0;height:42%;background:radial-gradient(120% 100% at 50% 0%,#5fb68d,#2f7a5a 70%);border-top-left-radius:50% 18%;border-top-right-radius:50% 18%}
+.sitem{position:absolute;transform:translate(-50%,-50%);line-height:1;filter:drop-shadow(0 3px 6px rgba(0,0,0,.35));animation:pop .5s ease-out}
+.sitem.diploma{filter:drop-shadow(0 0 12px rgba(255,220,120,.9))}
+@keyframes pop{0%{transform:translate(-50%,-50%) scale(.3);opacity:0}100%{transform:translate(-50%,-50%) scale(1);opacity:1}}
+.shoplist{margin-top:4px}
+.shoprow{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+.semo{font-size:28px;width:36px;text-align:center;flex:none}
+.stxt{flex:1;min-width:0}
+.stxt b{display:block;font-size:15px}
+.stxt small{display:block;font-size:12px;color:var(--muted);margin-top:2px;line-height:1.35}
+.sbuy{flex:none;background:linear-gradient(135deg,#ff7ab6,#ff46aa);color:#fff;font-weight:800;padding:9px 12px;font-size:13px;border-radius:12px;white-space:nowrap}
+.sbuy.off{background:rgba(255,255,255,.06);color:var(--muted)}
+.sown{flex:none;color:var(--acc2);font-weight:800;font-size:18px;width:40px;text-align:center}
+.slock{flex:none;font-size:18px;width:40px;text-align:center;opacity:.6}
+.shoprow.own .stxt b{color:var(--muted)}
+.grow{display:flex;flex-direction:column;align-items:center;gap:6px;margin:-4px 0 14px}
+.grow span{font-size:54px;line-height:1;transition:transform 1s linear;filter:drop-shadow(0 4px 12px rgba(255,70,170,.5))}
+.grow small{font-size:12px;color:var(--muted)}
+.grow b{color:#ff7ab6}
+.heartgain{font-size:26px;font-weight:800;color:#ff7ab6;margin:-4px 0 8px}
+.heartgain small{font-size:13px;color:var(--muted);font-weight:600}
+.hallcard{border-color:rgba(255,70,170,.4);background:linear-gradient(170deg,rgba(40,24,60,.9),rgba(20,16,30,.9))}
+.hallcard.mini{cursor:pointer}
+.hallwrap{margin:0 -8px}
+.hall{display:block;width:100%;height:auto}
+.hall text{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
+.hallseg{display:flex;background:rgba(0,0,0,.35);border-radius:12px;padding:3px;gap:3px;margin-bottom:8px}
+.hallseg button{flex:1;padding:8px 2px;font-size:13px;border-radius:9px;background:transparent;color:var(--muted)}
+.hallseg button.on{background:#fff;color:#1a1030}
+.hallnav{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px}
+.hallnav span{font-weight:700;font-size:15px;flex:1;text-align:center}
+.hallnav button{padding:4px 14px;font-size:20px;background:none}
+.hallnav button[disabled]{opacity:.25}
+.hallstats{display:flex;justify-content:space-between;align-items:center;font-size:15px;margin-top:4px;padding:0 4px}
+.hallstats small{color:var(--muted);font-size:11px}
+.helpitem{border-top:1px solid var(--line)}
+.helpitem summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:13px 0;font-weight:700;font-size:15px}
+.helpitem summary::after{content:"+";margin-left:auto;color:var(--muted);font-weight:400;font-size:20px}
+.helpitem[open] summary::after{content:"−"}
+.hic{width:28px;text-align:center;font-size:18px}
+.helpbody{padding:0 0 14px 40px;font-size:14px;line-height:1.55;color:#d9dae6}
+.helpbody p{margin:0 0 8px}
+.helpbody ul,.helpbody ol{margin:0 0 8px;padding-left:18px}
+.helpbody li{margin-bottom:6px}
+.helpbody b{color:#fff}
 </style>
 </head>
 <body>
@@ -349,10 +399,10 @@ body.touring .gear.tourhi{z-index:29;position:fixed}
 <div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
 <div class="toast" id="toast"></div>
 
-<script>window.ENDSPURT_PRESET={"key": "endspurt_bella", "from": "Lukas", "name": "Bella", "degree": "Magistra", "welcome": "Servus Bella Bellinski! 👋\n\nAb heute hast du deinen eigenen Endspurt-Coach. Streng, aber fair, und mit genau einem Ziel:\n\nDu wirst nicht ohne Mag. Titel heiraten. 💍🎓\n\nIch glaub an dich, Premium Chaya. Und jetzt: ein Sprint. Danach gibt's einen Snackigen Snack Snack.\n\nLukas", "pause": "Pause! Zeit für einen Snackigen Snack Snack. Aber kein Handy-Scrollen, Premium Chaya.", "msgs": ["Du wirst nicht ohne Mag. Titel heiraten. Das ist kein Spruch, das ist ein Plan. 💍🎓", "Mag. Bella Bellinski. Klingt verdammt gut, oder?", "Premium Chaya lernt nicht einfach. Premium Chaya dominiert den Stoff.", "Erst der Sprint, dann der Snackige Snack Snack. So lautet das Gesetz.", "Irgendwann fragt dich jemand auf deiner Hochzeit: „Und was machst du so?“ Du: „Mag. Bella Bellinski, danke der Nachfrage.“", "Ein Ring am Finger, ein Titel vor dem Namen. Eins davon hast du schon. 💍", "Kein Snackiger Snack Snack ohne vorherigen Sprint. Ausnahmen nur bei akuter Snack-Not.", "Bella Bellinski gibt nicht auf. Bella Bellinski macht Pause und dann weiter.", "Premium Chaya. Premium Leistung. Premium Abschluss.", "Der Brautstrauß fliegt erst, wenn die letzte Prüfung abgehakt ist.", "Fun Fact: Prüfungen haben Angst vor Bella Bellinski.", "Ein Snackiger Snack Snack ist kein Essen. Er ist eine Belohnung. Verdien ihn dir.", "Du bist nicht müde. Du bist im Energiesparmodus für den Endspurt.", "Ja-Wort und Mag. Titel: zwei Unterschriften, die dein Leben verändern. Bei einer hilft dir diese App.", "Premium Chaya hat heute schon gelernt? Nein? Dann jetzt. Premium wartet nicht.", "Irgendwann steht auf einer Einladung: Mag. Bella Bellinski. Arbeiten wir dran.", "Heute eine Seite mehr, morgen ein Titel mehr.", "Die Hochzeitsplanung ist kompliziert. Ein Sprint ist es nicht. Fang einfach an.", "Lukas sagt: Ich hab an dich geglaubt, bevor du diese App überhaupt geöffnet hast.", "Snackiger Snack Snack in der einen Hand, Skript in der anderen. Multitasking auf Premium-Niveau."], "done": ["Sprint geschafft, Bella Bellinski! 🎉", "Premium Chaya hat geliefert.", "Wieder ein Stück näher am Mag. vor deinem Namen.", "Stark! Snackiger Snack Snack verdient.", "Erledigt. Der Titel kommt Sprint für Sprint.", "Bellinski-Power! Weiter so."], "sos": ["Hol dir einen Snackigen Snack Snack, setz dich hin und mach nur 5 Minuten. Deal?", "Premium-Chaya-Modus aktivieren: eine einzige Seite lesen. Mehr verlangt heute niemand.", "Denk an die Hochzeit: Du wirst nicht ohne Mag. Titel heiraten. Also: 5 Minuten, los."]};</script>
+<script>window.ENDSPURT_PRESET={"key": "endspurt_bella", "from": "Lukas", "name": "Bella", "degree": "Magistra", "welcome": "Servus Bella Bellinski! 👋\n\nAb heute hast du deinen eigenen Endspurt-Coach. Streng, aber fair, und mit genau einem Ziel:\n\nDu wirst nicht ohne Mag. Titel heiraten. 💍🎓\n\nIch glaub an dich, Premium Chaya. Und jetzt: ein Sprint. Danach gibt's einen Snackigen Snack Snack.\n\nLukas", "pause": "Pause! Zeit für einen Snackigen Snack Snack. Aber kein Handy-Scrollen, Premium Chaya.", "msgs": ["Du wirst nicht ohne Mag. Titel heiraten. Das ist kein Spruch, das ist ein Plan. 💍🎓", "Mag. Bella Bellinski. Klingt verdammt gut, oder?", "Premium Chaya lernt nicht einfach. Premium Chaya dominiert den Stoff.", "Erst der Sprint, dann der Snackige Snack Snack. So lautet das Gesetz.", "Irgendwann fragt dich jemand auf deiner Hochzeit: „Und was machst du so?“ Du: „Mag. Bella Bellinski, danke der Nachfrage.“", "Ein Ring am Finger, ein Titel vor dem Namen. Eins davon hast du schon. 💍", "Kein Snackiger Snack Snack ohne vorherigen Sprint. Ausnahmen nur bei akuter Snack-Not.", "Bella Bellinski gibt nicht auf. Bella Bellinski macht Pause und dann weiter.", "Premium Chaya. Premium Leistung. Premium Abschluss.", "Der Brautstrauß fliegt erst, wenn die letzte Prüfung abgehakt ist.", "Fun Fact: Prüfungen haben Angst vor Bella Bellinski.", "Ein Snackiger Snack Snack ist kein Essen. Er ist eine Belohnung. Verdien ihn dir.", "Du bist nicht müde. Du bist im Energiesparmodus für den Endspurt.", "Ja-Wort und Mag. Titel: zwei Unterschriften, die dein Leben verändern. Bei einer hilft dir diese App.", "Premium Chaya hat heute schon gelernt? Nein? Dann jetzt. Premium wartet nicht.", "Irgendwann steht auf einer Einladung: Mag. Bella Bellinski. Arbeiten wir dran.", "Heute eine Seite mehr, morgen ein Titel mehr.", "Die Hochzeitsplanung ist kompliziert. Ein Sprint ist es nicht. Fang einfach an.", "Lukas sagt: Ich hab an dich geglaubt, bevor du diese App überhaupt geöffnet hast.", "Snackiger Snack Snack in der einen Hand, Skript in der anderen. Multitasking auf Premium-Niveau."], "done": ["Sprint geschafft, Bella Bellinski! 🎉", "Premium Chaya hat geliefert.", "Wieder ein Stück näher am Mag. vor deinem Namen.", "Stark! Snackiger Snack Snack verdient.", "Erledigt. Der Titel kommt Sprint für Sprint.", "Bellinski-Power! Weiter so."], "sos": ["Hol dir einen Snackigen Snack Snack, setz dich hin und mach nur 5 Minuten. Deal?", "Premium-Chaya-Modus aktivieren: eine einzige Seite lesen. Mehr verlangt heute niemand.", "Denk an die Hochzeit: Du wirst nicht ohne Mag. Titel heiraten. Also: 5 Minuten, los."], "shop": "wedding"};</script>
 <script>
 (function(){
-const VERSION='3.4';
+const VERSION='3.6';
 const PRESET=(typeof window!=='undefined'&&window.ENDSPURT_PRESET)||{};
 const KEY=PRESET.key||'endspurt_v2',OLD=PRESET.key?'__none__':'endspurt_v1';let memStore={};
 function rawGet(k){try{return localStorage.getItem(k)}catch(e){return memStore[k]||null}}
@@ -369,7 +419,7 @@ function defaults(){return {v:3,seed:5,onboarded:false,tourDone:false,
   activeId:null,sessions:[],wins:[],errors:[],badges:{},energy:null,lastBackup:null,
   subj:null,subjDate:null,tmode:'sprint',sims:0,
   timer:{dur:25,endAt:null,left:null,isBreak:false},kl:{dur:240,endAt:null,left:null,ph:0},
-  rewards:[],energyLog:{},deadlines:[],duel:{friends:[]},
+  rewards:[],energyLog:{},deadlines:[],duel:{friends:[]},shop:{bought:{},guests:0},
   cfg:JSON.parse(JSON.stringify(DEF_CFG)),nextId:1000}}
 
 /* Daten aus älteren Versionen übernehmen */
@@ -388,7 +438,7 @@ function normalize(o){const d=defaults();const s=Object.assign(d,o);
   if(!s.plan||typeof s.plan!=='object'||Array.isArray(s.plan))s.plan={};
   if(!Array.isArray(s.subjects)||!s.subjects.length)s.subjects=[{id:'X',n:'Sonstiges',s:'Sonstiges',t:0}];
   if(!s.subjects.find(x=>x.id==='X'))s.subjects.push({id:'X',n:'Sonstiges',s:'Sonstiges',t:0});
-  s.badges=s.badges||{};
+  s.badges=s.badges||{};s.shop=Object.assign({bought:{},guests:0,oops:[]},o.shop||{});if(!Array.isArray(s.shop.oops))s.shop.oops=[];if(!s.shop.bought||typeof s.shop.bought!=='object')s.shop.bought={};
   s.exams=s.exams.map(e=>Object.assign({subj:null,ects:0,date:'',start:'',note:'',alias:[],done:false,grade:null,attempt:1,fb:{date:'',text:''},hist:[],topics:[],place:'',leave:'',check:null},e));
   /* Version 2 -> 3 */
   if((o.seed||0)<5){
@@ -613,7 +663,7 @@ function heroHTML(){const e=nextExam();
   return '<div class="herorow">'+ringSVG(p,'<text x="66" y="68" text-anchor="middle" class="rnum">'+dd+'</text><text x="66" y="90" text-anchor="middle" class="rlbl">'+(dd===1?'TAG':'TAGE')+'</text>')+
    '<div class="hinfo"><div class="eyebrow">Nächste Prüfung</div><div class="hname">'+esc(e.name)+'</div><div class="hdate">'+fmtEx(e)+(e.attempt>1?' · '+e.attempt+'. Antritt':'')+'</div><div class="hmeta"><span>'+(ms>0?'+ '+h+' h '+pad(m)+' min':'heute')+'</span><span>'+p+' % Stoff</span></div></div></div>'+goalLine()}
 let antriebOpen=false;
-const HOME_CARDS=[['dl','Fristen-Warnung'],['today','Heute-Karte mit Soll und Start'],['energy','Energie-Check'],['err','Fällige Fehler'],['week','Wochenrückblick am Sonntag und Montag'],['topics','Themen für heute'],['antrieb','Spruch, Warum und Wenn-dann'],['slim','Level und Statistik']];
+const HOME_CARDS=(PRESET.shop?[['hall','Hochzeitssaal']]:[]).concat([['dl','Fristen-Warnung'],['today','Heute-Karte mit Soll und Start'],['energy','Energie-Check'],['err','Fällige Fehler'],['week','Wochenrückblick am Sonntag und Montag'],['topics','Themen für heute'],['antrieb','Spruch, Warum und Wenn-dann'],['slim','Level und Statistik']]);
 function homeOn(k){return !S.cfg.home||S.cfg.home[k]!==false}
 function todayCardHTML(){const tk=today();const p=planOf(tk);const soll=sollDay(tk);const ist=istMin(x=>x.date===tk);const en=S.energy&&S.energy.date===tk?S.energy.level:0;
   let o='<div class="card today"><div class="dayh"><b>Heute</b>'+(hasPlan()?'<button class="link" data-act="editDay" data-k="'+tk+'">anpassen</button>':'')+'</div>';
@@ -636,7 +686,7 @@ function antriebHTML(){let o='<div class="card quote"><div class="qmark">“</di
   else if(S.why)o+='<p class="whysmall">'+esc(S.why)+'</p>';
   return o+'</div>'}
 function welcomeHTML(){const w=S.welcome;return '<div class="card welcome"><div class="eyebrow">'+(w.from?'Eine Nachricht von '+esc(w.from):'Eine Nachricht für dich')+'</div><p class="wtext">'+esc(w.text)+'</p><div class="row" style="margin-top:12px"><button class="btn-main" data-act="welcomeSeen" style="font-size:16px;padding:13px">Danke!</button></div></div>'}
-function slimHTML(){const L=levelInfo();return '<button class="slim" data-act="gotoErfolge"><span class="lvlmini">'+L.n+'</span><span class="slimt"><b>'+esc(L.name)+'</b><small>'+fmtH(todayMin())+' heute · '+todayCount()+' Sprints · Serie '+streak()+'</small></span><span class="go">›</span></button>'}
+function slimHTML(){const L=levelInfo();return '<button class="slim" data-act="gotoErfolge"><span class="lvlmini">'+L.n+'</span><span class="slimt"><b>'+esc(L.name)+'</b><small>'+(shopOn()?'❤ '+hearts()+' · ':'')+fmtH(todayMin())+' heute · '+todayCount()+' Sprints · Serie '+streak()+'</small></span><span class="go">›</span></button>'}
 function levelCardHTML(){const L=levelInfo();return '<div class="card lvl"><div class="lvlrow"><div class="lvlbadge">'+L.n+'</div><div style="flex:1;min-width:0"><div class="eyebrow">Level '+L.n+'</div><div class="lvlname">'+esc(L.name)+'</div><div class="minibar" style="margin-top:8px"><i style="width:'+L.pc+'%"></i></div><div class="hint" style="margin-top:6px">'+(L.to!=null?fmtH(L.h*60)+' Fokus · nächstes Level bei '+L.to+' Std.':'Höchstes Level erreicht')+'</div></div></div></div>'}
 function weekMini(){const ws=weekStart(today());const d=new Date();const show=(d.getDay()===0&&d.getHours()>=17)||d.getDay()===1;if(!show)return '';
   const st=d.getDay()===1?addDays(ws,-7):ws;const w=weekStats(st);
@@ -652,7 +702,8 @@ function vHeute(){const tk=today();const h=new Date().getHours();const A=active(
   const xd=examTodayFor(),xe=examTomorrow();if(xd)o+=examDayHTML(xd,false);else if(xe)o+=examEveHTML(xe);
   if(homeOn('dl'))o+=deadlineWarnHTML();
   o+='<div class="card hero" id="cd">'+heroHTML()+'</div>';
-  if(homeOn('today'))o+=todayCardHTML();else o+='<button class="btn-main" data-act="go" style="margin-bottom:14px">Sprint starten</button>';
+  if(homeOn('today'))o+=todayCardHTML();
+  if(shopOn()&&homeOn('hall'))o+=hallMiniHTML();else o+='<button class="btn-main" data-act="go" style="margin-bottom:14px">Sprint starten</button>';
   const due=errDue().length;if(due&&homeOn('err'))o+='<button class="slim errslim" data-act="review"><span class="lvlmini warm">'+due+'</span><span class="slimt"><b>'+(due===1?'Lücke':'Lücken')+' zur Wiederholung fällig</b><small>Dauert meist nur ein paar Minuten</small></span><span class="go">›</span></button>';
   if(homeOn('week'))o+=weekMini();
   if(homeOn('topics')){const open=S.exams.filter(e=>!e.done);const multi=open.filter(e=>e.topics.length).length>1;
@@ -679,6 +730,7 @@ function subjPicker(){return '<div class="sublbl">Fach</div><div class="chips" s
 function vTimer(){if(S.tmode==='klausur')return vKlausur();const t=S.timer;const run=!!t.endAt;const paused=!run&&t.left!=null;
   let o='<h1>'+(t.isBreak?'Pause':'Fokus-Sprint')+'</h1><p class="sub">'+(t.isBreak?esc(PRESET.pause||'Weg vom Schreibtisch. Kein Handy-Scrollen.'):'Handy umdrehen, eine Sache, bis der Timer läutet.')+'</p>'+(t.isBreak?'':modeSeg());
   o+='<div class="card">'+ringBox('arc',fmtT(tLeft()),run?'läuft':paused?'pausiert':'bereit',t.isBreak?'#5ef0b0':null);
+  if(!t.isBreak&&(run||paused))o+=growHTML();
   if(!t.isBreak&&(run||paused))o+='<button class="distbtn" data-act="dist">Abgelenkt <b id="distn">'+(t.dist||0)+'</b></button>';
   if(!t.isBreak)o+=subjPicker();
   if(!run&&!paused&&!t.isBreak){const ds=S.cfg.sprints.slice();if(!ds.includes(t.dur))ds.push(t.dur);ds.sort((a,b)=>a-b);
@@ -688,12 +740,12 @@ function vTimer(){if(S.tmode==='klausur')return vKlausur();const t=S.timer;const
   if(!t.isBreak)o+=soundCardHTML(false);
   return o+statsHTML()}
 function updTimer(){const td=document.getElementById('arcd');if(!td)return;const ms=tLeft();td.textContent=fmtT(ms);
-  const tot=(S.timer.isBreak?S.cfg.brk:S.timer.dur)*60000;const a=document.getElementById('arc');if(a)a.setAttribute('stroke-dashoffset',String(C*(1-ms/tot)))}
+  const tot=(S.timer.isBreak?S.cfg.brk:S.timer.dur)*60000;const a=document.getElementById('arc');if(a)a.setAttribute('stroke-dashoffset',String(C*(1-ms/tot)));updGrow()}
 function startTimer(){unlockAudio();const t=S.timer;if(t.left==null)t.dist=0;t.endAt=Date.now()+tLeft();t.left=null;t.startedAt=t.startedAt||Date.now();save();if(!t.isBreak)soundStart();else soundStop()}
 function finish(){const t=S.timer;const wasBreak=t.isBreak;t.endAt=null;t.left=null;t.isBreak=false;soundStop();
   if(!wasBreak)S.sessions.push({date:today(),min:t.dur,at:Date.now(),examId:S.activeId,subj:curSubj(),dist:t.dist||0});t.dist=0;t.startedAt=null;save();chime();
   if(wasBreak)openModal('<h3>Pause vorbei</h3><p>Zurück an den Schreibtisch. Der nächste Sprint ist bereit.</p><div class="row"><button class="btn-main" data-act="mStart">Nächster Sprint</button></div><div class="row" style="margin-top:8px"><button class="btn-ghost" data-act="close">Später</button></div>');
-  else{const n=todayCount();openModal('<h3>'+rnd(DONE)+'</h3><p>'+n+'. Sprint heute · '+fmtH(todayMin())+' Fokus.'+(n%4===0?' Vier Sprints: Zeit für eine längere Pause von 20 bis 30 Minuten.':'')+'</p><input type="text" id="winIn" placeholder="Was hast du geschafft? (optional)"><div class="row" style="margin-top:12px"><button class="btn-main" data-act="mBreak" style="font-size:16px">'+S.cfg.brk+' min Pause</button></div><div class="row" style="margin-top:8px"><button data-act="mStart">Gleich weiter</button><button data-act="errAdd">Lücke notieren</button></div><div class="row" style="margin-top:4px"><button class="btn-ghost" data-act="close">Fertig für jetzt</button></div>')}
+  else{const n=todayCount();openModal('<h3>'+rnd(DONE)+'</h3>'+(shopOn()?'<div class="heartgain">+'+t.dur+' ❤ <small>für deine Hochzeit</small></div>':'')+'<p>'+n+'. Sprint heute · '+fmtH(todayMin())+' Fokus.'+(n%4===0?' Vier Sprints: Zeit für eine längere Pause von 20 bis 30 Minuten.':'')+'</p><input type="text" id="winIn" placeholder="Was hast du geschafft? (optional)"><div class="row" style="margin-top:12px"><button class="btn-main" data-act="mBreak" style="font-size:16px">'+S.cfg.brk+' min Pause</button></div><div class="row" style="margin-top:8px"><button data-act="mStart">Gleich weiter</button><button data-act="errAdd">Lücke notieren</button></div><div class="row" style="margin-top:4px"><button class="btn-ghost" data-act="close">Fertig für jetzt</button></div>')}
   render();checkBadges()}
 function saveWin(){const i=document.getElementById('winIn');if(i&&i.value.trim()){S.wins.push({date:today(),text:i.value.trim(),examId:S.activeId});i.value='';save()}}
 
@@ -720,7 +772,7 @@ function updKl(){const kd=document.getElementById('karcd');if(!kd)return;const m
   const i=klPhase();const kpl=document.getElementById('kpl');if(kpl){const end=(ps[i].start+ps[i].min)*60000-(S.kl.dur*60000-ms);kpl.textContent=ps[i].n+' endet in '+fmtHMS(Math.max(0,end))+(ps[i+1]?', dann '+ps[i+1].n:'')}
   const st=document.getElementById('karcs');if(st&&klBusy())st.textContent=ps[i].n}
 function klFinish(){const k=S.kl;const min=k.dur;k.endAt=null;k.left=null;k.ph=0;soundStop();S.sims++;S.sessions.push({date:today(),min,at:Date.now(),examId:S.activeId,subj:curSubj(),klausur:true,dist:k.dist||0});k.dist=0;S.wins.push({date:today(),text:'Klausursimulation ('+fmtH(min)+') durchgezogen',examId:S.activeId});save();chime();
-  openModal('<h3>Klausur geschafft!</h3><p>'+fmtH(min)+' unter Prüfungsbedingungen. Das ist Simulation Nr. '+S.sims+'. Notier jetzt gleich, wo es gehakt hat, solange es frisch ist.</p><div class="row"><button class="btn-main" data-act="errAdd" style="font-size:16px">Lücken notieren</button></div><div class="row" style="margin-top:8px"><button class="btn-ghost" data-act="close">Später</button></div>');render();checkBadges()}
+  openModal('<h3>Klausur geschafft!</h3>'+(shopOn()?'<div class="heartgain">+'+(min+50)+' ❤ <small>für deine Hochzeit</small></div>':'')+'<p>'+fmtH(min)+' unter Prüfungsbedingungen. Das ist Simulation Nr. '+S.sims+'. Notier jetzt gleich, wo es gehakt hat, solange es frisch ist.</p><div class="row"><button class="btn-main" data-act="errAdd" style="font-size:16px">Lücken notieren</button></div><div class="row" style="margin-top:8px"><button class="btn-ghost" data-act="close">Später</button></div>');render();checkBadges()}
 
 function vPlan(){const e=active(),tk=today();
   let o='<h1>Lernplan</h1>';
@@ -816,7 +868,7 @@ function vZiel(){const done=S.exams.filter(e=>e.done);const firstOpen=openSorted
   o+=deadlinesCardHTML()}
   else if(zielTab==='zahlen'){o+=weekCardHTML()+energyCardHTML()+concCardHTML()+subjCardHTML();
   o+='<div class="card"><h2>Bisher investiert</h2><div class="stats"><div class="stat"><b>'+fmtH(tot)+'</b><span>Fokus</span></div><div class="stat"><b>'+S.sessions.filter(x=>!x.manual).length+'</b><span>Sprints</span></div><div class="stat"><b>'+bestStreak()+'</b><span>längste Serie</span></div></div></div>';}
-  else{o+=levelCardHTML()+rewardCardHTML()+badgeCardHTML()+duelCardHTML();
+  else{o+=hallCardHTML()+levelCardHTML()+rewardCardHTML()+badgeCardHTML()+duelCardHTML();
   o+='<div class="card"><h2>Erfolgsliste</h2>'+(S.wins.length?S.wins.slice().reverse().slice(0,50).map((w,i)=>'<div class="win" data-act="winEdit" data-i="'+(S.wins.length-1-i)+'"><small>'+fmtLong(w.date)+'</small>'+esc(w.text)+'</div>').join(''):'<p class="msg">Nach jedem Sprint kannst du notieren, was du geschafft hast. Das sammelt sich hier, für die Tage, an denen es sich anfühlt, als hättest du nichts gemacht.</p>')+'<div class="row" style="margin-top:10px"><button data-act="winAdd">+ Erfolg eintragen</button></div></div>';}
   return o}
 
@@ -830,6 +882,7 @@ function vOnboard(){return '<div class="brand">ENDSPURT</div><h1>Willkommen!</h1
 
 function sec(id,title,inner){const open=setupSec===id;return '<div class="card setsec'+(open?' open':'')+'"><button class="sechead" data-act="sec" data-s="'+id+'"><b>'+title+'</b><span>'+(open?'−':'+')+'</span></button>'+(open?'<div class="secbody">'+inner+'</div>':'')+'</div>'}
 function vSetup(){const c=S.cfg;let o='<h1>Einstellungen</h1><p class="sub">Alles hier kannst du jederzeit ändern.</p>';
+  o+=sec('help','📖 Anleitung: so funktioniert alles',helpHTML());
   o+=sec('profil','Profil und Ziel',field('Name','<input type="text" data-cfg="name" value="'+esc(S.profile.name)+'">')+field('Studium','<input type="text" data-cfg="study" value="'+esc(S.profile.study)+'" placeholder="z. B. Rechtswissenschaften, Uni Salzburg">')+
     field('Abschluss','<div class="chips wrap">'+DEGREES.map(d=>'<button data-act="setDeg" data-d="'+d+'" class="'+(S.profile.degree===d?'on':'')+'">'+d+'</button>').join('')+'</div>')+field('Zieldatum','<input type="date" data-cfg="goal" value="'+esc(S.goalDate)+'">'));
   o+=sec('home','Startseite anpassen',homeSetupHTML());
@@ -972,7 +1025,7 @@ document.addEventListener('click',ev=>{const el=ev.target.closest('[data-act],[d
     case 'durSet':{const m=Math.round(pnum(document.getElementById('numIn').value));if(m>0&&m<=240){S.timer.dur=m;S.timer.left=null;save()}closeModal();render();break}
     case 'start':if(klBusy()){toast('Erst die Klausur beenden.');break}startTimer();render();break;
     case 'pause':S.timer.left=tLeft();S.timer.endAt=null;soundStop();save();render();break;
-    case 'reset':{const t=S.timer;const m=Math.round((t.dur*60000-tLeft())/60000);const wasBreak=t.isBreak;t.endAt=null;t.left=null;t.isBreak=false;soundStop();save();render();
+    case 'reset':{const t=S.timer;const m=Math.round((t.dur*60000-tLeft())/60000);const wasBreak=t.isBreak;t.endAt=null;t.left=null;t.isBreak=false;soundStop();save();render();if(!wasBreak&&shopOn()){toast(rnd(OOPS));if(m>=1){S.shop.oops=S.shop.oops||[];S.shop.oops.push(today());save()}}
       if(!wasBreak&&m>=5)openModal('<h3>'+m+' Minuten zählen?</h3><p>Du hast den Sprint abgebrochen. Sollen die bisherigen '+m+' Minuten in dein Stundenkonto?</p><div class="row"><button class="btn-main" data-act="keepPart" data-m="'+m+'" style="font-size:16px">Ja, zählen</button></div><div class="row" style="margin-top:8px"><button class="btn-ghost" data-act="close">Nein</button></div>');break}
     case 'keepPart':S.sessions.push({date:today(),min:+el.dataset.m,at:Date.now(),examId:S.activeId,subj:curSubj(),partial:true,dist:S.timer.dist||S.kl.dist||0});S.timer.dist=0;S.kl.dist=0;save();closeModal();toast(fmtH(+el.dataset.m)+' gezählt.');render();checkBadges();break;
     case 'mBreak':saveWin();closeModal();S.tmode='sprint';S.timer.isBreak=true;S.timer.left=null;startTimer();go('timer');break;
@@ -987,7 +1040,7 @@ document.addEventListener('click',ev=>{const el=ev.target.closest('[data-act],[d
     case 'kstart':if(busy()){toast('Erst den laufenden Sprint beenden.');break}unlockAudio();if(S.kl.left==null){S.kl.ph=0;S.kl.dist=0}S.kl.endAt=Date.now()+klLeft();S.kl.left=null;save();if(S.cfg.soundKl)soundStart();render();break;
     case 'kpause':S.kl.left=klLeft();S.kl.endAt=null;soundStop();save();render();break;
     case 'kreset':{const k=S.kl;const m=Math.round((k.dur*60000-klLeft())/60000);if(arm!=='kl'){arm='kl';toast('Nochmal tippen zum Abbrechen.');setTimeout(()=>{if(arm==='kl')arm=null},3000);break}
-      arm=null;k.endAt=null;k.left=null;k.ph=0;soundStop();save();render();
+      arm=null;k.endAt=null;k.left=null;k.ph=0;soundStop();if(shopOn()&&m>=1){S.shop.oops=S.shop.oops||[];S.shop.oops.push(today());toast(rnd(OOPS))}save();render();
       if(m>=5)openModal('<h3>'+fmtH(m)+' zählen?</h3><p>Du hast die Simulation abgebrochen. Sollen die bisherigen '+fmtH(m)+' in dein Stundenkonto?</p><div class="row"><button class="btn-main" data-act="keepPart" data-m="'+m+'" style="font-size:16px">Ja, zählen</button></div><div class="row" style="margin-top:8px"><button class="btn-ghost" data-act="close">Nein</button></div>');break}
     /* Lernzeit */
     case 'addTime':addTimeModal();break;
@@ -1290,13 +1343,13 @@ const TOUR=[
  ['timer','Sprint','Der Timer für deine Lernsprints. Oben wechselst du in den Klausurmodus für Probeklausuren. Dazu Fokus-Geräusche und der Knopf „Abgelenkt“.'],
  ['plan','Plan','Deine Prüfung, die Themen bis zum Termin, die Fehlerliste und der Lernkalender. Mit „bearbeiten“ änderst du alle Angaben.'],
  ['ziel','Ziel','Drei Bereiche: Weg mit Zeitstrahl und Fristen, Zahlen mit deiner Statistik, Erfolge mit Level, Abzeichen, Belohnungen und Lernduell.'],
- ['gear','Einstellungen','Über das Zahnrad änderst du alles: Profil, Fächer, Lernkalender, eigene Sprüche, Timer und welche Karten unter „Heute“ erscheinen.']];
+ ['gear','Einstellungen','Über das Zahnrad änderst du alles: Profil, Fächer, Lernkalender, eigene Sprüche, Timer und welche Karten unter „Heute“ erscheinen. Ganz oben findest du eine komplette Anleitung.']];
 let tourStep=-1;
 function startTour(){tourStep=0;showTour()}
 function showTour(){let c=document.getElementById('coach');if(!c){c=document.createElement('div');c.id='coach';document.body.appendChild(c)}
   document.querySelectorAll('.tourhi').forEach(x=>x.classList.remove('tourhi'));
   if(tourStep<0||tourStep>=TOUR.length){c.remove();document.body.classList.remove('touring');tourStep=-1;S.tourDone=true;save();go('heute');setTimeout(checkBadges,400);return}
-  const t=TOUR[tourStep];document.body.classList.add('touring');
+  const t=TOUR[tourStep].slice();if(shopOn()&&t[0]==='ziel')t[2]+=' Und unter Erfolge wartet dein Hochzeits-Shop: Jede Sprint-Minute bringt ein Herz ❤';if(shopOn()&&t[0]==='timer')t[2]+=' Jeder fertige Sprint bringt Herzen für deine Traumhochzeit.';document.body.classList.add('touring');
   if(t[0]!=='gear'){if(tab!==t[0])go(t[0]);const b=document.querySelector('nav button[data-tab='+t[0]+']');if(b)b.classList.add('tourhi')}
   else{go('heute');setTimeout(()=>{const g=document.querySelector('.gear');if(g)g.classList.add('tourhi')},30)}
   c.innerHTML='<div class="coachcard'+(t[0]==='gear'?' low':'')+'"><div class="eyebrow">'+(tourStep+1)+' von '+TOUR.length+'</div><h3>'+t[1]+'</h3><p>'+t[2]+'</p><div class="dots">'+TOUR.map((_,i)=>'<i class="'+(i===tourStep?'on':'')+'"></i>').join('')+'</div><div class="row"><button class="btn-ghost" data-act="tourEnd">Überspringen</button><button class="btn-main" data-act="tourNext" style="font-size:16px;padding:12px">'+(tourStep===TOUR.length-1?'Los geht\'s':'Weiter')+'</button></div></div>'}
@@ -1321,6 +1374,161 @@ document.addEventListener('click',ev=>{const el=ev.target.closest('[data-act]');
     case 'errAll':errAll=!errAll;render();break;
   }});
 document.addEventListener('change',ev=>{const el=ev.target;if(el.dataset.home){S.cfg.home=Object.assign({},S.cfg.home||{});S.cfg.home[el.dataset.home]=el.checked;save();render()}});
+
+/* ===== Sammelwelt im Forest-Stil: Hochzeits-Shop ===== */
+const shopOn=()=>PRESET.shop==='wedding';
+const SHOP=[
+ ['ring','💍','Verlobungsring',0,'Hast du schon. Jetzt fehlt nur noch der Titel.',50,58,30],
+ ['inv','💌','Einladungskarten',25,'Mit „Mag.“ vor dem Namen. Der Platz ist schon reserviert.',9,86,30],
+ ['light','✨','Lichterketten',40,'Damit auch nachts gelernt werden kann.',50,10,26],
+ ['shoes','👠','Brautschuhe',60,'Bequem genug für den Weg zur Sponsion.',38,82,28],
+ ['bouq','💐','Brautstrauß',70,'Fliegt erst, wenn die letzte Prüfung abgehakt ist.',58,70,34],
+ ['dove','🕊️','Weiße Tauben',80,'Bringen die Nachricht: Bella hat bestanden.',18,20,32],
+ ['champ','🥂','Champagnerturm',90,'Wird bei jeder bestandenen Prüfung angestoßen.',84,68,34],
+ ['dance','💃','Tanzfläche',100,'Für den Freudentanz nach der Prüfung.',66,84,32],
+ ['arch','🌸','Blumenbogen',110,'Durch den gehst du zweimal: zur Sponsion und zum Altar.',50,44,52],
+ ['cake','🎂','Hochzeitstorte',120,'Drei Stöcke, einer pro geschafftem Semester-Endspurt.',78,52,40],
+ ['music','🎻','Streichquartett',130,'Spielt leise im Hintergrund, während du lernst.',22,50,34],
+ ['buffet','🍰','Snackiger-Snack-Snack-Buffet',150,'Das wichtigste Element jeder Hochzeit. Ohne Diskussion.',18,68,40],
+ ['dress','👰','Brautkleid',200,'Premium-Chaya-Edition. Maßgeschneidert, wie dein Lernplan.',44,62,48],
+ ['car','🚗','Hochzeitsauto',220,'Hinten drauf: „Just Married“ und „Just Graduated“.',88,86,36],
+ ['venue','🏰','Traum-Location',300,'Hier wird gefeiert. Mit Titel, versteht sich.',50,22,56],
+ ['fire','🎆','Feuerwerk',350,'Für den Moment, in dem das letzte Ergebnis online steht.',82,16,40],
+ ['moon','🏝️','Flitterwochen',500,'Wirklich genießen geht erst ohne offene Prüfungen.',88,36,38]];
+const GUEST_PRICE=15,GUESTS=['👩','👨','👵','👴','👧','🧑','👩‍🦰','👨‍🦱','🧔','👱‍♀️'];
+function hearts(){if(!shopOn())return 0;let e=0;S.sessions.forEach(x=>{if(x.manual||x.partial)return;e+=x.min+(x.klausur?50:0)});e+=S.exams.filter(x=>x.done).length*100;
+  const sp=SHOP.reduce((a,it)=>a+(S.shop.bought[it[0]]?it[3]:0),0)+(S.shop.guests||0)*GUEST_PRICE;return Math.max(0,e-sp)}
+function owned(id){return id==='ring'||!!S.shop.bought[id]}
+function allPassed(){return S.exams.length>0&&S.exams.every(e=>e.done)}
+function nextItem(){return SHOP.find(it=>!owned(it[0]))}
+function sceneHTML(big){const g=Math.min(S.shop.guests||0,24);
+  let o='<div class="scene'+(big?' big':'')+'"><div class="sky"></div><div class="grass"></div>';
+  SHOP.forEach(it=>{if(owned(it[0]))o+='<span class="sitem" style="left:'+it[5]+'%;top:'+it[6]+'%;font-size:'+(big?it[7]:Math.round(it[7]*.75))+'px">'+it[1]+'</span>'});
+  if(allPassed())o+='<span class="sitem diploma" style="left:50%;top:84%;font-size:'+(big?46:36)+'px">📜</span>';
+  for(let i=0;i<g;i++)o+='<span class="sitem guest" style="left:'+(6+((i*37)%88))+'%;top:'+(93-((i%3)*3))+'%;font-size:'+(big?20:16)+'px">'+GUESTS[i%GUESTS.length]+'</span>';
+  return o+'</div>'}
+function shopCardHTML(){if(!shopOn())return '';const h=hearts();const nx=nextItem();const n=SHOP.filter(it=>owned(it[0])).length;
+  return '<div class="card wed"><div class="dayh" style="margin-bottom:10px"><b>Deine Traumhochzeit</b><span class="heartbal">❤ '+h+'</span></div>'+sceneHTML(false)+
+   '<div class="gl-t" style="margin-top:12px"><span><b>'+n+'</b> von '+SHOP.length+' Dingen'+(S.shop.guests?' · '+S.shop.guests+' Gäste':'')+'</span><span>'+(allPassed()?'<span class="ok">Mag. Titel ✓</span>':'Urkunde fehlt noch')+'</span></div>'+
+   (nx?'<p class="hint">'+(h>=nx[3]?'Du kannst dir jetzt '+nx[1]+' '+esc(nx[2])+' leisten!':'Noch '+(nx[3]-h)+' ❤ bis '+nx[1]+' '+esc(nx[2])+'. Jede Sprint-Minute bringt ein Herz.')+'</p>':'<p class="hint">Alles gekauft! Lade noch mehr Gäste ein.</p>')+
+   '<div class="row" style="margin-top:12px"><button class="btn-main" style="font-size:16px;padding:13px" data-act="shopOpen">Zum Hochzeits-Shop</button></div></div>'}
+function shopModal(){const h=hearts();
+  openModal('<h3>Hochzeits-Shop</h3><p>Du hast <b class="heartbal">❤ '+h+'</b>. Herzen gibt es für jede Minute eines abgeschlossenen Sprints, 50 extra pro Klausursimulation und 100 für jede bestandene Prüfung.</p><div class="hallwrap" style="margin-bottom:10px">'+hallSVG(true).svg+'</div>'+
+   '<div class="shoplist">'+SHOP.filter(it=>it[0]!=='ring').map(it=>{const own=owned(it[0]);const can=h>=it[3];
+     return '<div class="shoprow'+(own?' own':'')+'"><span class="semo">'+it[1]+'</span><span class="stxt"><b>'+esc(it[2])+'</b><small>'+esc(it[4])+'</small></span>'+(own?'<span class="sown">✓</span>':'<button class="sbuy'+(can?'':' off')+'" data-act="shopBuy" data-id="'+it[0]+'">❤ '+it[3]+'</button>')+'</div>'}).join('')+
+   '<div class="shoprow"><span class="semo">👩</span><span class="stxt"><b>Hochzeitsgast einladen</b><small>Jeder Gast gratuliert zum Titel. Beliebig oft.'+(S.shop.guests?' Schon '+S.shop.guests+' eingeladen.':'')+'</small></span><button class="sbuy'+(h>=GUEST_PRICE?'':' off')+'" data-act="shopGuest">❤ '+GUEST_PRICE+'</button></div>'+
+   '<div class="shoprow'+(allPassed()?' own':'')+'"><span class="semo">📜</span><span class="stxt"><b>Mag.-Urkunde</b><small>Gibt es nicht zu kaufen. Nur zu erarbeiten: Sie erscheint, wenn alle Prüfungen bestanden sind.</small></span>'+(allPassed()?'<span class="sown">✓</span>':'<span class="slock">🔒</span>')+'</div></div>'+
+   '<div class="row" style="margin-top:12px"><button class="btn-ghost" data-act="close">Schließen</button></div>')}
+function growHTML(){if(!shopOn())return '';const nx=nextItem()||SHOP[SHOP.length-1];const t=S.timer;const tot=t.dur*60000;const p=Math.max(0,Math.min(1,1-tLeft()/tot));
+  return '<div class="grow"><span id="growe" style="transform:scale('+(0.35+0.65*p).toFixed(2)+')">'+nx[1]+'</span><small>Bei Abschluss: <b>+'+t.dur+' ❤</b> für deine Hochzeit</small></div>'}
+function updGrow(){const g=document.getElementById('growe');if(!g)return;const t=S.timer;const p=Math.max(0,Math.min(1,1-tLeft()/(t.dur*60000)));g.style.transform='scale('+(0.35+0.65*p).toFixed(2)+')'}
+const OOPS=['Oh nein, die Torte ist umgefallen 🎂 Keine Herzen für abgebrochene Sprints.','Die Tauben sind davongeflogen 🕊️ Nächster Sprint, neues Glück!','Der Brautstrauß ist verwelkt 💐 Beim nächsten Sprint klappt es.'];
+document.addEventListener('click',ev=>{const el=ev.target.closest('[data-act]');if(!el)return;const a=el.dataset.act;
+  switch(a){
+    case 'shopOpen':shopModal();break;
+    case 'shopBuy':{const it=SHOP.find(x=>x[0]===el.dataset.id);if(!it||owned(it[0]))break;const h=hearts();if(h<it[3]){toast('Noch '+(it[3]-h)+' ❤. Ein Sprint, und du bist näher dran!');break}
+      S.shop.bought[it[0]]=today();S.wins.push({date:today(),text:it[1]+' '+it[2]+' für die Hochzeit gekauft'});save();confetti();toast(it[1]+' '+it[2]+' gekauft!');shopModal();render();break}
+    case 'shopGuest':{if(hearts()<GUEST_PRICE){toast('Noch nicht genug Herzen.');break}S.shop.guests=(S.shop.guests||0)+1;save();toast(rnd(GUESTS)+' Ein Gast mehr! Er gratuliert schon mal zum Titel.');shopModal();render();break}
+  }});
+
+/* ===== Hochzeitssaal in isometrischer Ansicht ===== */
+let hallP='woche',hallOff=0;
+const HN=8,TW=40,TH=20,HCX=180,HTOP=118,HWALL=96,HDEP=16;
+const ITEM_POS={ring:[2,1,16],inv:[4,1,20],shoes:[3,1,18],bouq:[3,2,22],dove:[1,4,22,-46],champ:[6,4,26],dance:[5,6,26],arch:[1,1,40],cake:[6,2,28],music:[5,1,24],buffet:[2,6,28],dress:[2,2,34],car:[7,6,26],moon:null,light:null,fire:null,venue:null};
+function tc(i,j){return [HCX+(i-j)*TW/2,HTOP+(i+j)*TH/2+TH/2]}
+function tilePts(i,j){const [x,y]=tc(i,j);return (x)+','+(y-TH/2)+' '+(x+TW/2)+','+y+' '+x+','+(y+TH/2)+' '+(x-TW/2)+','+y}
+function hallRange(){const t=today();if(hallP==='tag'){const k=addDays(t,hallOff);return [k,addDays(k,1),fmtDay(k)+k.slice(0,4)]}
+  if(hallP==='woche'){const s=addDays(weekStart(t),hallOff*7);return [s,addDays(s,7),fmtDay(s)+' bis '+fmtDay(addDays(s,6))]}
+  if(hallP==='monat'){const d=parseKey(t);d.setDate(1);d.setMonth(d.getMonth()+hallOff);const s=dkey(d);d.setMonth(d.getMonth()+1);const M=['Jänner','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];const p=parseKey(s);return [s,dkey(d),M[p.getMonth()]+' '+p.getFullYear()]}
+  if(hallP==='jahr'){const y=parseKey(t).getFullYear()+hallOff;return [y+'-01-01',(y+1)+'-01-01',String(y)]}
+  return ['0000-01-01','9999-12-31','Gesamt']}
+function rng(seed){let s=seed%2147483647;if(s<=0)s+=2147483646;return ()=>(s=s*16807%2147483647)/2147483647}
+function hallSVG(big){const own=id=>owned(id);const venue=own('venue');const [from,to]=hallRange();
+  const sess=S.sessions.filter(x=>!x.manual&&!x.partial&&x.date>=from&&x.date<to).sort((a,b)=>(a.at||0)-(b.at||0));
+  const oops=(S.shop.oops||[]).filter(d=>d>=from&&d<to);
+  const T=[HCX,HTOP],L=[HCX-HN*TW/2,HTOP+HN*TH/2],Rr=[HCX+HN*TW/2,HTOP+HN*TH/2],B=[HCX,HTOP+HN*TH];
+  let g='<svg class="hall" viewBox="0 0 360 '+(HTOP+HN*TH+HDEP+14)+'" xmlns="http://www.w3.org/2000/svg">';
+  g+='<defs><linearGradient id="hwl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+(venue?'#f6e3ec':'#efe2e8')+'"/><stop offset="1" stop-color="'+(venue?'#e9c9d8':'#ddc9d2')+'"/></linearGradient><linearGradient id="hwr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+(venue?'#f0d6e3':'#e6d6de')+'"/><stop offset="1" stop-color="'+(venue?'#dcb4c7':'#ccb6c0')+'"/></linearGradient>'+
+    '<linearGradient id="hwin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d1440"/><stop offset="1" stop-color="#6b3f8f"/></linearGradient><radialGradient id="hglow"><stop offset="0" stop-color="#ffe8a3" stop-opacity=".9"/><stop offset="1" stop-color="#ffe8a3" stop-opacity="0"/></radialGradient></defs>';
+  /* Wände */
+  g+='<polygon points="'+T[0]+','+T[1]+' '+L[0]+','+L[1]+' '+L[0]+','+(L[1]-HWALL)+' '+T[0]+','+(T[1]-HWALL)+'" fill="url(#hwl)"/>';
+  g+='<polygon points="'+T[0]+','+T[1]+' '+Rr[0]+','+Rr[1]+' '+Rr[0]+','+(Rr[1]-HWALL)+' '+T[0]+','+(T[1]-HWALL)+'" fill="url(#hwr)"/>';
+  const wallM=side=>'matrix('+(side<0?-TW/2:TW/2)+','+(TH/2)+',0,-1,'+T[0]+','+T[1]+')';
+  [-1,1].forEach(side=>{let w='<g transform="'+wallM(side)+'">';
+    if(venue)w+='<rect x="0" y="0" width="'+HN+'" height="22" fill="'+(side<0?'#e2bfd0':'#d4adc0')+'"/><rect x="0" y="21" width="'+HN+'" height="2" fill="#e7c46a"/><rect x="0" y="'+(HWALL-4)+'" width="'+HN+'" height="4" fill="#e7c46a"/>';
+    [1.1,3.4,5.7].forEach(u=>{const x0=u,wd=1.3,y0=30,ht=46;
+      w+='<path d="M'+x0+','+y0+' L'+(x0+wd)+','+y0+' L'+(x0+wd)+','+(y0+ht-wd*6)+' Q'+(x0+wd/2)+','+(y0+ht+4)+' '+x0+','+(y0+ht-wd*6)+' Z" fill="url(#hwin)" stroke="'+(venue?'#e7c46a':'#fff')+'" stroke-width="'+(venue?1.4:1)+'" vector-effect="non-scaling-stroke"/>';
+      });
+    w+='</g>';g+=w;
+    const wp=(u,v)=>[T[0]+side*u*TW/2,T[1]+u*TH/2-v];
+    [1.1,3.4,5.7].forEach(u=>{const wd=1.3;
+      if(own('fire'))[[.35,.66,'#ff46aa'],[.75,.74,'#ffbe46'],[.55,.48,'#46dcff']].forEach(f=>{const [x,y]=wp(u+wd*f[0],30+46*f[1]);g+='<circle cx="'+x+'" cy="'+y+'" r="5" fill="none" stroke="'+f[2]+'" stroke-width="1.3" stroke-dasharray="1.6 1.8"/><circle cx="'+x+'" cy="'+y+'" r="1.3" fill="'+f[2]+'"/>'});
+      else{const [x,y]=wp(u+wd*.7,30+46*.72);g+='<circle cx="'+x+'" cy="'+y+'" r="1.1" fill="#fff" opacity=".85"/>';const [x2,y2]=wp(u+wd*.3,30+46*.5);g+='<circle cx="'+x2+'" cy="'+y2+'" r=".8" fill="#fff" opacity=".6"/>'}});
+    if(own('light')){let pts='';for(let u=0.15;u<HN;u+=0.45){const [x,y]=wp(u,HWALL-10-Math.sin(u*1.4)*3);pts+=x+','+y+' ';g+='<circle cx="'+x+'" cy="'+y+'" r="4.5" fill="url(#hglow)"/><circle cx="'+x+'" cy="'+y+'" r="1.7" fill="#ffe08a"/>'}g+='<polyline points="'+pts+'" fill="none" stroke="rgba(80,60,40,.35)" stroke-width=".6"/>'}
+  });
+  if(own('moon')){const [x,y]=[T[0]+5.2*TW/2,T[1]+5.2*TH/2-58];g+='<g transform="translate('+x+','+y+')"><rect x="-13" y="-11" width="26" height="22" rx="2" fill="#e7c46a"/><rect x="-11" y="-9" width="22" height="18" fill="#7fd3e6"/><text x="0" y="6" font-size="14" text-anchor="middle">🏝️</text></g>'}
+  /* Sockel */
+  g+='<polygon points="'+L[0]+','+L[1]+' '+B[0]+','+B[1]+' '+B[0]+','+(B[1]+HDEP)+' '+L[0]+','+(L[1]+HDEP)+'" fill="'+(venue?'#c9a24a':'#9c7356')+'"/>';
+  g+='<polygon points="'+B[0]+','+B[1]+' '+Rr[0]+','+Rr[1]+' '+Rr[0]+','+(Rr[1]+HDEP)+' '+B[0]+','+(B[1]+HDEP)+'" fill="'+(venue?'#b38a38':'#82604a')+'"/>';
+  /* Boden */
+  const dance=own('dance');
+  for(let i=0;i<HN;i++)for(let j=0;j<HN;j++){let f=(i+j)%2?'#e8d2ae':'#dfc69e';if(i===j&&i>0)f=(i%2)?'#d9567a':'#cc4b70';if(dance&&i>=4&&i<=6&&j>=5&&j<=7)f=(i+j)%2?'#2b2140':'#f3e6ff';
+    g+='<polygon points="'+tilePts(i,j)+'" fill="'+f+'" stroke="rgba(0,0,0,.06)" stroke-width=".5"/>'}
+  /* Belegung */
+  const occ={};for(let i=0;i<HN;i++)occ[i+','+i]=1;
+  const objs=[];
+  Object.keys(ITEM_POS).forEach(id=>{const p=ITEM_POS[id];if(!p||!own(id))return;const it=SHOP.find(x=>x[0]===id);occ[p[0]+','+p[1]]=1;objs.push({i:p[0],j:p[1],e:it[1],s:p[2],dy:p[3]||0,big:true})});
+  if(allPassed()){occ['1,2']=1;objs.push({i:1,j:2,e:'📜',s:26,glow:true})}
+  const free=[];for(let i=0;i<HN;i++)for(let j=0;j<HN;j++)if(!occ[i+','+j])free.push([i,j]);
+  const r=rng(7919);for(let k=free.length-1;k>0;k--){const m=Math.floor(r()*(k+1));[free[k],free[m]]=[free[m],free[k]]}
+  const gn=Math.min(S.shop.guests||0,14);for(let k=0;k<gn&&free.length;k++){const t=free.shift();objs.push({i:t[0],j:t[1],e:GUESTS[k%GUESTS.length],s:20})}
+  const deko=sess.map(x=>x.klausur?'🎁':x.min>=45?'🌷':x.min>=20?'🌹':'🕯️').concat(oops.map(()=>'🥀'));
+  const shown=Math.min(deko.length,free.length);for(let k=0;k<shown;k++){const t=free[k];objs.push({i:t[0],j:t[1],e:deko[k],s:deko[k]==='🕯️'?15:17})}
+  objs.sort((a,b)=>(a.i+a.j)-(b.i+b.j)||a.i-b.i);
+  objs.forEach(o=>{const [x,y]=tc(o.i,o.j);g+='<ellipse cx="'+x+'" cy="'+(y+1)+'" rx="'+(o.s*.38)+'" ry="'+(o.s*.16)+'" fill="rgba(0,0,0,.22)"/>';
+    if(o.glow)g+='<circle cx="'+x+'" cy="'+(y-o.s*.4)+'" r="'+(o.s*.9)+'" fill="url(#hglow)"/>';
+    g+='<text x="'+x+'" y="'+(y+3+(o.dy||0))+'" font-size="'+o.s+'" text-anchor="middle">'+o.e+'</text>'});
+  /* Kronleuchter */
+  if(venue){const x=HCX,y=HTOP-HWALL+40;g+='<line x1="'+x+'" y1="'+(HTOP-HWALL-6)+'" x2="'+x+'" y2="'+(y-6)+'" stroke="#e7c46a" stroke-width="1"/><circle cx="'+x+'" cy="'+y+'" r="22" fill="url(#hglow)"/><ellipse cx="'+x+'" cy="'+y+'" rx="16" ry="5" fill="none" stroke="#e7c46a" stroke-width="2"/>'+[-12,-4,4,12].map(dx=>'<circle cx="'+(x+dx)+'" cy="'+(y-4)+'" r="2" fill="#fff3c4"/>').join('')}
+  const extra=deko.length-shown;
+  return {svg:g+'</svg>',min:sess.reduce((a,x)=>a+x.min,0),ok:sess.length,bad:oops.length,extra}}
+function hallCardHTML(){if(!shopOn())return '';const h=hallSVG(false);const [,,lbl]=hallRange();
+  return '<div class="card hallcard"><div class="dayh" style="margin-bottom:10px"><b>Dein Hochzeitssaal</b><span class="heartbal">❤ '+hearts()+'</span></div>'+
+   '<div class="hallseg">'+[['tag','Tag'],['woche','Woche'],['monat','Monat'],['jahr','Jahr'],['alles','Alles']].map(p=>'<button data-act="hallP" data-p="'+p[0]+'" class="'+(hallP===p[0]?'on':'')+'">'+p[1]+'</button>').join('')+'</div>'+
+   (hallP!=='alles'?'<div class="hallnav"><button data-act="hallNav" data-d="-1">‹</button><span>'+esc(lbl)+'</span><button data-act="hallNav" data-d="1" '+(hallOff>=0?'disabled':'')+'>›</button></div>':'<div class="hallnav"><span>Gesamt</span></div>')+
+   '<div class="hallwrap">'+h.svg+'</div>'+
+   '<div class="hallstats"><span>⏱ '+fmtH(h.min)+'</span><span><b>'+h.ok+'</b> 🌹 <b>'+h.bad+'</b> 🥀'+(h.extra>0?' <small>(+'+h.extra+' passen nicht mehr rein)</small>':'')+'</span></div>'+
+   '<p class="hint">Jeder geschaffte Sprint stellt eine Kerze, Rose oder Tulpe in deinen Saal, jede Klausursimulation ein Geschenk. Abgebrochene Sprints hinterlassen eine verwelkte Rose. Die großen Dinge kaufst du im Shop.</p>'+
+   '<div class="row" style="margin-top:12px"><button class="btn-main" style="font-size:16px;padding:13px" data-act="shopOpen">Zum Hochzeits-Shop</button></div></div>'}
+document.addEventListener('click',ev=>{const el=ev.target.closest('[data-act]');if(!el)return;const a=el.dataset.act;
+  if(a==='hallP'){hallP=el.dataset.p;hallOff=0;render()}
+  if(a==='hallNav'){hallOff=Math.min(0,hallOff+(+el.dataset.d));render()}});
+function hallMiniHTML(){const sv=hallP,so=hallOff;hallP='woche';hallOff=0;const h=hallSVG(false);hallP=sv;hallOff=so;
+  return '<div class="card hallcard mini" data-act="gotoErfolge"><div class="dayh" style="margin-bottom:6px"><b>Dein Hochzeitssaal diese Woche</b><span class="heartbal">❤ '+hearts()+'</span></div><div class="hallwrap">'+h.svg+'</div><div class="hallstats"><span>⏱ '+fmtH(h.min)+'</span><span><b>'+h.ok+'</b> 🌹 <b>'+h.bad+'</b> 🥀</span></div></div>'}
+
+/* ===== Anleitung ===== */
+function HELP(){const H=[
+ ['🚀','Erste Schritte','<p>So holst du in den ersten Minuten das meiste aus der App:</p><ol><li><b>Prüfungen anlegen:</b> unter „Plan“ mit „+ Neu“ oder unter „Ziel“, „Weg“ mit „Prüfung hinzufügen“. Name, Termin und ECTS eintragen.</li><li><b>Lernkalender erstellen:</b> unter „Heute“ auf „Jetzt erstellen“ oder im Zahnrad unter „Lernkalender“. Leg fest, an welchen Wochentagen du wie viele Stunden für welches Fach lernst.</li><li><b>Themen eintragen:</b> unter „Plan“ die Kapitel deiner Unterlagen, eines pro Zeile. Die App verteilt sie auf die Tage bis zur Prüfung.</li><li><b>Dein Warum aufschreiben:</b> unter „Heute“ in der Karte mit dem Spruch. An schweren Tagen hilft es, es zu lesen.</li><li><b>Ersten Sprint starten.</b> Das Wichtigste ist anzufangen.</li></ol>'],
+ ['☀️','Heute','<p>Deine Startseite für jeden Tag. Von oben nach unten:</p><ul><li><b>Countdown</b> zur nächsten Prüfung. Der Ring zeigt, wie viel vom Stoff schon erledigt ist. Darunter die Tage bis zum Abschluss und wie viele Prüfungen geschafft sind.</li><li><b>Heute-Karte:</b> dein Tagessoll laut Lernkalender, wie viel du schon geschafft hast, und dein <b>Stundenkonto</b>: ob du insgesamt vor oder hinter dem Plan liegst. „anpassen“ ändert den heutigen Tag.</li><li><b>Energie:</b> Tippe morgens auf Leer, Okay oder Gut. Die App schlägt dir passende Sprintlängen vor und merkt sich den Verlauf.</li><li><b>Sprint starten</b>, <b>Keine Lust?</b> für einen winzigen ersten Schritt und <b>+ Zeit nachtragen</b> für Lernzeit ohne Timer.</li><li>Nur wenn es gerade wichtig ist: Fristen, fällige Fehler, Prüfungstag, Wochenrückblick und Themen für heute.</li><li><b>Spruch des Tages:</b> Antippen zeigt den nächsten. Darunter klappst du dein Warum und deinen Wenn-dann-Plan auf.</li></ul><p>Welche Karten erscheinen, stellst du unter „Startseite anpassen“ ein.</p>'],
+ ['⏱️','Sprint','<p>Ein Sprint ist eine feste Lernzeit ohne Ablenkung, Standard sind 25 Minuten.</p><ul><li>Vor dem Start oben das <b>Fach</b> wählen. Die Zeit zählt dann für dieses Fach im Stundenkonto.</li><li>Länge wählen oder mit „…“ eine eigene eingeben.</li><li>Nach dem Sprint kannst du notieren, was du geschafft hast (landet in der Erfolgsliste), eine Pause starten oder eine Lücke für die Fehlerliste notieren.</li><li>Nach vier Sprints schlägt die App eine längere Pause vor.</li><li>Brichst du ab, fragt die App ab 5 Minuten, ob die bisherige Zeit zählen soll.</li><li><b>Abgelenkt:</b> Tippe während des Sprints jedes Mal darauf, wenn du abschweifst. Unter „Ziel“, „Zahlen“ siehst du später, wann du dich am besten konzentrierst.</li><li><b>Fokus-Geräusch:</b> Rauschen, Regen oder Meer laufen automatisch mit dem Sprint. Am besten mit Kopfhörern.</li></ul><p>Der Timer läuft auch weiter, wenn du die App schließt. Ein Ton kommt aber nur, solange die App offen ist.</p>'],
+ ['📝','Klausurmodus','<p>Oben im Sprint-Reiter auf „Klausur“ wechseln. Für Probeklausuren unter echten Bedingungen.</p><ul><li>Dauer wählen: 4 Stunden, 2 Stunden, 90 Minuten oder eigene.</li><li>Die Zeit ist in Phasen geteilt: Lesen, Gliederung, Schreiben, Kontrolle. Bei jedem Wechsel kommt ein Signal.</li><li>Nach der Simulation sofort die Lücken in die Fehlerliste eintragen.</li><li>Phasen und Dauern änderst du in den Einstellungen unter „Timer und Klausurmodus“.</li></ul><p>Tipp: Schreib Simulationen möglichst zur gleichen Uhrzeit wie die echte Prüfung.</p>'],
+ ['📚','Plan und Themen','<ul><li>Oben wählst du die Prüfung, an der du gerade arbeitest.</li><li>„bearbeiten“ öffnet alle Angaben: Name, Termin, Lernbeginn, ECTS, Antritt, Fach, Notiz, Notfallplan, Ort und Losgeh-Zeit für den Prüfungstag sowie Stichwörter für den Kalender-Import.</li><li><b>Themen:</b> Mit „+ hinzufügen“ trägst du Kapitel ein. Sie werden auf die Tage bis zur Prüfung verteilt, der letzte Tag bleibt für Wiederholung frei.</li><li>Kreis vor einem Thema antippen: offen, dann gelernt (halb), dann wiederholt (voll). S, M und L geben den Umfang an. Namen antippen zum Umbenennen.</li><li>Hinkst du hinterher, tippe auf „offene neu verteilen“. Der Plan passt sich an dich an, nicht umgekehrt.</li><li>„Bestanden“ oder „Nicht bestanden“ markiert das Ergebnis. Bei „Nicht bestanden“ zeigt die App deinen Notfallplan und übernimmt auf Wunsch den Ersatztermin.</li></ul>'],
+ ['🧠','Fehlerliste','<p>Hier sammelst du Wissenslücken, als Frage mit Antwort.</p><ul><li>Eintragen nach einem Sprint, nach einer Klausursimulation oder unter „Plan“ mit „+ Lücke notieren“.</li><li>Die App fragt dich zeitversetzt ab: nach 1, 2, 4, 8 und 16 Tagen. Nach sechs richtigen Antworten in Folge gilt eine Lücke als gemeistert. Weißt du es nicht, beginnt sie von vorne und kommt in der Abfrage gleich nochmal dran.</li><li>Vor der Prüfung des jeweiligen Fachs kommt alles noch einmal, auch wenn das Intervall länger wäre.</li><li>Fällige Fragen erscheinen unter „Heute“. Erst selbst überlegen, dann „Antwort zeigen“.</li></ul><p>Warum das wirkt: Abrufen aus dem Gedächtnis festigt Wissen deutlich besser als nochmal Lesen, und verteilte Wiederholung verhindert Vergessen.</p>'],
+ ['📅','Lernkalender und Stundenkonto','<ul><li>Der Lernkalender legt für jeden Tag fest: wie viele Stunden, welche Fächer, und ein Hinweis (zum Beispiel „Arbeit bis 17 Uhr“).</li><li><b>Zeitraum planen:</b> Fächer, Zeitraum und Stunden pro Wochentag wählen, fertig. Bereits geplante Tage kannst du behalten oder überschreiben.</li><li><b>Einzelne Tage</b> änderst du durch Antippen, unter „Heute“ oder in der Liste unter „Plan“.</li><li><b>Als Text bearbeiten:</b> für viele Tage auf einmal, eine Zeile pro Tag.</li><li><b>Stundenkonto:</b> vergleicht deine Lernzeit bis gestern mit dem geplanten Soll. Heute zählt erst morgen mit, damit du nicht schon morgens im Minus startest.</li><li>Unter „Ziel“, „Zahlen“ siehst du die Stunden je Fach im Vergleich zum Soll.</li></ul>'],
+ ['⏰','Fristen','<ul><li>An- und Abmeldefristen, Abgaben oder Termine trägst du unter „Ziel“, „Weg“ ein.</li><li>Unter „Heute“ erscheinen sie ab 7 Tagen vorher. Die Anzahl der Tage stellst du in den Einstellungen unter „Prüfungstag und Fristen“ ein.</li><li>Kreis antippen, wenn erledigt.</li><li>Der Kalender-Import übernimmt Einträge mit „Anmeldung“, „Abmeldung“ oder „Frist“ im Titel automatisch als Frist.</li></ul>'],
+ ['🎓','Prüfungstag','<ul><li><b>Am Abend davor</b> zeigt „Heute“ die Checkliste zum Einpacken.</li><li><b>Am Prüfungstag</b> siehst du den Countdown bis zum Beginn, den Ort, wann du losgehen musst, die Checkliste und eine geführte Atemübung (4 Sekunden ein, 6 Sekunden aus, 2 Minuten).</li><li>Ort und Losgeh-Zeit trägst du in der Prüfung unter „bearbeiten“ ein. Dort gibt es auch eine Vorschau.</li><li>Die Standard-Checkliste änderst du in den Einstellungen. Pro Prüfung kannst du am Prüfungstag selbst Punkte ergänzen oder löschen.</li><li>Nach der Prüfung fragt die App, wie es gelaufen ist. „Ergebnis noch offen“ blendet die Frage aus.</li></ul>'],
+ ['🏁','Ziel: Weg, Zahlen, Erfolge','<ul><li><b>Weg:</b> Countdown bis zum Abschluss, ECTS, Zeitstrahl aller Prüfungen, Notenschnitt und Fristen. Prüfung antippen öffnet sie, der Punkt links markiert sie als bestanden. „Aus Kalender übernehmen“ holt Termine aus deinem iPhone-Kalender.</li><li><b>Zahlen:</b> Wochenrückblick mit Soll und Ist pro Tag (mit den Pfeilen blättern), Energie und Lernzeit, deine Konzentration nach Tageszeit, Stunden je Fach und Gesamtstatistik.</li><li><b>Erfolge:</b> Level, Belohnungen, Abzeichen, Lernduell und Erfolgsliste.</li></ul><p><b>Noten:</b> Nach „Bestanden“ wählst du die Note (Sehr gut bis Genügend oder „Mit Erfolg“). Der Schnitt wird nach ECTS gewichtet.</p>'],
+ ['🎁','Belohnungen, Level und Abzeichen','<ul><li><b>Belohnungen</b> legst du selbst fest: zum Beispiel „Kino nach 10 weiteren Fokusstunden“, nach Sprints, Tagen in Folge, einem Level oder wenn eine Prüfung bestanden ist. Ist sie verdient, kommt Konfetti. Mit „Eingelöst“ landet sie in der Erfolgsliste.</li><li><b>Level</b> steigen mit deinen Fokusstunden, von „Ersti“ bis „Legende“.</li><li><b>Abzeichen</b> gibt es für Stunden, Serien, Sprints, Simulationen, gemeisterte Fehler, bestandene Prüfungen und ein paar Überraschungen. Antippen zeigt, was noch fehlt.</li></ul>'],
+ ['⚔️','Lernduell','<ul><li>„Meinen Stand teilen“ schickt einen Code, zum Beispiel per WhatsApp.</li><li>Die andere Person fügt ihn in ihrer Endspurt-App unter „Ziel“, „Erfolge“, „Code einfügen“ ein und schickt ihren zurück.</li><li>Ihr seht dann eure Wochenstunden als Rangliste. Ein neuer Code aktualisiert den Stand.</li><li>Es gibt keinen Server: Nur die Zahlen im Code werden geteilt, sonst nichts.</li></ul>'],
+ ['💬','Motivation und eigene Sprüche','<ul><li>In den Einstellungen unter „Motivation und eigene Sprüche“ trägst du eigene Sprüche ein, zum Beispiel liebe Worte von Freund:innen. Sie erscheinen bevorzugt als Spruch des Tages.</li><li><b>Mein Warum:</b> wofür du das alles machst. <b>Wenn-dann-Plan:</b> wann und wie du anfängst, zum Beispiel „Wenn ich gefrühstückt habe, dann starte ich sofort einen Sprint“. Solche konkreten Vorsätze machen es nachweislich leichter anzufangen.</li><li><b>Keine Lust?</b> gibt dir einen winzigen ersten Schritt und startet 5 Minuten. Meist kommt die Motivation erst beim Tun.</li></ul>'],
+ ['📲','Kalender-Import','<p>Termine aus deinem iPhone-Kalender übernimmst du mit einem Kurzbefehl. Die Anleitung zum Einrichten steht in den Einstellungen unter „Kalender-Import mit Kurzbefehl“.</p><p>Danach: Kurzbefehl starten, dann unter „Ziel“, „Weg“ auf „Aus Kalender übernehmen“. Du siehst eine Vorschau und hakst ab, was übernommen wird. Termine werden passenden Prüfungen zugeordnet, neue Prüfungen und Fristen angelegt.</p>'],
+ ['💾','Daten und Backup','<ul><li>Alle Daten liegen nur auf diesem Gerät, nicht im Internet. Niemand sonst kann sie sehen.</li><li>Jede Änderung wird sofort gespeichert.</li><li>Weg wären die Daten nur, wenn du das App-Icon löschst, die Website-Daten in Safari löschst oder das Handy wechselst. Deshalb: <b>regelmäßig ein Backup</b>, am besten nach jeder Prüfung. Zahnrad, dann „Daten“, dann „Backup exportieren“ und den Text in einer Notiz oder Mail an dich speichern.</li><li>Unter „Daten“ kannst du auch einzelne Lernzeiten korrigieren oder löschen.</li></ul>'],
+ ['📱','App auf dem Home-Bildschirm','<ol><li>Den Link der App in Safari öffnen.</li><li>Unten auf Teilen tippen.</li><li>„Zum Home-Bildschirm“ wählen und „Hinzufügen“.</li><li>Die App ab jetzt immer über das Icon öffnen.</li></ol><p>Nach einem Update die App zweimal öffnen, beim zweiten Mal ist die neue Version aktiv. Die Versionsnummer steht ganz unten in den Einstellungen.</p>'],
+ ['🔬','Warum die App so aufgebaut ist','<ul><li><b>Aktives Abrufen</b> (Fehlerliste, Themen aus dem Kopf wiederholen) bringt mehr als nochmal Lesen.</li><li><b>Verteiltes Lernen</b> über viele Tage hält länger als Lernen in einem Block.</li><li><b>Probeklausuren</b> zeigen Lücken, solange noch Zeit ist, sie zu schließen.</li><li><b>Feste Sprints mit Pausen</b> machen den Anfang leichter und halten die Konzentration.</li><li><b>Konkrete Wenn-dann-Pläne</b> helfen, wirklich anzufangen.</li><li><b>Schlaf</b> festigt das Gelernte. Vor einer Prüfung ist eine ausgeschlafene Nacht meist mehr wert als ein paar Stunden extra lernen.</li></ul>'],
+ ['❓','Häufige Fragen','<p><b>Ich hab einen Sprint vergessen zu starten.</b> Unter „Heute“ auf „+ Zeit nachtragen“.</p><p><b>Ich hab aus Versehen „Bestanden“ gedrückt.</b> In der Prüfung auf „Doch nicht bestanden“ tippen.</p><p><b>Mein Plan ist durcheinander.</b> Unter „Plan“ auf „offene neu verteilen“ tippen.</p><p><b>Ich sehe eine Funktion nicht mehr.</b> Unter „Startseite anpassen“ prüfen, ob die Karte ausgeschaltet ist.</p><p><b>Die Einführung nochmal ansehen?</b> Unter „Startseite anpassen“, ganz unten.</p>']];
+ if(shopOn())H.splice(11,0,['💒','Dein Hochzeitssaal','<ul><li><b>Herzen verdienen:</b> 1 ❤ pro Minute eines abgeschlossenen Sprints, 50 ❤ extra pro Klausursimulation, 100 ❤ pro bestandener Prüfung. Nachgetragene oder abgebrochene Zeit bringt keine Herzen.</li><li><b>Der Saal füllt sich von selbst:</b> Jeder geschaffte Sprint stellt etwas hinein, eine Kerze 🕯️, Rose 🌹 oder Tulpe 🌷 je nach Länge, eine Klausursimulation ein Geschenk 🎁. Ein abgebrochener Sprint hinterlässt eine verwelkte Rose 🥀.</li><li>Oben wählst du Tag, Woche, Monat, Jahr oder Alles und blätterst mit den Pfeilen.</li><li><b>Hochzeits-Shop:</b> Mit den Herzen kaufst du die großen Dinge, vom Brautstrauß bis zur Traum-Location, die den ganzen Saal verwandelt. Gäste kannst du beliebig oft einladen.</li><li>Die <b>Mag.-Urkunde 📜</b> gibt es nicht zu kaufen. Sie erscheint, wenn alle Prüfungen bestanden sind.</li></ul>']);
+ return H}
+function helpHTML(){return '<p class="hint" style="margin-top:0">Tippe auf ein Thema, um es aufzuklappen.</p>'+HELP().map(h=>'<details class="helpitem"><summary><span class="hic">'+h[0]+'</span>'+h[1]+'</summary><div class="helpbody">'+h[2]+'</div></details>').join('')}
 
 let lastDay=today(),heroMin=Math.floor(Date.now()/60000);
 setInterval(()=>{if(S.timer.endAt&&tLeft()<=0){finish();return}
